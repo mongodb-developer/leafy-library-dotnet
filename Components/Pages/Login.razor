@@ -1,0 +1,81 @@
+@page "/login"
+@attribute [AllowAnonymous]
+@using Leafy_Library.Services
+@inject UserService UserService
+@inject TokenService TokenService
+@inject NavigationManager Navigation
+@inject JwtAuthenticationStateProvider AuthStateProvider
+
+<PageTitle>Login - Leafy Library</PageTitle>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <img src="leaf-logo.svg" alt="Leafy Library" class="login-logo" />
+            <h1>Leafy Library</h1>
+            <p>Enter your username to get started</p>
+        </div>
+
+        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin" FormName="login">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <InputText id="username" @bind-Value="loginModel.Username"
+                           class="form-control" placeholder="Enter your username" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @errorMessage
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary w-100" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                }
+                Sign In
+            </button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private string? errorMessage;
+    private bool isLoading;
+
+    private class LoginModel
+    {
+        public string Username { get; set; } = string.Empty;
+    }
+
+    private async Task HandleLogin()
+    {
+        if (string.IsNullOrWhiteSpace(loginModel.Username))
+        {
+            errorMessage = "Please enter a username.";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = null;
+
+        try
+        {
+            var user = await UserService.GetOrCreateUserAsync(loginModel.Username);
+            var token = TokenService.CreateToken(user);
+            await AuthStateProvider.LoginAsync(token);
+            Navigation.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

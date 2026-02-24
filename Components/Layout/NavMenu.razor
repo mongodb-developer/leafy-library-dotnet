@@ -17,9 +17,37 @@
             </NavLink>
         </div>
 
-        
-
-        
+        <AuthorizeView>
+            <Authorized>
+                <div class="nav-item px-3 nav-user-section">
+                    <div class="nav-user-info">
+                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
+                        <span class="nav-user-name">@context.User.Identity?.Name</span>
+                    </div>
+                    <button class="btn btn-link nav-link nav-logout-btn" @onclick="Logout">
+                        <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Logout
+                    </button>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="login">
+                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> Login
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
     </nav>
 </div>
 
+@using Leafy_Library.Services
+@inject JwtAuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+
+@code {
+    private async Task Logout()
+    {
+        await AuthStateProvider.LogoutAsync();
+        Navigation.NavigateTo("/login");
+    }
+}

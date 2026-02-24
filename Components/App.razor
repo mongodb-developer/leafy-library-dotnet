@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="@Assets["Leafy_Library.styles.css"]" />
     <ImportMap />
     <link rel="icon" type="image/svg+xml" href="leaf-logo.svg" />
-    <HeadOutlet />
+    <HeadOutlet @rendermode="new InteractiveServerRenderMode(prerender: false)" />
 </head>
 
 <body>
-    <Routes />
+    <Routes @rendermode="new InteractiveServerRenderMode(prerender: false)" />
     <ReconnectModal />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
 </body>
