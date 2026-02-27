@@ -6,10 +6,12 @@ namespace Leafy_Library.Services;
 public class AuthorService
 {
     private readonly IMongoCollection<Author> _authors;
+    private readonly IMongoCollection<Book> _books;
 
     public AuthorService(DatabaseService db)
     {
         _authors = db.Authors;
+        _books = db.Books;
     }
 
     public async Task<List<Author>> GetAllAsync(int page = 1, int pageSize = 20)
@@ -52,5 +54,35 @@ public class AuthorService
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
+    }
+
+    /// <summary>
+    /// Gets an author by ID and resolves their book ISBNs into title/cover references.
+    /// </summary>
+    public async Task<AuthorResponse?> GetAuthorWithBooksAsync(string id)
+    {
+        var author = await GetByIdAsync(id);
+        if (author is null) return null;
+
+        var bookFilter = Builders<Book>.Filter.In(b => b.Id, author.Books);
+        var books = await _books
+            .Find(bookFilter)
+            .Project(b => new AuthorBookReference
+            {
+                Isbn = b.Id,
+                Title = b.Title,
+                Cover = b.Cover
+            })
+            .ToListAsync();
+
+        return new AuthorResponse
+        {
+            Id = author.Id,
+            Name = author.Name,
+            SanitizedName = author.SanitizedName,
+            Bio = author.Bio,
+            Aliases = author.Aliases,
+            Books = books
+        };
     }
 }

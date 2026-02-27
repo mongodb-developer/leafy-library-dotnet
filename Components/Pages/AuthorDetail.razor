@@ -1,0 +1,68 @@
+@page "/authors/{AuthorId}"
+@attribute [Authorize]
+@inject Leafy_Library.Services.AuthorService AuthorService
+
+<PageTitle>@(author?.Name ?? "Author Details")</PageTitle>
+
+@if (author is null && !notFound)
+{
+    <p class="loading-text">Loading author details...</p>
+}
+else if (notFound)
+{
+    <p class="loading-text">Author not found.</p>
+}
+else
+{
+    <div class="author-details-wrapper">
+        <div class="author-card">
+            <h2>@author!.Name <span class="author-label">(author)</span></h2>
+
+            @if (!string.IsNullOrWhiteSpace(author.Bio))
+            {
+                <p class="author-bio">@author.Bio</p>
+            }
+            else
+            {
+                <p class="no-bio">No biography available.</p>
+            }
+        </div>
+
+        @if (author.Books.Count > 0)
+        {
+            <h3 class="books-heading">Books by @author.Name</h3>
+            <div class="book-card-wrapper">
+                @foreach (var book in author.Books)
+                {
+                    <div class="book-card">
+                        <a href="/books/@book.Isbn">
+                            <img class="book-thumbnail"
+                                 src="@(string.IsNullOrEmpty(book.Cover) ? FallbackImage : book.Cover)"
+                                 alt="@book.Title" />
+                        </a>
+                        <div class="book-card-header">
+                            <h3 class="book-title">
+                                <a href="/books/@book.Isbn">@book.Title</a>
+                            </h3>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string AuthorId { get; set; } = string.Empty;
+
+    private Leafy_Library.Models.AuthorResponse? author;
+    private bool notFound;
+    private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
+
+    protected override async Task OnInitializedAsync()
+    {
+        author = await AuthorService.GetAuthorWithBooksAsync(AuthorId);
+        notFound = author is null;
+    }
+}

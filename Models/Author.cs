@@ -44,4 +44,5 @@ public class AuthorBookReference
 {
     public string Isbn { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
+    public string? Cover { get; set; }
 }
