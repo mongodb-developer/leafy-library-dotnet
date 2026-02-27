@@ -21,8 +21,9 @@ public class IssueDetailService
     /// </summary>
     public async Task<List<IssueDetail>> GetByUserIdAsync(string userId)
     {
+        var filter = Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}"));
         return await _issueDetails
-            .Find(i => i.User.Id == userId)
+            .Find(filter)
             .SortByDescending(i => i.BorrowDate)
             .ToListAsync();
     }
@@ -32,8 +33,13 @@ public class IssueDetailService
     /// </summary>
     public async Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId)
     {
+        var filter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
+        );
         return await _issueDetails
-            .Find(i => i.User.Id == userId && !i.Returned)
+            .Find(filter)
             .ToListAsync();
     }
 
@@ -59,8 +65,14 @@ public class IssueDetailService
             return null;
 
         // Check if user already has this book borrowed
+        var existingFilter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
+            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
+        );
         var existingBorrow = await _issueDetails
-            .Find(i => i.Book.Id == bookId && i.User.Id == userId && !i.Returned)
+            .Find(existingFilter)
             .FirstOrDefaultAsync();
 
         if (existingBorrow is not null)
@@ -73,12 +85,12 @@ public class IssueDetailService
         var now = DateTime.UtcNow;
         var issueDetail = new IssueDetail
         {
-            Id = $"{userId}B{bookId}",
-            Book = new Book { Id = bookId, Title = book.Title },
-            User = new User { Id = userId, Username = userName },
+            Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+            Book = new IssueDetailBook { Id = bookId, Title = book.Title },
+            User = new IssueDetailUser { Id = userId, Name = userName },
             BorrowDate = now,
             DueDate = now.AddDays(BorrowDurationDays),
-            RecordType = "borrowedBook",
+            RecordType = IssueDetailType.BorrowedBook,
             Returned = false
         };
 
@@ -92,7 +104,7 @@ public class IssueDetailService
     public async Task<bool> ReturnBookAsync(string issueId)
     {
         var issue = await _issueDetails
-            .Find(i => i.Id == issueId && !i.Returned)
+            .Find(i => i.Id == issueId && i.Returned == false)
             .FirstOrDefaultAsync();
 
         if (issue is null)

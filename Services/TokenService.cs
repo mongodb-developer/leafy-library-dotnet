@@ -24,8 +24,8 @@ public class TokenService
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id!),
-            new Claim("username", user.Username),
-            new Claim("isAdmin", user.IsAdmin.ToString().ToLower()),
+            new Claim("username", user.Name),
+            new Claim("isAdmin", (user.IsAdmin ?? false).ToString().ToLower()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 

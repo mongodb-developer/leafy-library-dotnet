@@ -132,9 +132,7 @@
 
     private static bool IsBookOfTheMonth(Leafy_Library.Models.Book book)
     {
-        return book.Attributes.Any(a =>
-            a.Key.Equals("bookOfTheMonth", StringComparison.OrdinalIgnoreCase) &&
-            a.Value.Equals("true", StringComparison.OrdinalIgnoreCase));
+        return book.BookOfTheMonth == true;
     }
 
     private static string StripHtml(string? html)

@@ -8,14 +8,14 @@ namespace Leafy_Library.Models;
 public class Book
 {
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = string.Empty;
 
     [BsonElement("title")]
     public string Title { get; set; } = string.Empty;
 
     [BsonElement("authors")]
-    public List<Author> Authors { get; set; } = [];
+    [BsonIgnoreIfNull]
+    public List<BookAuthor> Authors { get; set; } = [];
 
     [BsonElement("genres")]
     [BsonIgnoreIfNull]
@@ -26,8 +26,7 @@ public class Book
     public int? Pages { get; set; }
 
     [BsonElement("year")]
-    [BsonIgnoreIfNull]
-    public int? Year { get; set; }
+    public int Year { get; set; }
 
     [BsonElement("synopsis")]
     [BsonIgnoreIfNull]
@@ -64,6 +63,24 @@ public class Book
 
     [BsonElement("reviews")]
     public List<Review> Reviews { get; set; } = [];
+
+    [BsonElement("bookOfTheMonth")]
+    [BsonIgnoreIfNull]
+    public bool? BookOfTheMonth { get; set; }
+}
+
+/// <summary>
+/// Lightweight author reference embedded in a book document (extended reference pattern).
+/// </summary>
+[BsonIgnoreExtraElements]
+public class BookAuthor
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+
+    [BsonElement("name")]
+    public string Name { get; set; } = string.Empty;
 }
 
 [BsonIgnoreExtraElements]

@@ -87,7 +87,7 @@ app.MapGet("/api/users/login/{username}", async (string username, UserService us
     return Results.Ok(new
     {
         user.Id,
-        user.Username,
+        user.Name,
         user.IsAdmin,
         Token = token
     });

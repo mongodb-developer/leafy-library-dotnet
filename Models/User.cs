@@ -10,9 +10,10 @@ public class User
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    [BsonElement("username")]
-    public string Username { get; set; } = string.Empty;
+    [BsonElement("name")]
+    public string Name { get; set; } = string.Empty;
 
     [BsonElement("isAdmin")]
-    public bool IsAdmin { get; set; } = false;
+    [BsonIgnoreIfNull]
+    public bool? IsAdmin { get; set; }
 }

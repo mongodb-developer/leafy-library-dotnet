@@ -15,14 +15,14 @@ public class UserService
     public async Task<User> GetOrCreateUserAsync(string username)
     {
         var user = await _usersCollection
-            .Find(u => u.Username == username)
+            .Find(u => u.Name == username)
             .FirstOrDefaultAsync();
 
         if (user is null)
         {
             user = new User
             {
-                Username = username,
+                Name = username,
                 IsAdmin = false
             };
             await _usersCollection.InsertOneAsync(user);
@@ -41,7 +41,7 @@ public class UserService
     public async Task<User?> GetUserByUsernameAsync(string username)
     {
         return await _usersCollection
-            .Find(u => u.Username == username)
+            .Find(u => u.Name == username)
             .FirstOrDefaultAsync();
     }
 }

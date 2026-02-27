@@ -43,7 +43,10 @@ public class ReviewsController : ControllerBase
         if (string.IsNullOrWhiteSpace(request.Name))
             return BadRequest(new { message = "Reviewer name is required" });
 
-        if (request.Rating < 1 || request.Rating > 5)
+        if (string.IsNullOrWhiteSpace(request.Text))
+            return BadRequest(new { message = "Review text is required" });
+
+        if (request.Rating.HasValue && (request.Rating < 1 || request.Rating > 5))
             return BadRequest(new { message = "Rating must be between 1 and 5" });
 
         var review = await _reviewService.CreateAsync(
@@ -68,6 +71,6 @@ public class CreateReviewRequest
 {
     public string BookId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
-    public string? Text { get; set; }
-    public int Rating { get; set; }
+    public string Text { get; set; } = string.Empty;
+    public int? Rating { get; set; }
 }

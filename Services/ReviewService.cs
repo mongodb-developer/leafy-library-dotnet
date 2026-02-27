@@ -34,7 +34,7 @@ public class ReviewService
     /// Creates a review in the reviews collection and also pushes it
     /// as an embedded document into the book's reviews array.
     /// </summary>
-    public async Task<Review> CreateAsync(string bookId, string reviewerName, string? text, int rating)
+    public async Task<Review> CreateAsync(string bookId, string reviewerName, string text, int? rating)
     {
         var review = new Review
         {
@@ -42,8 +42,8 @@ public class ReviewService
             BookId = bookId,
             Name = reviewerName,
             Text = text,
-            Rating = Math.Clamp(rating, 1, 5),
-            Timestamp = DateTime.UtcNow
+            Rating = rating.HasValue ? Math.Clamp(rating.Value, 1, 5) : null,
+            Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
         };
 
         await _reviews.InsertOneAsync(review);
@@ -52,10 +52,10 @@ public class ReviewService
         var embeddedReview = new BsonDocument
         {
             { "_id", new ObjectId(review.Id) },
-            { "text", review.Text != null ? BsonValue.Create(review.Text) : BsonNull.Value },
+            { "text", review.Text },
             { "name", review.Name },
-            { "rating", review.Rating },
-            { "timestamp", new BsonInt64(new DateTimeOffset(review.Timestamp).ToUnixTimeMilliseconds()) }
+            { "rating", review.Rating.HasValue ? BsonValue.Create(review.Rating.Value) : BsonNull.Value },
+            { "timestamp", new BsonInt64(review.Timestamp) }
         };
 
         var update = Builders<Book>.Update.Push("reviews", embeddedReview);

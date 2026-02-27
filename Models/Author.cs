@@ -26,3 +26,22 @@ public class Author
     [BsonElement("aliases")]
     public List<string> Aliases { get; set; } = [];
 }
+
+/// <summary>
+/// Author response DTO with resolved book references.
+/// </summary>
+public class AuthorResponse
+{
+    public string? Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string SanitizedName { get; set; } = string.Empty;
+    public string? Bio { get; set; }
+    public List<string> Aliases { get; set; } = [];
+    public List<AuthorBookReference> Books { get; set; } = [];
+}
+
+public class AuthorBookReference
+{
+    public string Isbn { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+}
