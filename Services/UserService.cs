@@ -1,5 +1,4 @@
 using Leafy_Library.Models;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -8,11 +7,9 @@ public class UserService
 {
     private readonly IMongoCollection<User> _usersCollection;
 
-    public UserService(IOptions<MongoDbSettings> mongoDbSettings)
+    public UserService(DatabaseService db)
     {
-        var client = new MongoClient(mongoDbSettings.Value.ConnectionString);
-        var database = client.GetDatabase(mongoDbSettings.Value.DatabaseName);
-        _usersCollection = database.GetCollection<User>("users");
+        _usersCollection = db.Users;
     }
 
     public async Task<User> GetOrCreateUserAsync(string username)

@@ -17,6 +17,11 @@ builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("Jwt"));
 
 // Services
+builder.Services.AddSingleton<DatabaseService>();
+builder.Services.AddSingleton<BookService>();
+builder.Services.AddSingleton<AuthorService>();
+builder.Services.AddSingleton<ReviewService>();
+builder.Services.AddSingleton<IssueDetailService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<TokenService>();
 builder.Services.AddScoped<JwtAuthenticationStateProvider>();
@@ -46,6 +51,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddCascadingAuthenticationState();
 
 // Add services to the container.
+builder.Services.AddControllers();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -63,6 +69,8 @@ app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages:
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseAntiforgery();
+
+app.MapControllers();
 
 // Login API endpoint — matches GET /users/login/:username from the Express app.
 // If the user exists, logs them in; if not, creates a new user automatically.
