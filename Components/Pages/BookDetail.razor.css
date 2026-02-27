@@ -1,0 +1,281 @@
+.loading-text {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.1rem;
+    padding: 3rem;
+}
+
+/* Header layout */
+.book-detail-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.book-cover-container {
+    flex-shrink: 0;
+}
+
+.book-cover {
+    width: 280px;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 30, 43, 0.15);
+    background-color: #f0f0f0;
+}
+
+.book-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.book-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #001E2B;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+
+.book-authors {
+    font-size: 1.05rem;
+    color: #6c757d;
+    margin-bottom: 0.75rem;
+}
+
+.book-authors a {
+    color: #00684A;
+    text-decoration: none;
+}
+
+.book-authors a:hover {
+    text-decoration: underline;
+}
+
+.book-of-the-month-badge {
+    display: inline-block;
+    font-weight: 600;
+    color: #00684A;
+    background: #E3FCF7;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Meta info */
+.book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.meta-item strong {
+    color: #001E2B;
+}
+
+/* Genres */
+.book-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.genre-tag {
+    background: #E3FCF7;
+    color: #023430;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Availability */
+.availability {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.availability h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: #001E2B;
+}
+
+.availability-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.available-count {
+    font-weight: 600;
+}
+
+.available-count.in-stock {
+    color: #00684A;
+}
+
+.available-count.out-of-stock {
+    color: #e50000;
+}
+
+.total-count {
+    color: #6c757d;
+}
+
+.reserve-btn {
+    width: 100%;
+}
+
+/* Synopsis */
+.book-synopsis {
+    margin-bottom: 2rem;
+}
+
+.book-synopsis h2 {
+    font-size: 1.25rem;
+    color: #001E2B;
+    margin-bottom: 0.75rem;
+}
+
+.book-synopsis p {
+    color: #444;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Attributes table */
+.book-attributes {
+    margin-bottom: 2rem;
+}
+
+.book-attributes h2 {
+    font-size: 1.25rem;
+    color: #001E2B;
+    margin-bottom: 0.75rem;
+}
+
+.attributes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attributes-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.attr-key {
+    font-weight: 600;
+    color: #001E2B;
+    width: 160px;
+    text-transform: capitalize;
+}
+
+.attr-value {
+    color: #444;
+}
+
+/* Reviews */
+.book-reviews {
+    margin-bottom: 2rem;
+}
+
+.book-reviews h2 {
+    font-size: 1.25rem;
+    color: #001E2B;
+    margin-bottom: 0.75rem;
+}
+
+.no-reviews {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.review-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: #001E2B;
+    font-size: 0.95rem;
+}
+
+.review-rating {
+    font-size: 0.95rem;
+}
+
+.star {
+    color: #ccc;
+}
+
+.star.filled {
+    color: #f5a623;
+}
+
+.review-date {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-left: auto;
+}
+
+.review-text {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .book-detail-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-cover {
+        width: 200px;
+    }
+
+    .book-info {
+        text-align: center;
+    }
+
+    .book-meta {
+        justify-content: center;
+    }
+
+    .book-genres {
+        justify-content: center;
+    }
+
+    .review-date {
+        margin-left: 0;
+    }
+}

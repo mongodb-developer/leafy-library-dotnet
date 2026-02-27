@@ -1,0 +1,175 @@
+@page "/books/{BookId}"
+@attribute [Authorize]
+@using System.Text.RegularExpressions
+@inject Leafy_Library.Services.BookService BookService
+
+<PageTitle>@(book?.Title ?? "Book Details")</PageTitle>
+
+@if (book is null)
+{
+    <p class="loading-text">Loading book details...</p>
+}
+else
+{
+    <div class="book-detail">
+        <div class="book-detail-header">
+            <div class="book-cover-container">
+                <img class="book-cover"
+                     src="@(string.IsNullOrEmpty(book.Cover) ? FallbackImage : book.Cover)"
+                     alt="@book.Title" />
+            </div>
+
+            <div class="book-info">
+                <h1 class="book-title">@book.Title</h1>
+
+                @if (book.Authors.Count > 0)
+                {
+                    <p class="book-authors">
+                        by
+                        @for (int i = 0; i < book.Authors.Count; i++)
+                        {
+                            var author = book.Authors[i];
+                            <a href="/authors/@author.Id">@author.Name</a>
+                            @if (i < book.Authors.Count - 1)
+                            {
+                                <span>, </span>
+                            }
+                        }
+                    </p>
+                }
+
+                @if (book.BookOfTheMonth == true)
+                {
+                    <div class="book-of-the-month-badge">🏆 Book of the Month selection 🏆</div>
+                }
+
+                <div class="book-meta">
+                    @if (book.Year > 0)
+                    {
+                        <span class="meta-item"><strong>Year:</strong> @book.Year</span>
+                    }
+                    @if (book.Pages.HasValue)
+                    {
+                        <span class="meta-item"><strong>Pages:</strong> @book.Pages</span>
+                    }
+                    @if (!string.IsNullOrEmpty(book.Publisher))
+                    {
+                        <span class="meta-item"><strong>Publisher:</strong> @book.Publisher</span>
+                    }
+                    @if (!string.IsNullOrEmpty(book.Binding))
+                    {
+                        <span class="meta-item"><strong>Binding:</strong> @book.Binding</span>
+                    }
+                    @if (!string.IsNullOrEmpty(book.Language))
+                    {
+                        <span class="meta-item"><strong>Language:</strong> @book.Language</span>
+                    }
+                </div>
+
+                @if (book.Genres is { Count: > 0 })
+                {
+                    <div class="book-genres">
+                        @foreach (var genre in book.Genres)
+                        {
+                            <span class="genre-tag">@genre</span>
+                        }
+                    </div>
+                }
+
+                <div class="availability">
+                    <h3>Availability</h3>
+                    <div class="availability-bar">
+                        <span class="available-count @(book.Available > 0 ? "in-stock" : "out-of-stock")">
+                            @book.Available available
+                        </span>
+                        <span class="total-count">of @book.TotalInventory total</span>
+                    </div>
+                    <button class="btn btn-primary reserve-btn" disabled="@(book.Available <= 0)">
+                        @(book.Available > 0 ? "Reserve this book" : "Currently unavailable")
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(book.Synopsis))
+        {
+            <div class="book-synopsis">
+                <h2>Synopsis</h2>
+                <p>@StripHtml(book.Synopsis)</p>
+            </div>
+        }
+
+        @if (book.Attributes.Count > 0)
+        {
+            <div class="book-attributes">
+                <h2>Details</h2>
+                <table class="attributes-table">
+                    <tbody>
+                        @foreach (var attr in book.Attributes)
+                        {
+                            <tr>
+                                <td class="attr-key">@attr.Key</td>
+                                <td class="attr-value">@attr.Value</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <div class="book-reviews">
+            <h2>Reviews (@book.Reviews.Count)</h2>
+            @if (book.Reviews.Count == 0)
+            {
+                <p class="no-reviews">No reviews yet.</p>
+            }
+            else
+            {
+                @foreach (var review in book.Reviews.OrderByDescending(r => r.Timestamp))
+                {
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">@review.Name</span>
+                            @if (review.Rating.HasValue)
+                            {
+                                <span class="review-rating">
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        <span class="@(i < review.Rating.Value ? "star filled" : "star")">★</span>
+                                    }
+                                </span>
+                            }
+                            <span class="review-date">@FormatTimestamp(review.Timestamp)</span>
+                        </div>
+                        <p class="review-text">@review.Text</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string BookId { get; set; } = string.Empty;
+
+    private Leafy_Library.Models.Book? book;
+    private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
+
+    protected override async Task OnInitializedAsync()
+    {
+        book = await BookService.GetByIdAsync(BookId);
+    }
+
+    private static string StripHtml(string? html)
+    {
+        if (string.IsNullOrWhiteSpace(html)) return string.Empty;
+        return Regex.Replace(html, "<[^>]+>", " ").Trim();
+    }
+
+    private static string FormatTimestamp(long timestampMs)
+    {
+        var dto = DateTimeOffset.FromUnixTimeMilliseconds(timestampMs);
+        return dto.ToString("d MMM yyyy");
+    }
+}
