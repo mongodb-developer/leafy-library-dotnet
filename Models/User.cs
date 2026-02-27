@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Leafy_Library.Models;
 
+[BsonIgnoreExtraElements]
 public class User
 {
     [BsonId]

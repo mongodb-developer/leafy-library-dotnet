@@ -1,8 +1,10 @@
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Leafy_Library.Models;
 
+[BsonIgnoreExtraElements]
 public class Book
 {
     [BsonId]
@@ -64,13 +66,43 @@ public class Book
     public List<Review> Reviews { get; set; } = [];
 }
 
+[BsonIgnoreExtraElements]
 public class BookAttribute
 {
     [BsonElement("key")]
     public string Key { get; set; } = string.Empty;
 
-    [BsonElement("value")]    
+    [BsonElement("value")]
+    [BsonSerializer(typeof(FlexibleStringSerializer))]
     public string Value { get; set; } = string.Empty;
+}
+
+public class FlexibleStringSerializer : MongoDB.Bson.Serialization.Serializers.SerializerBase<string>
+{
+    public override string Deserialize(MongoDB.Bson.Serialization.BsonDeserializationContext context, MongoDB.Bson.Serialization.BsonDeserializationArgs args)
+    {
+        var bsonType = context.Reader.GetCurrentBsonType();
+        if (bsonType == BsonType.Null)
+        {
+            context.Reader.ReadNull();
+            return string.Empty;
+        }
+        return bsonType switch
+        {
+            BsonType.String => context.Reader.ReadString(),
+            BsonType.Double => context.Reader.ReadDouble().ToString(),
+            BsonType.Int32 => context.Reader.ReadInt32().ToString(),
+            BsonType.Int64 => context.Reader.ReadInt64().ToString(),
+            BsonType.Boolean => context.Reader.ReadBoolean().ToString(),
+            BsonType.ObjectId => context.Reader.ReadObjectId().ToString(),
+            _ => BsonSerializer.Deserialize<BsonValue>(context.Reader).ToString()!,
+        };
+    }
+
+    public override void Serialize(MongoDB.Bson.Serialization.BsonSerializationContext context, MongoDB.Bson.Serialization.BsonSerializationArgs args, string value)
+    {
+        context.Writer.WriteString(value);
+    }
 }
 
 

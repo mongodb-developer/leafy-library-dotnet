@@ -1,0 +1,146 @@
+/* Search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    max-width: 400px;
+    border: 2px solid #023430;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #00ED64;
+    outline: none;
+    box-shadow: 0 0 0 0.15rem rgba(0, 237, 100, 0.25);
+}
+
+.search-results-count {
+    color: #6c757d;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Book card grid */
+.book-card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.loading-text {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
+/* Individual book card */
+.book-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.book-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 30, 43, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Book thumbnail */
+.book-thumbnail {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+/* Card header */
+.book-card-header {
+    padding: 0.75rem 1rem 0;
+}
+
+.book-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+}
+
+.book-title a {
+    color: #001E2B;
+    text-decoration: none;
+}
+
+.book-title a:hover {
+    color: #00684A;
+    text-decoration: underline;
+}
+
+.book-authors {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.book-authors a {
+    color: #00684A;
+    text-decoration: none;
+}
+
+.book-authors a:hover {
+    text-decoration: underline;
+}
+
+/* Card content */
+.book-card-content {
+    padding: 0.5rem 1rem 1rem;
+    flex: 1;
+}
+
+.book-of-the-month {
+    display: block;
+    font-weight: 600;
+    color: #00684A;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.book-description {
+    font-size: 0.875rem;
+    color: #444;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+}
+
+.page-info {
+    font-size: 0.95rem;
+    color: #001E2B;
+}
