@@ -22,6 +22,7 @@ builder.Services.AddSingleton<BookService>();
 builder.Services.AddSingleton<AuthorService>();
 builder.Services.AddSingleton<ReviewService>();
 builder.Services.AddSingleton<IssueDetailService>();
+builder.Services.AddSingleton<ReservationService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<TokenService>();
 builder.Services.AddScoped<JwtAuthenticationStateProvider>();
@@ -47,7 +48,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ClockSkew = TimeSpan.Zero
         };
     });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy =>
+        policy.RequireRole("Admin"));
+});
 builder.Services.AddCascadingAuthenticationState();
 
 // Add services to the container.
