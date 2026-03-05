@@ -45469,4 +45469,7794 @@
   "rating": 1,
   "timestamp": 1745917452413,
   "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "681b556f4559e87331269f98"
+  },
+  "text": "teste",
+  "name": "OldSchool Lemur",
+  "rating": 1,
+  "timestamp": 1746621807290,
+  "bookId": "0446533475"
+},
+{
+  "_id": {
+    "$oid": "681b58ef4559e87331269f99"
+  },
+  "text": "good",
+  "name": "Pompous Tarantula",
+  "rating": 5,
+  "timestamp": 1746622703956,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "681cda2e8d17ee683017e03c"
+  },
+  "text": "Great!",
+  "name": "Rowdy Scorpion",
+  "rating": 4,
+  "timestamp": 1746721326221,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "681cda3d8d17ee683017e03d"
+  },
+  "text": "Great!!",
+  "name": "Rowdy Scorpion",
+  "rating": 4,
+  "timestamp": 1746721341475,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "681cda428d17ee683017e03e"
+  },
+  "text": "Great Book!",
+  "name": "Sneaky Jaguar",
+  "rating": 1,
+  "timestamp": 1746721346852,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "681cda588d17ee683017e03f"
+  },
+  "text": "Great Book!",
+  "name": "Sneaky Jaguar",
+  "rating": 2,
+  "timestamp": 1746721368266,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "681cda588d17ee683017e040"
+  },
+  "text": "Great Book!",
+  "name": "Sneaky Jaguar",
+  "rating": 3,
+  "timestamp": 1746721368897,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "681cda598d17ee683017e041"
+  },
+  "text": "Great Book!",
+  "name": "Sneaky Jaguar",
+  "rating": 4,
+  "timestamp": 1746721369685,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "681cda5a8d17ee683017e042"
+  },
+  "text": "Great Book!",
+  "name": "Sneaky Jaguar",
+  "rating": 5,
+  "timestamp": 1746721370182,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6822bccc64ac23a127116fe4"
+  },
+  "text": "o bor",
+  "name": "Holy Jaguar",
+  "rating": 5,
+  "timestamp": 1747107020628,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682317a691ea1db6c9fbf240"
+  },
+  "text": "Me ayudó a aprender francés.",
+  "name": "Killer Falcon",
+  "rating": 4,
+  "timestamp": 1747130278038,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68241843c93f1daaaec5638f"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 1,
+  "timestamp": 1747195971344,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682422126ccc4878eabb173a"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 1,
+  "timestamp": 1747198482105,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68242c7736c80de3bc9b2700"
+  },
+  "text": "Test",
+  "name": "Luscious Koala",
+  "rating": 1,
+  "timestamp": 1747201143014,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68242c8036c80de3bc9b2701"
+  },
+  "text": "Test",
+  "name": "Luscious Koala",
+  "rating": 5,
+  "timestamp": 1747201152396,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68242c9836c80de3bc9b2702"
+  },
+  "text": "awesome sauce",
+  "name": "Luscious Koala",
+  "rating": 5,
+  "timestamp": 1747201176691,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68242c9936c80de3bc9b2703"
+  },
+  "text": "Fantastic!",
+  "name": "Sneaky Gorilla",
+  "rating": 1,
+  "timestamp": 1747201177165,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68242e0f36c80de3bc9b2704"
+  },
+  "text": "Hey",
+  "name": "Callous Alligator",
+  "rating": 1,
+  "timestamp": 1747201551584,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68242e1336c80de3bc9b2705"
+  },
+  "text": "Hey",
+  "name": "Callous Alligator",
+  "rating": 5,
+  "timestamp": 1747201555685,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68242e1636c80de3bc9b2706"
+  },
+  "text": "Hey",
+  "name": "Callous Alligator",
+  "rating": 3,
+  "timestamp": 1747201558579,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68242e1636c80de3bc9b2707"
+  },
+  "text": "Hey",
+  "name": "Callous Alligator",
+  "rating": 5,
+  "timestamp": 1747201558900,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68242fa136c80de3bc9b2708"
+  },
+  "text": "Gg",
+  "name": "OldSchool Dingo",
+  "rating": 5,
+  "timestamp": 1747201953072,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "68242faa36c80de3bc9b2709"
+  },
+  "text": "Ok",
+  "name": "Brash Platypus",
+  "rating": 4,
+  "timestamp": 1747201962136,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6824303f36c80de3bc9b270a"
+  },
+  "text": "test\n",
+  "name": "Fiesty Quetzal",
+  "rating": 4,
+  "timestamp": 1747202111114,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68262e7ebb6f631797899f34"
+  },
+  "text": "gggg",
+  "name": "Nasty Lemur",
+  "rating": 2,
+  "timestamp": 1747332734073,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68262f00bb6f631797899f35"
+  },
+  "text": "Great book!!",
+  "name": "Eccentric Alligator",
+  "rating": 3,
+  "timestamp": 1747332864897,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68262f20bb6f631797899f36"
+  },
+  "text": "excelente",
+  "name": "Nasty Koala",
+  "rating": 1,
+  "timestamp": 1747332896256,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "68262f28bb6f631797899f37"
+  },
+  "text": "excelente",
+  "name": "Nasty Koala",
+  "rating": 4,
+  "timestamp": 1747332904701,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "68262fa6bb6f631797899f38"
+  },
+  "text": "estes es un libro muy cool",
+  "name": "Tawdry Quetzal",
+  "rating": 5,
+  "timestamp": 1747333030340,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68262fc1bb6f631797899f39"
+  },
+  "text": "Good Book",
+  "name": "Luscious Dingo",
+  "rating": 3,
+  "timestamp": 1747333057011,
+  "bookId": "0345428528"
+},
+{
+  "_id": {
+    "$oid": "68263037bb6f631797899f3a"
+  },
+  "text": "sdfghjk",
+  "name": "Tawdry Quetzal",
+  "rating": 5,
+  "timestamp": 1747333175035,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6826306fbb6f631797899f3b"
+  },
+  "text": "review",
+  "name": "Fiesty Falcon",
+  "rating": 1,
+  "timestamp": 1747333231960,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6826314ebb6f631797899f3c"
+  },
+  "text": "Fine, fine, fine, very good, very good, very goo, very, very, very, good!",
+  "name": "Callous Orangutan",
+  "rating": 1,
+  "timestamp": 1747333454773,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "68263152bb6f631797899f3d"
+  },
+  "text": "Fine, fine, fine, very good, very good, very goo, very, very, very, good!",
+  "name": "Callous Orangutan",
+  "rating": 5,
+  "timestamp": 1747333458642,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "682ab71161670550175fffba"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747629841732,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682ad6a346570188864f8ad2"
+  },
+  "text": "good book ",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747637923200,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682ad6a446570188864f8ad3"
+  },
+  "text": "good book ",
+  "name": "Holy Koala",
+  "rating": 5,
+  "timestamp": 1747637924281,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682ad6a846570188864f8ad4"
+  },
+  "text": "good book ",
+  "name": "Holy Koala",
+  "rating": 3,
+  "timestamp": 1747637928925,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682ad6bb46570188864f8ad5"
+  },
+  "text": "test book",
+  "name": "Holy Koala",
+  "rating": 3,
+  "timestamp": 1747637947283,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682ad6bf46570188864f8ad6"
+  },
+  "text": "test book",
+  "name": "Holy Koala",
+  "rating": 2,
+  "timestamp": 1747637951593,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682ad6c146570188864f8ad7"
+  },
+  "text": "test book",
+  "name": "Holy Koala",
+  "rating": 1,
+  "timestamp": 1747637953264,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682ad6c446570188864f8ad8"
+  },
+  "text": "test book",
+  "name": "Holy Koala",
+  "rating": 5,
+  "timestamp": 1747637956345,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682ad6f546570188864f8ad9"
+  },
+  "text": "good book",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747638005881,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "682b0e57c888c490d48d9d91"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747652183348,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682b338b63f978e1f7933b6c"
+  },
+  "text": "Awesome",
+  "name": "Fiesty Mongoose",
+  "rating": 5,
+  "timestamp": 1747661707979,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682bdf72ad5375ed43fcef6a"
+  },
+  "text": "ioijoij",
+  "name": "Pompous Rhino",
+  "rating": 1,
+  "timestamp": 1747705714733,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "682c1ebc5a2f2de8ce5807c5"
+  },
+  "text": "Amazing book, full of adventure!",
+  "name": "Tawdry Orangutan",
+  "rating": 5,
+  "timestamp": 1747721916010,
+  "bookId": "061826051X"
+},
+{
+  "_id": {
+    "$oid": "682c2b645a2f2de8ce5807c6"
+  },
+  "text": "Good\n",
+  "name": "Fiesty Mongoose",
+  "rating": 1,
+  "timestamp": 1747725156837,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682c66f34a1164f125d39ca6"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747740403842,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682d6af5512ee04d02866601"
+  },
+  "text": "good\n",
+  "name": "Abrasive Falcon",
+  "rating": 3,
+  "timestamp": 1747806965770,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682dcb88b25bcbb8e2f809a0"
+  },
+  "text": "good",
+  "name": "Pompous Gorilla",
+  "rating": 1,
+  "timestamp": 1747831688763,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "682e9169dae985c108d9c89e"
+  },
+  "text": "bad book",
+  "name": "Callous Elephant",
+  "rating": 1,
+  "timestamp": 1747882345792,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682eaaa2dae985c108d9c89f"
+  },
+  "text": "verrryyyyy goodddddddd",
+  "name": "Pompous Gorilla",
+  "rating": 3,
+  "timestamp": 1747888802303,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682eae5fdae985c108d9c8a0"
+  },
+  "text": "cool",
+  "name": "Tawdry Rhino",
+  "rating": 5,
+  "timestamp": 1747889759745,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682eb26adae985c108d9c8a1"
+  },
+  "text": "good",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1747890794595,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682eb419dae985c108d9c8a2"
+  },
+  "text": "Nice",
+  "name": "Abrasive Falcon",
+  "rating": 4,
+  "timestamp": 1747891225476,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "682eef6363dc51fec11e5c95"
+  },
+  "text": "aaa",
+  "name": "Golden Hyena",
+  "rating": 5,
+  "timestamp": 1747906403476,
+  "bookId": "0786222727"
+},
+{
+  "_id": {
+    "$oid": "682ef7b71f10f7fba27cbb94"
+  },
+  "text": "reviewwwwwww1",
+  "name": "Pompous Gorilla",
+  "rating": 4,
+  "timestamp": 1747908535169,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68312291116ec03800d3202b"
+  },
+  "text": "just test",
+  "name": "Pompous Gorilla",
+  "rating": 1,
+  "timestamp": 1748050577347,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68312341116ec03800d3202c"
+  },
+  "text": "okk",
+  "name": "Callous Gorilla",
+  "rating": 1,
+  "timestamp": 1748050753486,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6831234a116ec03800d3202d"
+  },
+  "text": "123",
+  "name": "Golden Quetzal",
+  "rating": 1,
+  "timestamp": 1748050762006,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68312359116ec03800d3202e"
+  },
+  "text": "123",
+  "name": "Golden Quetzal",
+  "rating": 4,
+  "timestamp": 1748050777108,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6831235a116ec03800d3202f"
+  },
+  "text": "123",
+  "name": "Golden Quetzal",
+  "rating": 5,
+  "timestamp": 1748050778264,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683123a9116ec03800d32030"
+  },
+  "text": "你好啊",
+  "name": "Tawdry Tarantula",
+  "rating": 1,
+  "timestamp": 1748050857420,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6835400a5f4a8aecf6874d01"
+  },
+  "text": "Really nice story!",
+  "name": "Ignominious Alligator",
+  "rating": 5,
+  "timestamp": 1748320266758,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "6835400e5f4a8aecf6874d02"
+  },
+  "text": "realy nice book\n",
+  "name": "Daft Lemur",
+  "rating": 3,
+  "timestamp": 1748320270949,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835400f5f4a8aecf6874d03"
+  },
+  "text": "really nice",
+  "name": "Eccentric Rhino",
+  "rating": 3,
+  "timestamp": 1748320271406,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "6835400f5f4a8aecf6874d04"
+  },
+  "text": "Good",
+  "name": "Golden Dingo",
+  "rating": 1,
+  "timestamp": 1748320271597,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "683540125f4a8aecf6874d05"
+  },
+  "text": "clear",
+  "name": "Brash Platypus",
+  "rating": 5,
+  "timestamp": 1748320274049,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "683540125f4a8aecf6874d06"
+  },
+  "text": "Good",
+  "name": "Luscious Elephant",
+  "rating": 3,
+  "timestamp": 1748320274345,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "683540125f4a8aecf6874d07"
+  },
+  "text": "Good",
+  "name": "Abrasive Hyena",
+  "rating": 1,
+  "timestamp": 1748320274360,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "683540175f4a8aecf6874d08"
+  },
+  "text": "nice",
+  "name": "Mushy Platypus",
+  "rating": 4,
+  "timestamp": 1748320279363,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "6835401a5f4a8aecf6874d09"
+  },
+  "text": "Good",
+  "name": "Joltin Iguana",
+  "rating": 5,
+  "timestamp": 1748320282282,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835401b5f4a8aecf6874d0a"
+  },
+  "text": "nice book.",
+  "name": "Holy Elephant",
+  "rating": 4,
+  "timestamp": 1748320283507,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835401c5f4a8aecf6874d0b"
+  },
+  "text": "good",
+  "name": "Rowdy Iguana",
+  "rating": 1,
+  "timestamp": 1748320284297,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835401e5f4a8aecf6874d0c"
+  },
+  "text": "really nice\n",
+  "name": "Ignominious Narwhal",
+  "rating": 4,
+  "timestamp": 1748320286001,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835401f5f4a8aecf6874d0d"
+  },
+  "text": "its a good one",
+  "name": "Tawdry Tarantula",
+  "rating": 4,
+  "timestamp": 1748320287309,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "683540205f4a8aecf6874d0e"
+  },
+  "text": "good",
+  "name": "Callous Scorpion",
+  "rating": 1,
+  "timestamp": 1748320288625,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "683540255f4a8aecf6874d0f"
+  },
+  "text": "good",
+  "name": "Callous Scorpion",
+  "rating": 2,
+  "timestamp": 1748320293408,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "683540265f4a8aecf6874d10"
+  },
+  "text": "good",
+  "name": "Callous Scorpion",
+  "rating": 3,
+  "timestamp": 1748320294519,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "683540265f4a8aecf6874d11"
+  },
+  "text": "good",
+  "name": "Callous Scorpion",
+  "rating": 4,
+  "timestamp": 1748320294878,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "683540275f4a8aecf6874d12"
+  },
+  "text": "good",
+  "name": "Callous Scorpion",
+  "rating": 5,
+  "timestamp": 1748320295578,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6835403a5f4a8aecf6874d13"
+  },
+  "text": "really nice",
+  "name": "Eccentric Rhino",
+  "rating": 4,
+  "timestamp": 1748320314254,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "6835403a5f4a8aecf6874d14"
+  },
+  "text": "good to read\n",
+  "name": "Sneaky Quetzal",
+  "rating": 5,
+  "timestamp": 1748320314409,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "6835403e5f4a8aecf6874d15"
+  },
+  "text": "Good",
+  "name": "Joltin Iguana",
+  "rating": 1,
+  "timestamp": 1748320318145,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6835404b5f4a8aecf6874d16"
+  },
+  "text": "Excellent",
+  "name": "Daft Lemur",
+  "rating": 4,
+  "timestamp": 1748320331653,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "683540595f4a8aecf6874d17"
+  },
+  "text": "Good",
+  "name": "Eccentric Rhino",
+  "rating": 2,
+  "timestamp": 1748320345567,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "683544e25f4a8aecf6874d18"
+  },
+  "text": "good",
+  "name": "Callous Lemur",
+  "rating": 2,
+  "timestamp": 1748321506655,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68369caf50024a66f153a1b3"
+  },
+  "text": "Good",
+  "name": "Rowdy Lemur",
+  "rating": 1,
+  "timestamp": 1748409519836,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68369cf250024a66f153a1b4"
+  },
+  "text": "Test",
+  "name": "Sneaky Cheetah",
+  "rating": 1,
+  "timestamp": 1748409586534,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68369eba50024a66f153a1b5"
+  },
+  "text": "Good",
+  "name": "Tawdry Platypus",
+  "rating": 3,
+  "timestamp": 1748410042421,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e2178aff184892f15183"
+  },
+  "text": "hello",
+  "name": "Quiet Orangutan",
+  "rating": 1,
+  "timestamp": 1748492823653,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "6837e3258aff184892f15184"
+  },
+  "text": "good",
+  "name": "Sneaky Elephant",
+  "rating": 3,
+  "timestamp": 1748493093474,
+  "bookId": "0002244705"
+},
+{
+  "_id": {
+    "$oid": "6837e37d8aff184892f15185"
+  },
+  "text": "outstanding",
+  "name": "Quiet Hyena",
+  "rating": 1,
+  "timestamp": 1748493181490,
+  "bookId": "0393959015"
+},
+{
+  "_id": {
+    "$oid": "6837e4168aff184892f15186"
+  },
+  "text": "no",
+  "name": "Mushy Hyena",
+  "rating": 1,
+  "timestamp": 1748493334592,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6837e83f8aff184892f15187"
+  },
+  "text": "no",
+  "name": "Mushy Hyena",
+  "rating": 2,
+  "timestamp": 1748494399309,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6837e83f8aff184892f15188"
+  },
+  "text": "no",
+  "name": "Mushy Hyena",
+  "rating": 3,
+  "timestamp": 1748494399477,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6837e8408aff184892f15189"
+  },
+  "text": "no",
+  "name": "Mushy Hyena",
+  "rating": 5,
+  "timestamp": 1748494400107,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6837e8408aff184892f1518a"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 1,
+  "timestamp": 1748494400754,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8648aff184892f1518b"
+  },
+  "text": "whistle podu #2026",
+  "name": "Mushy Hyena",
+  "rating": 1,
+  "timestamp": 1748494436928,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8658aff184892f1518c"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 5,
+  "timestamp": 1748494437945,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8668aff184892f1518d"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 4,
+  "timestamp": 1748494438510,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8678aff184892f1518e"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 3,
+  "timestamp": 1748494439614,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8688aff184892f1518f"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 3,
+  "timestamp": 1748494440212,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8688aff184892f15190"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 3,
+  "timestamp": 1748494440420,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8688aff184892f15191"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 3,
+  "timestamp": 1748494440580,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6837e8688aff184892f15192"
+  },
+  "text": "Its a good one ! i highly recommend it ! eesala cup namde",
+  "name": "Fiesty Alligator",
+  "rating": 3,
+  "timestamp": 1748494440808,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd246ed47e327fe33aef0"
+  },
+  "text": "Its a good one ! i highly recommend it ",
+  "name": "Golden Falcon",
+  "rating": 4,
+  "timestamp": 1749013062260,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd24ced47e327fe33aef1"
+  },
+  "text": "Never read this book, but really excited to leave a review",
+  "name": "Brash Koala",
+  "rating": 5,
+  "timestamp": 1749013068399,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd251ed47e327fe33aef2"
+  },
+  "text": "good",
+  "name": "Brash Tarantula",
+  "rating": 5,
+  "timestamp": 1749013073770,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd261ed47e327fe33aef3"
+  },
+  "text": "good",
+  "name": "Brash Tarantula",
+  "rating": 4,
+  "timestamp": 1749013089344,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd262ed47e327fe33aef4"
+  },
+  "text": "good",
+  "name": "Brash Tarantula",
+  "rating": 1,
+  "timestamp": 1749013090959,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd26ced47e327fe33aef5"
+  },
+  "text": "good",
+  "name": "Brash Tarantula",
+  "rating": 5,
+  "timestamp": 1749013100785,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "683fd476ed47e327fe33aef6"
+  },
+  "text": "Trial Review",
+  "name": "Pompous Elephant",
+  "rating": 4,
+  "timestamp": 1749013622283,
+  "bookId": "0679420398"
+},
+{
+  "_id": {
+    "$oid": "68469f3f39c169eeb8af25fd"
+  },
+  "text": "Great!",
+  "name": "Rowdy Scorpion",
+  "rating": 5,
+  "timestamp": 1749458751401,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "6846a77639c169eeb8af25fe"
+  },
+  "text": "Meraviglioso",
+  "name": "Pompous Narwhal",
+  "rating": 1,
+  "timestamp": 1749460854139,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "684864e6113c96b117a97a06"
+  },
+  "text": "Groggy froggy",
+  "name": "Fiesty Elephant",
+  "rating": 5,
+  "timestamp": 1749574886756,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68487610409507710e68c6f7"
+  },
+  "text": "good book",
+  "name": "OldSchool Gorilla",
+  "rating": 1,
+  "timestamp": 1749579280142,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "68494b3e8bf72280434d8ac3"
+  },
+  "text": "Cool",
+  "name": "Nasty Quetzal",
+  "rating": 5,
+  "timestamp": 1749633854599,
+  "bookId": "1582700494"
+},
+{
+  "_id": {
+    "$oid": "6849faece518f91e078026e5"
+  },
+  "text": "Fgg",
+  "name": "Golden Iguana",
+  "rating": 1,
+  "timestamp": 1749678828129,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6849fc11e518f91e078026e6"
+  },
+  "text": "Hahahha",
+  "name": "Mushy Lemur",
+  "rating": 1,
+  "timestamp": 1749679121306,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "6849fc1be518f91e078026e7"
+  },
+  "text": "Hahahha",
+  "name": "Mushy Lemur",
+  "rating": 4,
+  "timestamp": 1749679131926,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "6849fd74e518f91e078026e8"
+  },
+  "text": "good",
+  "name": "Rowdy Quetzal",
+  "rating": 1,
+  "timestamp": 1749679476597,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "684fc308077a8e425d916b69"
+  },
+  "text": "Test",
+  "name": "Pompous Platypus",
+  "rating": 1,
+  "timestamp": 1750057736156,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "684fea13e800b4c6b50a7a59"
+  },
+  "text": "very fun",
+  "name": "Ignominious Alligator",
+  "rating": 5,
+  "timestamp": 1750067731127,
+  "bookId": "0786222727"
+},
+{
+  "_id": {
+    "$oid": "684fea1be800b4c6b50a7a5a"
+  },
+  "text": "Very Good book",
+  "name": "Mushy Gorilla",
+  "rating": 5,
+  "timestamp": 1750067739971,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68515415d32b364c02bebf6a"
+  },
+  "text": "Great!!!!",
+  "name": "Rowdy Scorpion",
+  "rating": 5,
+  "timestamp": 1750160405658,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "68515570d32b364c02bebf6b"
+  },
+  "text": "Sick stuff!",
+  "name": "Callous Rhino",
+  "rating": 5,
+  "timestamp": 1750160752740,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "685156667a50d096f8e3a602"
+  },
+  "text": "Vive la France",
+  "name": "Callous Narwhal",
+  "rating": 4,
+  "timestamp": 1750160998494,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "685156917a50d096f8e3a603"
+  },
+  "text": "--",
+  "name": "Ignominious Cheetah",
+  "rating": 1,
+  "timestamp": 1750161041311,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "685156c07a50d096f8e3a604"
+  },
+  "text": "No",
+  "name": "Luscious Lemur",
+  "rating": 3,
+  "timestamp": 1750161088973,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68517bb7d066e58c09d46fa0"
+  },
+  "text": ",,,",
+  "name": "Mushy Quetzal",
+  "rating": 1,
+  "timestamp": 1750170551419,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68524286b06afb41fa9b8cf6"
+  },
+  "text": "wada wao wao wada wao wao",
+  "name": "OldSchool Platypus",
+  "rating": 5,
+  "timestamp": 1750221446373,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6852428ab06afb41fa9b8cf7"
+  },
+  "text": "wada wao wao wada wao wao",
+  "name": "OldSchool Platypus",
+  "rating": 1,
+  "timestamp": 1750221450309,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6852428ab06afb41fa9b8cf8"
+  },
+  "text": "wada wao wao wada wao wao",
+  "name": "OldSchool Platypus",
+  "rating": 2,
+  "timestamp": 1750221450867,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6852428bb06afb41fa9b8cf9"
+  },
+  "text": "wada wao wao wada wao wao",
+  "name": "OldSchool Platypus",
+  "rating": 3,
+  "timestamp": 1750221451187,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6852428bb06afb41fa9b8cfa"
+  },
+  "text": "wada wao wao wada wao wao",
+  "name": "OldSchool Platypus",
+  "rating": 5,
+  "timestamp": 1750221451844,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "685242adb06afb41fa9b8cfb"
+  },
+  "text": "i used to bite my tonigue and whole my breathe so i said quietly agreed politely",
+  "name": "OldSchool Platypus",
+  "rating": 3,
+  "timestamp": 1750221485932,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "685242b1b06afb41fa9b8cfc"
+  },
+  "text": "good book",
+  "name": "Abrasive Hyena",
+  "rating": 5,
+  "timestamp": 1750221489619,
+  "bookId": "1578564719"
+},
+{
+  "_id": {
+    "$oid": "685a1d8d8f2f6fd6645d8f91"
+  },
+  "text": "Life changing read",
+  "name": "Killer Alligator",
+  "rating": 4,
+  "timestamp": 1750736269420,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "685a5805fac2fff90710936b"
+  },
+  "text": "wow",
+  "name": "Rowdy Iguana",
+  "rating": 5,
+  "timestamp": 1750751237956,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "685a5810fac2fff90710936c"
+  },
+  "text": "wow",
+  "name": "Rowdy Iguana",
+  "rating": 4,
+  "timestamp": 1750751248100,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "685a5811fac2fff90710936d"
+  },
+  "text": "wow",
+  "name": "Rowdy Iguana",
+  "rating": 5,
+  "timestamp": 1750751249856,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "685a5815fac2fff90710936e"
+  },
+  "text": "wow",
+  "name": "Rowdy Iguana",
+  "rating": 4,
+  "timestamp": 1750751253040,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "685a581ffac2fff90710936f"
+  },
+  "text": "wow",
+  "name": "Rowdy Iguana",
+  "rating": 1,
+  "timestamp": 1750751263641,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "685a5860fac2fff907109370"
+  },
+  "text": "best book",
+  "name": "Holy Orangutan",
+  "rating": 1,
+  "timestamp": 1750751328784,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "685a5863fac2fff907109371"
+  },
+  "text": "best book",
+  "name": "Holy Orangutan",
+  "rating": 5,
+  "timestamp": 1750751331901,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "685a5867fac2fff907109372"
+  },
+  "text": "Earth is actually flat",
+  "name": "Tawdry Orangutan",
+  "rating": 1,
+  "timestamp": 1750751335867,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68706c0a78f61d019e49422f"
+  },
+  "text": "good enough for general people",
+  "name": "Sneaky Jaguar",
+  "rating": 4,
+  "timestamp": 1752198154495,
+  "bookId": "0060453680"
+},
+{
+  "_id": {
+    "$oid": "6874fd066d997fe60f38d507"
+  },
+  "text": "teste",
+  "name": "Tawdry Iguana",
+  "rating": 1,
+  "timestamp": 1752497414587,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6874fd2a6d997fe60f38d508"
+  },
+  "text": "teste",
+  "name": "Tawdry Iguana",
+  "rating": 4,
+  "timestamp": 1752497450845,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6874fda96d997fe60f38d509"
+  },
+  "text": "teste",
+  "name": "Mushy Rhino",
+  "rating": 1,
+  "timestamp": 1752497577361,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6874fe006d997fe60f38d50a"
+  },
+  "text": "Good!",
+  "name": "Ignominious Falcon",
+  "rating": 4,
+  "timestamp": 1752497664863,
+  "bookId": "0002244705"
+},
+{
+  "_id": {
+    "$oid": "6874fe166d997fe60f38d50b"
+  },
+  "text": "Teste",
+  "name": "Tawdry Rhino",
+  "rating": 1,
+  "timestamp": 1752497686898,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "687501906d997fe60f38d50c"
+  },
+  "text": "best",
+  "name": "Tawdry Iguana",
+  "rating": 5,
+  "timestamp": 1752498576021,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f583ec98203155110a85"
+  },
+  "text": "t",
+  "name": "OldSchool Scorpion",
+  "rating": 1,
+  "timestamp": 1752561027763,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f58aec98203155110a86"
+  },
+  "text": "t",
+  "name": "OldSchool Scorpion",
+  "rating": 2,
+  "timestamp": 1752561034089,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f58bec98203155110a87"
+  },
+  "text": "t",
+  "name": "OldSchool Scorpion",
+  "rating": 1,
+  "timestamp": 1752561035189,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f594ec98203155110a88"
+  },
+  "text": "test",
+  "name": "Quiet Jaguar",
+  "rating": 1,
+  "timestamp": 1752561044929,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6875f596ec98203155110a89"
+  },
+  "text": ".",
+  "name": "Quiet Elephant",
+  "rating": 1,
+  "timestamp": 1752561046852,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f59dec98203155110a8a"
+  },
+  "text": "WoW!",
+  "name": "Holy Elephant",
+  "rating": 5,
+  "timestamp": 1752561053024,
+  "bookId": "0002244705"
+},
+{
+  "_id": {
+    "$oid": "6875f59dec98203155110a8b"
+  },
+  "text": "tdst",
+  "name": "OldSchool Scorpion",
+  "rating": 1,
+  "timestamp": 1752561053556,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f59dec98203155110a8c"
+  },
+  "text": "Good",
+  "name": "Sneaky Quetzal",
+  "rating": 5,
+  "timestamp": 1752561053931,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6875f5a3ec98203155110a8d"
+  },
+  "text": "Pretty good book for me",
+  "name": "OldSchool Mongoose",
+  "rating": 3,
+  "timestamp": 1752561059737,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f5b8ec98203155110a8e"
+  },
+  "text": "A good book",
+  "name": "Rowdy Lemur",
+  "rating": 1,
+  "timestamp": 1752561080855,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f5c2ec98203155110a8f"
+  },
+  "text": "Hello World",
+  "name": "Joltin Falcon",
+  "rating": 5,
+  "timestamp": 1752561090149,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f5c4ec98203155110a90"
+  },
+  "text": "Hello World",
+  "name": "Joltin Falcon",
+  "rating": 4,
+  "timestamp": 1752561092759,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f5c5ec98203155110a91"
+  },
+  "text": "Hello World",
+  "name": "Joltin Falcon",
+  "rating": 2,
+  "timestamp": 1752561093861,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f5d1ec98203155110a92"
+  },
+  "text": "-",
+  "name": "Fiesty Tarantula",
+  "rating": 3,
+  "timestamp": 1752561105272,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6875f5dfec98203155110a93"
+  },
+  "text": "test",
+  "name": "Mushy Jaguar",
+  "rating": 1,
+  "timestamp": 1752561119926,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6875f60fec98203155110a94"
+  },
+  "text": "very good",
+  "name": "Joltin Falcon",
+  "rating": 5,
+  "timestamp": 1752561167373,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6875f63fec98203155110a95"
+  },
+  "text": "very good",
+  "name": "Joltin Falcon",
+  "rating": 5,
+  "timestamp": 1752561215655,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6875f64fec98203155110a96"
+  },
+  "text": " ",
+  "name": "Ignominious Gorilla",
+  "rating": 5,
+  "timestamp": 1752561231927,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875f68bec98203155110a97"
+  },
+  "text": "test db ",
+  "name": "Fiesty Dingo",
+  "rating": 4,
+  "timestamp": 1752561291820,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6875fc68ec98203155110a98"
+  },
+  "text": "สวัสดี",
+  "name": "Golden Tarantula",
+  "rating": 1,
+  "timestamp": 1752562792861,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "687650d602554a7e26f7974f"
+  },
+  "text": "zzz",
+  "name": "Golden Quetzal",
+  "rating": 5,
+  "timestamp": 1752584406783,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6876522502554a7e26f79750"
+  },
+  "text": "teste",
+  "name": "Nasty Platypus",
+  "rating": 1,
+  "timestamp": 1752584741973,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "687652c502554a7e26f79751"
+  },
+  "text": "book",
+  "name": "Sneaky Mongoose",
+  "rating": 2,
+  "timestamp": 1752584901687,
+  "bookId": "0006352537"
+},
+{
+  "_id": {
+    "$oid": "687652cf02554a7e26f79752"
+  },
+  "text": "1",
+  "name": "Golden Barracuda",
+  "rating": 1,
+  "timestamp": 1752584911744,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "687652d702554a7e26f79753"
+  },
+  "text": "1",
+  "name": "Golden Barracuda",
+  "rating": 5,
+  "timestamp": 1752584919328,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "687652e602554a7e26f79754"
+  },
+  "text": "very much book",
+  "name": "Daft Iguana",
+  "rating": 5,
+  "timestamp": 1752584934565,
+  "bookId": "0006352537"
+},
+{
+  "_id": {
+    "$oid": "6876632202554a7e26f79755"
+  },
+  "text": "li esse livro e agora não consigo mais dormir",
+  "name": "Daft Iguana",
+  "rating": 4,
+  "timestamp": 1752589090616,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6876632c02554a7e26f79756"
+  },
+  "text": "A captivating journey through time, Old New York masterfully weaves together historical accounts, personal anecdotes, and vivid descriptions to paint a portrait of a city forever changed. The author's meticulous research shines through, breathing life into forgotten corners of the city and its inhabitants. From the bustling streets of the Gilded Age to the quiet charm of its hidden alleyways, the narrative captures the essence of a bygone era with remarkable detail.\n\nThe book's strength lies in its ability to connect the past to the present. The author seamlessly integrates historical events with contemporary observations, highlighting the enduring legacy of Old New York's unique character. This approach makes the history accessible and relevant to a modern audience, even those unfamiliar with the city's rich history.\n\nWhile the sheer volume of information might feel overwhelming at times, the author's engaging writing style keeps the reader hooked. The inclusion of personal stories and anecdotes adds a human touch, making the historical facts feel more tangible and relatable. The book is richly illustrated with photographs and maps, further enhancing the reader's immersion into Old New York's vibrant past.\n\nOverall, Old New York is a must-read for history buffs, New York City enthusiasts, and anyone who appreciates well-researched and beautifully written historical narratives. It's a testament to the enduring power of storytelling and a celebration of a city's remarkable transformation.",
+  "name": "Sneaky Mongoose",
+  "rating": 3,
+  "timestamp": 1752589100460,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "687682ad7d1b130aaa69efdb"
+  },
+  "text": "eee",
+  "name": "Joltin Jaguar",
+  "rating": 5,
+  "timestamp": 1752597165565,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "687685407d1b130aaa69efdc"
+  },
+  "text": "sdjk",
+  "name": "Killer Cheetah",
+  "rating": 5,
+  "timestamp": 1752597824766,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "6876fb0c0e210b4eb6269c62"
+  },
+  "text": "johge",
+  "name": "Rowdy Alligator",
+  "rating": 5,
+  "timestamp": 1752627980945,
+  "bookId": "0671887378"
+},
+{
+  "_id": {
+    "$oid": "687f2ebe428f111340348565"
+  },
+  "text": "nice",
+  "name": "Golden Platypus",
+  "rating": 5,
+  "timestamp": 1753165502770,
+  "bookId": "0385493525"
+},
+{
+  "_id": {
+    "$oid": "687f2eca428f111340348566"
+  },
+  "text": "good",
+  "name": "OldSchool Platypus",
+  "rating": 5,
+  "timestamp": 1753165514421,
+  "bookId": "1564586251"
+},
+{
+  "_id": {
+    "$oid": "687f2ecb428f111340348567"
+  },
+  "text": "test call",
+  "name": "Nasty Iguana",
+  "rating": 5,
+  "timestamp": 1753165515176,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "687f2ee4428f111340348568"
+  },
+  "text": "5",
+  "name": "Golden Elephant",
+  "rating": 1,
+  "timestamp": 1753165540799,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "687f2f0b428f111340348569"
+  },
+  "text": "good one",
+  "name": "Golden Platypus",
+  "rating": 5,
+  "timestamp": 1753165579824,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "687f3b89ac0a34d8d2b0d0c4"
+  },
+  "text": "nice",
+  "name": "Daft Gorilla",
+  "rating": 5,
+  "timestamp": 1753168777716,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "687f3cd4ac0a34d8d2b0d0c5"
+  },
+  "text": "wadidau",
+  "name": "Rowdy Alligator",
+  "rating": 5,
+  "timestamp": 1753169108747,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "687f3e21ac0a34d8d2b0d0c6"
+  },
+  "text": "good one",
+  "name": "Quiet Gorilla",
+  "rating": 5,
+  "timestamp": 1753169441431,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "687fc763878e1693d1718b77"
+  },
+  "text": "topzera",
+  "name": "Mushy Quetzal",
+  "rating": 5,
+  "timestamp": 1753204579896,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "687fc76a878e1693d1718b78"
+  },
+  "text": "topzera",
+  "name": "Mushy Quetzal",
+  "rating": 4,
+  "timestamp": 1753204586480,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "687fc76a878e1693d1718b79"
+  },
+  "text": "topzera",
+  "name": "Mushy Quetzal",
+  "rating": 5,
+  "timestamp": 1753204586824,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68812463c23e6e12642655c4"
+  },
+  "text": "Jsjsjs",
+  "name": "Eccentric Quetzal",
+  "rating": 1,
+  "timestamp": 1753293923924,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "68812468c23e6e12642655c5"
+  },
+  "text": "Jsjsjs",
+  "name": "Eccentric Quetzal",
+  "rating": 5,
+  "timestamp": 1753293928566,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "68812476c23e6e12642655c6"
+  },
+  "text": "wewe",
+  "name": "Brash Dingo",
+  "rating": 1,
+  "timestamp": 1753293942755,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "688124b3c23e6e12642655c7"
+  },
+  "text": "great book",
+  "name": "Mushy Hyena",
+  "rating": 1,
+  "timestamp": 1753294003558,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "688124b8c23e6e12642655c8"
+  },
+  "text": "great book",
+  "name": "Mushy Hyena",
+  "rating": 5,
+  "timestamp": 1753294008366,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68812703c23e6e12642655c9"
+  },
+  "text": "Test",
+  "name": "Joltin Cheetah",
+  "rating": 4,
+  "timestamp": 1753294595345,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "688130e5c23e6e12642655ca"
+  },
+  "text": "test review",
+  "name": "Joltin Lemur",
+  "rating": 3,
+  "timestamp": 1753297125017,
+  "bookId": "074347628X"
+},
+{
+  "_id": {
+    "$oid": "688255bb2807e19354e893c2"
+  },
+  "text": "Cool",
+  "name": "Holy Hyena",
+  "rating": 1,
+  "timestamp": 1753372091907,
+  "bookId": "1883577039"
+},
+{
+  "_id": {
+    "$oid": "6886de145b02c27b52b54c80"
+  },
+  "text": "monke",
+  "name": "Fiesty Rhino",
+  "rating": 1,
+  "timestamp": 1753669140653,
+  "bookId": "0743214927"
+},
+{
+  "_id": {
+    "$oid": "6888457b2933cfab4bbfa489"
+  },
+  "text": "Good",
+  "name": "Golden Rhino",
+  "rating": 5,
+  "timestamp": 1753761147816,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "68892c06281100772365f8bf"
+  },
+  "text": "*roar*",
+  "name": "Holy Hyena",
+  "rating": 5,
+  "timestamp": 1753820166415,
+  "bookId": "0671510460"
+},
+{
+  "_id": {
+    "$oid": "6889c4cc32d150aac12df942"
+  },
+  "text": "Thought provoking",
+  "name": "Joltin Cheetah",
+  "rating": 4,
+  "timestamp": 1753859276318,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6889c4d232d150aac12df943"
+  },
+  "text": "Thought provoking",
+  "name": "Joltin Cheetah",
+  "rating": 3,
+  "timestamp": 1753859282954,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6889c4d332d150aac12df944"
+  },
+  "text": "Thought provoking",
+  "name": "Joltin Cheetah",
+  "rating": 1,
+  "timestamp": 1753859283499,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6889c4d432d150aac12df945"
+  },
+  "text": "Thought provoking",
+  "name": "Joltin Cheetah",
+  "rating": 4,
+  "timestamp": 1753859284535,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "688a7584b5f8feb8369ac589"
+  },
+  "text": "kewl",
+  "name": "Holy Hyena",
+  "rating": 1,
+  "timestamp": 1753904516776,
+  "bookId": "0152018883"
+},
+{
+  "_id": {
+    "$oid": "688c63d464852a7d8793d146"
+  },
+  "text": "great",
+  "name": "Killer Alligator",
+  "rating": 1,
+  "timestamp": 1754031060082,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "688c63d864852a7d8793d147"
+  },
+  "text": "mongodb",
+  "name": "OldSchool Orangutan",
+  "rating": 1,
+  "timestamp": 1754031064823,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "688c63f164852a7d8793d148"
+  },
+  "text": "great",
+  "name": "Killer Alligator",
+  "rating": 5,
+  "timestamp": 1754031089721,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "688c63fa64852a7d8793d149"
+  },
+  "text": "great ",
+  "name": "Daft Platypus",
+  "rating": 1,
+  "timestamp": 1754031098143,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "688c63fd64852a7d8793d14a"
+  },
+  "text": "good",
+  "name": "OldSchool Mongoose",
+  "rating": 1,
+  "timestamp": 1754031101041,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "688c641b64852a7d8793d14b"
+  },
+  "text": "what about the content",
+  "name": "Killer Alligator",
+  "rating": 5,
+  "timestamp": 1754031131525,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689b9974486d0189de041873"
+  },
+  "text": "Test",
+  "name": "Holy Mongoose",
+  "rating": 1,
+  "timestamp": 1755027828194,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689b9977486d0189de041874"
+  },
+  "text": "Test",
+  "name": "Holy Mongoose",
+  "rating": 3,
+  "timestamp": 1755027831530,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689b9977486d0189de041875"
+  },
+  "text": "Test",
+  "name": "Holy Mongoose",
+  "rating": 5,
+  "timestamp": 1755027831899,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689bea2669ac941f4303c7a0"
+  },
+  "text": "cccc",
+  "name": "Holy Dingo",
+  "rating": 1,
+  "timestamp": 1755048486493,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689bea2e69ac941f4303c7a1"
+  },
+  "text": "cccc",
+  "name": "Holy Dingo",
+  "rating": 3,
+  "timestamp": 1755048494176,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689bece669ac941f4303c7a2"
+  },
+  "text": "hi",
+  "name": "Rowdy Mongoose",
+  "rating": 1,
+  "timestamp": 1755049190389,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "689de7b8857c259c0dbfb1f7"
+  },
+  "text": "wkss;fms;",
+  "name": "Callous Koala",
+  "rating": 1,
+  "timestamp": 1755178936188,
+  "bookId": "038039586X"
+},
+{
+  "_id": {
+    "$oid": "689de7bc857c259c0dbfb1f8"
+  },
+  "text": "Awesome Possum",
+  "name": "Fiesty Gorilla",
+  "rating": 5,
+  "timestamp": 1755178940570,
+  "bookId": "0060188804"
+},
+{
+  "_id": {
+    "$oid": "68a40b3d4200c4246dc82c74"
+  },
+  "text": "rest",
+  "name": "Ignominious Mongoose",
+  "rating": 5,
+  "timestamp": 1755581245080,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a40b3f4200c4246dc82c75"
+  },
+  "text": "s",
+  "name": "Eccentric Platypus",
+  "rating": 3,
+  "timestamp": 1755581247806,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "68a40b474200c4246dc82c76"
+  },
+  "text": "asdfghj",
+  "name": "Eccentric Hyena",
+  "rating": 5,
+  "timestamp": 1755581255156,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "68a40b4e4d86046703d06050"
+  },
+  "text": "eqwewq",
+  "name": "Golden Rhino",
+  "rating": 1,
+  "timestamp": 1755581262669,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a40d9f4d86046703d06051"
+  },
+  "text": "4",
+  "name": "Pompous Hyena",
+  "rating": 4,
+  "timestamp": 1755581855458,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "68a40dd14d86046703d06052"
+  },
+  "text": "wow",
+  "name": "Fiesty Dingo",
+  "rating": 5,
+  "timestamp": 1755581905288,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a40e094d86046703d06053"
+  },
+  "text": "wt",
+  "name": "Eccentric Gorilla",
+  "rating": 1,
+  "timestamp": 1755581961286,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "68a40e584d86046703d06054"
+  },
+  "text": "ok",
+  "name": "Holy Jaguar",
+  "rating": 3,
+  "timestamp": 1755582040957,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a4119e4d86046703d06055"
+  },
+  "text": "Ok",
+  "name": "Nasty Lemur",
+  "rating": 1,
+  "timestamp": 1755582878296,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a411a64d86046703d06056"
+  },
+  "text": "Ok",
+  "name": "Nasty Lemur",
+  "rating": 3,
+  "timestamp": 1755582886433,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a411a74d86046703d06057"
+  },
+  "text": "Ok",
+  "name": "Nasty Lemur",
+  "rating": 4,
+  "timestamp": 1755582887150,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a411af4d86046703d06058"
+  },
+  "text": "Ok",
+  "name": "Nasty Lemur",
+  "rating": 5,
+  "timestamp": 1755582895731,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a411b54d86046703d06059"
+  },
+  "text": "Ok",
+  "name": "Nasty Lemur",
+  "rating": 1,
+  "timestamp": 1755582901859,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a411f84d86046703d0605a"
+  },
+  "text": "Good",
+  "name": "Rowdy Mongoose",
+  "rating": 4,
+  "timestamp": 1755582968104,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68a4255f4d86046703d0605b"
+  },
+  "text": "hciy",
+  "name": "Brash Barracuda",
+  "rating": 4,
+  "timestamp": 1755587935238,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "68a513e45c318351f9df724e"
+  },
+  "text": "sadadad",
+  "name": "Holy Lemur",
+  "rating": 1,
+  "timestamp": 1755648996591,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "68a52476c1c4d901e4d89cd1"
+  },
+  "text": "good",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653238653,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a5254dc1c4d901e4d89cd2"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653453278,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a5254fc1c4d901e4d89cd3"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653455311,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a5254fc1c4d901e4d89cd4"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 3,
+  "timestamp": 1755653455887,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52550c1c4d901e4d89cd5"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 2,
+  "timestamp": 1755653456335,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52550c1c4d901e4d89cd6"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 1,
+  "timestamp": 1755653456902,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52554c1c4d901e4d89cd7"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653460039,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52554c1c4d901e4d89cd8"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653460040,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52556c1c4d901e4d89cd9"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653462833,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52557c1c4d901e4d89cda"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653463533,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52558c1c4d901e4d89cdb"
+  },
+  "text": "hi",
+  "name": "Nasty Scorpion",
+  "rating": 3,
+  "timestamp": 1755653464206,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a5256ec1c4d901e4d89cdc"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653486873,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52571c1c4d901e4d89cdd"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653489057,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52571c1c4d901e4d89cde"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 3,
+  "timestamp": 1755653489975,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52572c1c4d901e4d89cdf"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 2,
+  "timestamp": 1755653490545,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52573c1c4d901e4d89ce0"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 1,
+  "timestamp": 1755653491068,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52574c1c4d901e4d89ce1"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 2,
+  "timestamp": 1755653492690,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52575c1c4d901e4d89ce2"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 3,
+  "timestamp": 1755653493557,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52576c1c4d901e4d89ce3"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653494134,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52576c1c4d901e4d89ce4"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653494634,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52579c1c4d901e4d89ce5"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1755653497901,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52579c1c4d901e4d89ce6"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 4,
+  "timestamp": 1755653497922,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a5257bc1c4d901e4d89ce7"
+  },
+  "text": "bye",
+  "name": "Nasty Scorpion",
+  "rating": 3,
+  "timestamp": 1755653499208,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52b7dc1c4d901e4d89ce8"
+  },
+  "text": "good",
+  "name": "Brash Orangutan",
+  "rating": 5,
+  "timestamp": 1755655037856,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a52bb4c1c4d901e4d89ce9"
+  },
+  "text": "good",
+  "name": "Nasty Rhino",
+  "rating": 5,
+  "timestamp": 1755655092773,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52bc8c1c4d901e4d89cea"
+  },
+  "text": "lol",
+  "name": "Rowdy Platypus",
+  "rating": 5,
+  "timestamp": 1755655112975,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52bd8c1c4d901e4d89ceb"
+  },
+  "text": "i guess it's okay",
+  "name": "Nasty Gorilla",
+  "rating": 3,
+  "timestamp": 1755655128458,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52bdac1c4d901e4d89cec"
+  },
+  "text": "whats up Thines !",
+  "name": "Rowdy Platypus",
+  "rating": 1,
+  "timestamp": 1755655130950,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52be8c1c4d901e4d89ced"
+  },
+  "text": "Hi MongoDB",
+  "name": "Nasty Rhino",
+  "rating": 5,
+  "timestamp": 1755655144364,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68a52bf2c1c4d901e4d89cee"
+  },
+  "text": "nice",
+  "name": "Callous Orangutan",
+  "rating": 5,
+  "timestamp": 1755655154523,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a52c11c1c4d901e4d89cef"
+  },
+  "text": "jb",
+  "name": "Ignominious Dingo",
+  "rating": 1,
+  "timestamp": 1755655185251,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52c4dc1c4d901e4d89cf0"
+  },
+  "text": "no!",
+  "name": "Abrasive Barracuda",
+  "rating": 1,
+  "timestamp": 1755655245738,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52c5ec1c4d901e4d89cf1"
+  },
+  "text": "no!",
+  "name": "Abrasive Barracuda",
+  "rating": 5,
+  "timestamp": 1755655262262,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52c67c1c4d901e4d89cf2"
+  },
+  "text": "no!",
+  "name": "Abrasive Barracuda",
+  "rating": 2,
+  "timestamp": 1755655271850,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52c68c1c4d901e4d89cf3"
+  },
+  "text": "no!",
+  "name": "Abrasive Barracuda",
+  "rating": 5,
+  "timestamp": 1755655272949,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a52c6bc1c4d901e4d89cf4"
+  },
+  "text": "halo",
+  "name": "Rowdy Hyena",
+  "rating": 1,
+  "timestamp": 1755655275941,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a532a4c1c4d901e4d89cf5"
+  },
+  "text": "hmmmm",
+  "name": "Pompous Koala",
+  "rating": 1,
+  "timestamp": 1755656868707,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68a53cb1c1c4d901e4d89cf6"
+  },
+  "text": "pp",
+  "name": "Brash Orangutan",
+  "rating": 1,
+  "timestamp": 1755659441480,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53cb2c1c4d901e4d89cf7"
+  },
+  "text": "pp",
+  "name": "Brash Orangutan",
+  "rating": 2,
+  "timestamp": 1755659442710,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53cb3c1c4d901e4d89cf8"
+  },
+  "text": "pp",
+  "name": "Brash Orangutan",
+  "rating": 3,
+  "timestamp": 1755659443285,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53fdcc1c4d901e4d89cf9"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 5,
+  "timestamp": 1755660252925,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53fe0c1c4d901e4d89cfa"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 4,
+  "timestamp": 1755660256328,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53fe1c1c4d901e4d89cfb"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 3,
+  "timestamp": 1755660257143,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53fe3c1c4d901e4d89cfc"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 2,
+  "timestamp": 1755660259750,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53fe8c1c4d901e4d89cfd"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 5,
+  "timestamp": 1755660264365,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53feac1c4d901e4d89cfe"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 1,
+  "timestamp": 1755660266739,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53feec1c4d901e4d89cff"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 3,
+  "timestamp": 1755660270391,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53ff1c1c4d901e4d89d00"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 5,
+  "timestamp": 1755660273910,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53ff4c1c4d901e4d89d01"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 3,
+  "timestamp": 1755660276607,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53ff7c1c4d901e4d89d02"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 2,
+  "timestamp": 1755660279447,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a53ff9c1c4d901e4d89d03"
+  },
+  "text": "hgh",
+  "name": "Joltin Dingo",
+  "rating": 1,
+  "timestamp": 1755660281209,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68a54454c1c4d901e4d89d04"
+  },
+  "text": "love it",
+  "name": "Sneaky Quetzal",
+  "rating": 1,
+  "timestamp": 1755661396865,
+  "bookId": "0060925876"
+},
+{
+  "_id": {
+    "$oid": "68a5445dc1c4d901e4d89d05"
+  },
+  "text": "love it",
+  "name": "Sneaky Quetzal",
+  "rating": 5,
+  "timestamp": 1755661405554,
+  "bookId": "0060925876"
+},
+{
+  "_id": {
+    "$oid": "68a5a71b6acd1f52fa123bcf"
+  },
+  "text": "demo",
+  "name": "Tawdry Jaguar",
+  "rating": 4,
+  "timestamp": 1755686683897,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68ad3cd6667bf4de2214f420"
+  },
+  "text": "dddd",
+  "name": "Pompous Falcon",
+  "rating": 5,
+  "timestamp": 1756183766640,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68aeb12d9413fdcb4d8c9562"
+  },
+  "text": "Very good!",
+  "name": "Tawdry Orangutan",
+  "rating": 1,
+  "timestamp": 1756279085772,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68aeb12e9413fdcb4d8c9563"
+  },
+  "text": "Very good!",
+  "name": "Tawdry Orangutan",
+  "rating": 5,
+  "timestamp": 1756279086153,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68afe5b0a9fa4a7c4348ce9c"
+  },
+  "text": "here it is",
+  "name": "Pompous Koala",
+  "rating": 5,
+  "timestamp": 1756358064866,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68afe5f9a9fa4a7c4348ce9d"
+  },
+  "text": "d",
+  "name": "Pompous Koala",
+  "rating": 1,
+  "timestamp": 1756358137472,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "68afe5fba9fa4a7c4348ce9e"
+  },
+  "text": "d",
+  "name": "Pompous Koala",
+  "rating": 1,
+  "timestamp": 1756358139053,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "68afe5fba9fa4a7c4348ce9f"
+  },
+  "text": "d",
+  "name": "Pompous Koala",
+  "rating": 2,
+  "timestamp": 1756358139738,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "68afe603a9fa4a7c4348cea0"
+  },
+  "text": "d",
+  "name": "Pompous Koala",
+  "rating": 4,
+  "timestamp": 1756358147476,
+  "bookId": "0521255872"
+},
+{
+  "_id": {
+    "$oid": "68b17472dad209a031c45fae"
+  },
+  "text": "amazing",
+  "name": "Fiesty Scorpion",
+  "rating": 1,
+  "timestamp": 1756460146040,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "68b308caa3ada0fab4490eab"
+  },
+  "text": "nyc",
+  "name": "OldSchool Rhino",
+  "rating": 1,
+  "timestamp": 1756563658209,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68b308d0a3ada0fab4490eac"
+  },
+  "text": "nyc",
+  "name": "OldSchool Rhino",
+  "rating": 5,
+  "timestamp": 1756563664313,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68b30907a3ada0fab4490ead"
+  },
+  "text": "gjfjf",
+  "name": "OldSchool Rhino",
+  "rating": 3,
+  "timestamp": 1756563719078,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68b3091ba3ada0fab4490eae"
+  },
+  "text": "gjfjf",
+  "name": "OldSchool Rhino",
+  "rating": 4,
+  "timestamp": 1756563739781,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68b7c76fbe7e07f775fd434f"
+  },
+  "text": "feasfsege",
+  "name": "Sneaky Koala",
+  "rating": 1,
+  "timestamp": 1756874607961,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68b7c78bbe7e07f775fd4350"
+  },
+  "text": "ㅓㅏㅙㅑㅐ",
+  "name": "Eccentric Iguana",
+  "rating": 1,
+  "timestamp": 1756874635669,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c78fbe7e07f775fd4351"
+  },
+  "text": "ㅓㅏㅙㅑㅐ",
+  "name": "Eccentric Iguana",
+  "rating": 3,
+  "timestamp": 1756874639903,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c79cbe7e07f775fd4352"
+  },
+  "text": "gigi",
+  "name": "Joltin Alligator",
+  "rating": 1,
+  "timestamp": 1756874652051,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c79ebe7e07f775fd4353"
+  },
+  "text": "tdufguihjhoiuviuhpouhouhoubohpiouhju[po",
+  "name": "Eccentric Iguana",
+  "rating": 5,
+  "timestamp": 1756874654366,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c7a9be7e07f775fd4354"
+  },
+  "text": "five five",
+  "name": "Joltin Alligator",
+  "rating": 5,
+  "timestamp": 1756874665172,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c94fbe7e07f775fd4355"
+  },
+  "text": "hgjh",
+  "name": "Eccentric Rhino",
+  "rating": 1,
+  "timestamp": 1756875087550,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7c951be7e07f775fd4356"
+  },
+  "text": "jkj",
+  "name": "Ignominious Lemur",
+  "rating": 1,
+  "timestamp": 1756875089762,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68b7ca24be7e07f775fd4357"
+  },
+  "text": "ㅓㅓㅓ\n",
+  "name": "Ignominious Narwhal",
+  "rating": 1,
+  "timestamp": 1756875300885,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68b7d497be7e07f775fd4358"
+  },
+  "text": "Nasty Endings",
+  "name": "Nasty Koala",
+  "rating": 5,
+  "timestamp": 1756877975254,
+  "bookId": "0192781510"
+},
+{
+  "_id": {
+    "$oid": "68b944705354f7f964e5000b"
+  },
+  "text": "Good",
+  "name": "Holy Gorilla",
+  "rating": 5,
+  "timestamp": 1756972144481,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68b944a75354f7f964e5000c"
+  },
+  "text": "Very Good",
+  "name": "OldSchool Quetzal",
+  "rating": 5,
+  "timestamp": 1756972199238,
+  "bookId": "0762408332"
+},
+{
+  "_id": {
+    "$oid": "68ba520c937fc402ce98dc32"
+  },
+  "text": "test",
+  "name": "Rowdy Hyena",
+  "rating": 1,
+  "timestamp": 1757041164056,
+  "bookId": "0553379089"
+},
+{
+  "_id": {
+    "$oid": "68bd99039b3e658e3f7d20fc"
+  },
+  "text": "Asp",
+  "name": "Tawdry Scorpion",
+  "rating": 1,
+  "timestamp": 1757255939890,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68c2527f2ed9f544c3946e96"
+  },
+  "text": "Hello wrld",
+  "name": "Quiet Scorpion",
+  "rating": 1,
+  "timestamp": 1757565567669,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68c7caa2aec2c0a2fb8ae9dc"
+  },
+  "text": ",m",
+  "name": "Luscious Jaguar",
+  "rating": 3,
+  "timestamp": 1757924002099,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ca43b61f9b548c2487f870"
+  },
+  "text": "test\n",
+  "name": "Pompous Lemur",
+  "rating": 1,
+  "timestamp": 1758086070512,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ca43bd1f9b548c2487f871"
+  },
+  "text": "test",
+  "name": "OldSchool Quetzal",
+  "rating": 5,
+  "timestamp": 1758086077342,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ca43c71f9b548c2487f872"
+  },
+  "text": "zcsacsac",
+  "name": "Brash Orangutan",
+  "rating": 1,
+  "timestamp": 1758086087827,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ca43c91f9b548c2487f873"
+  },
+  "text": "wonderful",
+  "name": "Quiet Alligator",
+  "rating": 4,
+  "timestamp": 1758086089269,
+  "bookId": "0002244705"
+},
+{
+  "_id": {
+    "$oid": "68ca43dc1f9b548c2487f874"
+  },
+  "text": "testing",
+  "name": "Mushy Falcon",
+  "rating": 1,
+  "timestamp": 1758086108803,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ca44c51f9b548c2487f875"
+  },
+  "text": "test",
+  "name": "Pompous Lemur",
+  "rating": 1,
+  "timestamp": 1758086341978,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68ca44fd1f9b548c2487f876"
+  },
+  "text": "fvcvfcg",
+  "name": "Callous Narwhal",
+  "rating": 1,
+  "timestamp": 1758086397276,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ca450a1f9b548c2487f877"
+  },
+  "text": "hello",
+  "name": "Golden Jaguar",
+  "rating": 5,
+  "timestamp": 1758086410190,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ca45561f9b548c2487f878"
+  },
+  "text": "Helko",
+  "name": "Daft Tarantula",
+  "rating": 4,
+  "timestamp": 1758086486933,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ca45631f9b548c2487f879"
+  },
+  "text": "Hekloi",
+  "name": "Daft Tarantula",
+  "rating": 3,
+  "timestamp": 1758086499408,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ca45761f9b548c2487f87a"
+  },
+  "text": "hello",
+  "name": "Daft Tarantula",
+  "rating": 1,
+  "timestamp": 1758086518540,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ca457a1f9b548c2487f87b"
+  },
+  "text": "utyfhgv",
+  "name": "Pompous Lemur",
+  "rating": 5,
+  "timestamp": 1758086522452,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ca457c1f9b548c2487f87c"
+  },
+  "text": "utyfhgv",
+  "name": "Pompous Lemur",
+  "rating": 3,
+  "timestamp": 1758086524846,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ca457d1f9b548c2487f87d"
+  },
+  "text": "utyfhgv",
+  "name": "Pompous Lemur",
+  "rating": 2,
+  "timestamp": 1758086525476,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ca457d1f9b548c2487f87e"
+  },
+  "text": "utyfhgv",
+  "name": "Pompous Lemur",
+  "rating": 1,
+  "timestamp": 1758086525973,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ca458a1f9b548c2487f87f"
+  },
+  "text": "test review",
+  "name": "Abrasive Rhino",
+  "rating": 5,
+  "timestamp": 1758086538629,
+  "bookId": "019285271X"
+},
+{
+  "_id": {
+    "$oid": "68ca45fa1f9b548c2487f880"
+  },
+  "text": "fsdghj",
+  "name": "Quiet Alligator",
+  "rating": 1,
+  "timestamp": 1758086650181,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68cacffae51dbddd96230926"
+  },
+  "text": "Not a good book",
+  "name": "Luscious Gorilla",
+  "rating": 1,
+  "timestamp": 1758121978867,
+  "bookId": "0002244705"
+},
+{
+  "_id": {
+    "$oid": "68cad232e51dbddd96230927"
+  },
+  "text": "Test",
+  "name": "Abrasive Quetzal",
+  "rating": 3,
+  "timestamp": 1758122546927,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68cad235e51dbddd96230928"
+  },
+  "text": "Test",
+  "name": "Abrasive Quetzal",
+  "rating": 1,
+  "timestamp": 1758122549707,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68cad236e51dbddd96230929"
+  },
+  "text": "Test",
+  "name": "Abrasive Quetzal",
+  "rating": 2,
+  "timestamp": 1758122550256,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68cad237e51dbddd9623092a"
+  },
+  "text": "Test",
+  "name": "Abrasive Quetzal",
+  "rating": 3,
+  "timestamp": 1758122551412,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68cad237e51dbddd9623092b"
+  },
+  "text": "Test",
+  "name": "Abrasive Quetzal",
+  "rating": 4,
+  "timestamp": 1758122551783,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68cad28de51dbddd9623092c"
+  },
+  "text": "hi",
+  "name": "Joltin Barracuda",
+  "rating": 5,
+  "timestamp": 1758122637805,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68cad2e2e51dbddd9623092d"
+  },
+  "text": "Great book - would read again",
+  "name": "Sneaky Falcon",
+  "rating": 5,
+  "timestamp": 1758122722771,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68cad2fbe51dbddd9623092e"
+  },
+  "text": "book did not survive underwater",
+  "name": "Joltin Dingo",
+  "rating": 1,
+  "timestamp": 1758122747303,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cad370e51dbddd9623092f"
+  },
+  "text": "This book sucks!",
+  "name": "Luscious Gorilla",
+  "rating": 1,
+  "timestamp": 1758122864507,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd7ee51dbddd96230930"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 1,
+  "timestamp": 1758125438232,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd83e51dbddd96230931"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 2,
+  "timestamp": 1758125443975,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd8ce51dbddd96230932"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 4,
+  "timestamp": 1758125452254,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd92e51dbddd96230933"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 5,
+  "timestamp": 1758125458313,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd97e51dbddd96230934"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 1,
+  "timestamp": 1758125463485,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd97e51dbddd96230935"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 1,
+  "timestamp": 1758125463871,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd98e51dbddd96230936"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 1,
+  "timestamp": 1758125464621,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cadd98e51dbddd96230937"
+  },
+  "text": "f",
+  "name": "Ignominious Elephant",
+  "rating": 1,
+  "timestamp": 1758125464959,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba93eb0782d7e5de14e45"
+  },
+  "text": "hi",
+  "name": "Sneaky Rhino",
+  "rating": 3,
+  "timestamp": 1758177598474,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba941b0782d7e5de14e46"
+  },
+  "text": "hi",
+  "name": "Sneaky Rhino",
+  "rating": 2,
+  "timestamp": 1758177601005,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba941b0782d7e5de14e47"
+  },
+  "text": "hi",
+  "name": "Sneaky Rhino",
+  "rating": 1,
+  "timestamp": 1758177601876,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba943b0782d7e5de14e48"
+  },
+  "text": "hi",
+  "name": "Sneaky Rhino",
+  "rating": 5,
+  "timestamp": 1758177603321,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba945b0782d7e5de14e49"
+  },
+  "text": "hello",
+  "name": "Rowdy Lemur",
+  "rating": 1,
+  "timestamp": 1758177605085,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68cba948b0782d7e5de14e4a"
+  },
+  "text": "hello",
+  "name": "Rowdy Lemur",
+  "rating": 5,
+  "timestamp": 1758177608584,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68cba952b0782d7e5de14e4b"
+  },
+  "text": "Er",
+  "name": "Luscious Rhino",
+  "rating": 1,
+  "timestamp": 1758177618964,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68cba956b0782d7e5de14e4c"
+  },
+  "text": "I have read this book, Its amazing.",
+  "name": "Nasty Mongoose",
+  "rating": 3,
+  "timestamp": 1758177622315,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68cba95db0782d7e5de14e4d"
+  },
+  "text": "greate book",
+  "name": "Pompous Iguana",
+  "rating": 1,
+  "timestamp": 1758177629949,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68cba984b0782d7e5de14e4e"
+  },
+  "text": "Good Book ",
+  "name": "Fiesty Elephant",
+  "rating": 5,
+  "timestamp": 1758177668138,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68d45677a0271192332ede5b"
+  },
+  "text": "cool",
+  "name": "Holy Hyena",
+  "rating": 1,
+  "timestamp": 1758746231203,
+  "bookId": "0140559671"
+},
+{
+  "_id": {
+    "$oid": "68d499600cc253e680c904f9"
+  },
+  "text": "Long live Sun Java!",
+  "name": "Holy Hyena",
+  "rating": 5,
+  "timestamp": 1758763360653,
+  "bookId": "0201634546"
+},
+{
+  "_id": {
+    "$oid": "68d4b642819ece251bfe2d90"
+  },
+  "text": "whats good yawl",
+  "name": "Joltin Elephant",
+  "rating": 1,
+  "timestamp": 1758770754350,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68d4b6b6819ece251bfe2d91"
+  },
+  "text": "My Review",
+  "name": "Pompous Orangutan",
+  "rating": 5,
+  "timestamp": 1758770870643,
+  "bookId": "0198602022"
+},
+{
+  "_id": {
+    "$oid": "68d4b8a8819ece251bfe2d92"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 1,
+  "timestamp": 1758771368102,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b8ad819ece251bfe2d93"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 2,
+  "timestamp": 1758771373030,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b8ae819ece251bfe2d94"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 3,
+  "timestamp": 1758771374239,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b8ae819ece251bfe2d95"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 5,
+  "timestamp": 1758771374729,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b8b3819ece251bfe2d96"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 4,
+  "timestamp": 1758771379606,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b8b3819ece251bfe2d97"
+  },
+  "text": "amazing book ever",
+  "name": "Nasty Orangutan",
+  "rating": 5,
+  "timestamp": 1758771379781,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68d4b94d819ece251bfe2d98"
+  },
+  "text": "test",
+  "name": "Golden Alligator",
+  "rating": 1,
+  "timestamp": 1758771533722,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "68d5488d55fb5f7f9620d44d"
+  },
+  "text": "lajdflkadjf",
+  "name": "Holy Hyena",
+  "rating": 3,
+  "timestamp": 1758808205723,
+  "bookId": "0201634546"
+},
+{
+  "_id": {
+    "$oid": "68d54b8e55fb5f7f9620d44e"
+  },
+  "text": "Confusing",
+  "name": "Holy Hyena",
+  "rating": 1,
+  "timestamp": 1758808974055,
+  "bookId": "0345384784"
+},
+{
+  "_id": {
+    "$oid": "68d62ad35a825c6803390b10"
+  },
+  "text": "gbghnjmk,l",
+  "name": "Abrasive Elephant",
+  "rating": 4,
+  "timestamp": 1758866131831,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68d62ad35a825c6803390b11"
+  },
+  "text": "gbghnjmk,l",
+  "name": "Abrasive Elephant",
+  "rating": 1,
+  "timestamp": 1758866131936,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68d62ad6f85a7170c5182dee"
+  },
+  "text": "gbghnjmk,l",
+  "name": "Abrasive Elephant",
+  "rating": 5,
+  "timestamp": 1758866134335,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68d62ae9f85a7170c5182def"
+  },
+  "text": "gbghnjmk,l",
+  "name": "Abrasive Elephant",
+  "rating": 2,
+  "timestamp": 1758866153129,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68d65476f1646f55d88b7231"
+  },
+  "text": "jhdbjhb",
+  "name": "Joltin Koala",
+  "rating": 5,
+  "timestamp": 1758876790923,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68dbe3979225e2fa94ded53c"
+  },
+  "text": "book",
+  "name": "Rowdy Falcon",
+  "rating": 3,
+  "timestamp": 1759241111725,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68e513993c6ab87bb0de757f"
+  },
+  "text": "roar!",
+  "name": "Holy Hyena",
+  "rating": 5,
+  "timestamp": 1759843225826,
+  "bookId": "0060280050"
+},
+{
+  "_id": {
+    "$oid": "68e513a63c6ab87bb0de7580"
+  },
+  "text": "Does this work?",
+  "name": "Daft Gorilla",
+  "rating": 4,
+  "timestamp": 1759843238729,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68e513ae3c6ab87bb0de7581"
+  },
+  "text": "Does this work?",
+  "name": "Daft Gorilla",
+  "rating": 1,
+  "timestamp": 1759843246405,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "68e513d13c6ab87bb0de7582"
+  },
+  "text": "ffff",
+  "name": "Daft Gorilla",
+  "rating": 1,
+  "timestamp": 1759843281222,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ec9aad1175773a57a5ea25"
+  },
+  "text": "great",
+  "name": "Luscious Alligator",
+  "rating": 5,
+  "timestamp": 1760336557513,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ec9ab01175773a57a5ea26"
+  },
+  "text": "great",
+  "name": "Luscious Alligator",
+  "rating": 4,
+  "timestamp": 1760336560067,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ec9ab31175773a57a5ea27"
+  },
+  "text": "great",
+  "name": "Luscious Alligator",
+  "rating": 3,
+  "timestamp": 1760336563065,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ec9ab31175773a57a5ea28"
+  },
+  "text": "great",
+  "name": "Luscious Alligator",
+  "rating": 1,
+  "timestamp": 1760336563076,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ec9acd1175773a57a5ea29"
+  },
+  "text": "hhhhh",
+  "name": "Luscious Alligator",
+  "rating": 5,
+  "timestamp": 1760336589393,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ec9b531175773a57a5ea2a"
+  },
+  "text": "nice book actually ",
+  "name": "Fiesty Narwhal",
+  "rating": 1,
+  "timestamp": 1760336723134,
+  "bookId": "0029234905"
+},
+{
+  "_id": {
+    "$oid": "68ec9b531175773a57a5ea2b"
+  },
+  "text": "nice book actually ",
+  "name": "Fiesty Narwhal",
+  "rating": 3,
+  "timestamp": 1760336723890,
+  "bookId": "0029234905"
+},
+{
+  "_id": {
+    "$oid": "68ec9c101175773a57a5ea2c"
+  },
+  "text": "qwertyu",
+  "name": "Quiet Alligator",
+  "rating": 1,
+  "timestamp": 1760336912261,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "68ee3785555f3885c03dc56f"
+  },
+  "text": "Those NBA guys all drive BMW!",
+  "name": "Tawdry Orangutan",
+  "rating": 4,
+  "timestamp": 1760442245313,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef2a012c94dfed0c031e53"
+  },
+  "text": "Great Book",
+  "name": "OldSchool Lemur",
+  "rating": 5,
+  "timestamp": 1760504321976,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef2a032c94dfed0c031e54"
+  },
+  "text": "Great Book",
+  "name": "OldSchool Lemur",
+  "rating": 4,
+  "timestamp": 1760504323483,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef2a052c94dfed0c031e55"
+  },
+  "text": "Great Book",
+  "name": "OldSchool Lemur",
+  "rating": 5,
+  "timestamp": 1760504325295,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef330d2c94dfed0c031e56"
+  },
+  "text": "hi",
+  "name": "Luscious Dingo",
+  "rating": 1,
+  "timestamp": 1760506637208,
+  "bookId": "0786222727"
+},
+{
+  "_id": {
+    "$oid": "68ef33102c94dfed0c031e57"
+  },
+  "text": "great",
+  "name": "Eccentric Mongoose",
+  "rating": 1,
+  "timestamp": 1760506640493,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef33132c94dfed0c031e58"
+  },
+  "text": "dmm\n",
+  "name": "Mushy Orangutan",
+  "rating": 1,
+  "timestamp": 1760506643415,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68ef33152c94dfed0c031e59"
+  },
+  "text": "Great book ",
+  "name": "Callous Scorpion",
+  "rating": 1,
+  "timestamp": 1760506645507,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef33152c94dfed0c031e5a"
+  },
+  "text": "good one",
+  "name": "Luscious Narwhal",
+  "rating": 3,
+  "timestamp": 1760506645981,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68ef33182c94dfed0c031e5b"
+  },
+  "text": "i find it interesting",
+  "name": "Tawdry Koala",
+  "rating": 4,
+  "timestamp": 1760506648233,
+  "bookId": "0670031534"
+},
+{
+  "_id": {
+    "$oid": "68ef331d2c94dfed0c031e5c"
+  },
+  "text": "Awesome",
+  "name": "Holy Koala",
+  "rating": 5,
+  "timestamp": 1760506653440,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef331f2c94dfed0c031e5d"
+  },
+  "text": "awesome",
+  "name": "Ignominious Gorilla",
+  "rating": 1,
+  "timestamp": 1760506655569,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ef33202c94dfed0c031e5e"
+  },
+  "text": "nice",
+  "name": "Killer Barracuda",
+  "rating": 1,
+  "timestamp": 1760506656353,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef33252c94dfed0c031e5f"
+  },
+  "text": "Awesome",
+  "name": "Holy Koala",
+  "rating": 1,
+  "timestamp": 1760506661170,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef33262c94dfed0c031e60"
+  },
+  "text": "Very good book",
+  "name": "OldSchool Falcon",
+  "rating": 5,
+  "timestamp": 1760506662404,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68ef33262c94dfed0c031e61"
+  },
+  "text": "cool",
+  "name": "Tawdry Elephant",
+  "rating": 5,
+  "timestamp": 1760506662775,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68ef33282c94dfed0c031e62"
+  },
+  "text": "nice",
+  "name": "Killer Barracuda",
+  "rating": 5,
+  "timestamp": 1760506664283,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef332b2c94dfed0c031e63"
+  },
+  "text": "Awesome",
+  "name": "Holy Koala",
+  "rating": 5,
+  "timestamp": 1760506667788,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef332c2c94dfed0c031e64"
+  },
+  "text": "awesome",
+  "name": "Ignominious Gorilla",
+  "rating": 4,
+  "timestamp": 1760506668933,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ef332e2c94dfed0c031e65"
+  },
+  "text": "good book!",
+  "name": "Joltin Narwhal",
+  "rating": 5,
+  "timestamp": 1760506670664,
+  "bookId": "1557982414"
+},
+{
+  "_id": {
+    "$oid": "68ef33322c94dfed0c031e66"
+  },
+  "text": "Great book ",
+  "name": "Callous Scorpion",
+  "rating": 5,
+  "timestamp": 1760506674563,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "68ef33342c94dfed0c031e67"
+  },
+  "text": "Good",
+  "name": "Tawdry Cheetah",
+  "rating": 4,
+  "timestamp": 1760506676087,
+  "bookId": "0007170734"
+},
+{
+  "_id": {
+    "$oid": "68ef33372c94dfed0c031e68"
+  },
+  "text": "Good ",
+  "name": "Mushy Orangutan",
+  "rating": 5,
+  "timestamp": 1760506679245,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "68ef33392c94dfed0c031e69"
+  },
+  "text": "Probably the best.\n",
+  "name": "Tawdry Rhino",
+  "rating": 3,
+  "timestamp": 1760506681653,
+  "bookId": "1563891492"
+},
+{
+  "_id": {
+    "$oid": "68ef333d2c94dfed0c031e6a"
+  },
+  "text": "its a good book",
+  "name": "Mushy Barracuda",
+  "rating": 4,
+  "timestamp": 1760506685467,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ef333e2c94dfed0c031e6b"
+  },
+  "text": "Probably the best.\n",
+  "name": "Tawdry Rhino",
+  "rating": 4,
+  "timestamp": 1760506686015,
+  "bookId": "1563891492"
+},
+{
+  "_id": {
+    "$oid": "68ef334a2c94dfed0c031e6c"
+  },
+  "text": "NBA is good\n",
+  "name": "Abrasive Platypus",
+  "rating": 5,
+  "timestamp": 1760506698340,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef33622c94dfed0c031e6d"
+  },
+  "text": "saurabh",
+  "name": "Holy Koala",
+  "rating": 1,
+  "timestamp": 1760506722607,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef33692c94dfed0c031e6e"
+  },
+  "text": "Good and amazing book",
+  "name": "OldSchool Quetzal",
+  "rating": 5,
+  "timestamp": 1760506729653,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68ef33782c94dfed0c031e6f"
+  },
+  "text": "Good and amazing book",
+  "name": "OldSchool Quetzal",
+  "rating": 2,
+  "timestamp": 1760506744297,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68ef337b2c94dfed0c031e70"
+  },
+  "text": "Good and amazing book",
+  "name": "OldSchool Quetzal",
+  "rating": 1,
+  "timestamp": 1760506747362,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68ef337f2c94dfed0c031e71"
+  },
+  "text": "Good and amazing book",
+  "name": "OldSchool Quetzal",
+  "rating": 5,
+  "timestamp": 1760506751378,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68ef34ebcb8e5d68d2feebf1"
+  },
+  "text": "great read",
+  "name": "Fiesty Alligator",
+  "rating": 5,
+  "timestamp": 1760507115696,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef34efcb8e5d68d2feebf2"
+  },
+  "text": "great read",
+  "name": "Fiesty Alligator",
+  "rating": 4,
+  "timestamp": 1760507119124,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef3501cb8e5d68d2feebf3"
+  },
+  "text": "great read",
+  "name": "Fiesty Alligator",
+  "rating": 4,
+  "timestamp": 1760507137955,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "68ef4705cb8e5d68d2feebf4"
+  },
+  "text": "awesome",
+  "name": "Brash Koala",
+  "rating": 1,
+  "timestamp": 1760511749529,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68ef4724cb8e5d68d2feebf5"
+  },
+  "text": "awesomeee",
+  "name": "Brash Koala",
+  "rating": 5,
+  "timestamp": 1760511780558,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "68f028c718f80888c0457574"
+  },
+  "text": "test review",
+  "name": "Daft Narwhal",
+  "rating": 3,
+  "timestamp": 1760569543236,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "68f028c818f80888c0457575"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 5,
+  "timestamp": 1760569544649,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028cb18f80888c0457576"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 4,
+  "timestamp": 1760569547095,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028cb18f80888c0457577"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 2,
+  "timestamp": 1760569547936,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028cc18f80888c0457578"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 1,
+  "timestamp": 1760569548412,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028cc18f80888c0457579"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 4,
+  "timestamp": 1760569548922,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028cd18f80888c045757a"
+  },
+  "text": "Lifechanging",
+  "name": "Quiet Cheetah",
+  "rating": 5,
+  "timestamp": 1760569549771,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f028d118f80888c045757b"
+  },
+  "text": "test review",
+  "name": "Daft Narwhal",
+  "rating": 4,
+  "timestamp": 1760569553740,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "68f028d718f80888c045757c"
+  },
+  "text": "MELBOURNE",
+  "name": "Holy Alligator",
+  "rating": 3,
+  "timestamp": 1760569559617,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f028f618f80888c045757d"
+  },
+  "text": "Very Lifechanging",
+  "name": "Nasty Narwhal",
+  "rating": 5,
+  "timestamp": 1760569590788,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292318f80888c045757e"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 5,
+  "timestamp": 1760569635678,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292618f80888c045757f"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 4,
+  "timestamp": 1760569638013,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292618f80888c0457580"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 3,
+  "timestamp": 1760569638702,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292718f80888c0457581"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 2,
+  "timestamp": 1760569639031,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292718f80888c0457582"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 1,
+  "timestamp": 1760569639370,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292d18f80888c0457583"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 2,
+  "timestamp": 1760569645684,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292d18f80888c0457584"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 3,
+  "timestamp": 1760569645696,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292e18f80888c0457585"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 3,
+  "timestamp": 1760569646135,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292e18f80888c0457586"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 4,
+  "timestamp": 1760569646398,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f0292e18f80888c0457587"
+  },
+  "text": "Alexander was here",
+  "name": "Nasty Narwhal",
+  "rating": 5,
+  "timestamp": 1760569646754,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f1364ae8bc23812dea187d"
+  },
+  "text": "Cool",
+  "name": "Sneaky Cheetah",
+  "rating": 5,
+  "timestamp": 1760638538557,
+  "bookId": "0553379089"
+},
+{
+  "_id": {
+    "$oid": "68f1364ee8bc23812dea187e"
+  },
+  "text": "Cool",
+  "name": "Sneaky Cheetah",
+  "rating": 5,
+  "timestamp": 1760638542076,
+  "bookId": "0553379089"
+},
+{
+  "_id": {
+    "$oid": "68f790e08d1adf6af8000aa7"
+  },
+  "text": "Sandão",
+  "name": "Abrasive Falcon",
+  "rating": 5,
+  "timestamp": 1761054944512,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f790e68d1adf6af8000aa8"
+  },
+  "text": "Sandão",
+  "name": "Abrasive Falcon",
+  "rating": 1,
+  "timestamp": 1761054950527,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f790e78d1adf6af8000aa9"
+  },
+  "text": "Sandão",
+  "name": "Abrasive Falcon",
+  "rating": 2,
+  "timestamp": 1761054951239,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f790e78d1adf6af8000aaa"
+  },
+  "text": "Sandão",
+  "name": "Abrasive Falcon",
+  "rating": 3,
+  "timestamp": 1761054951999,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f790e88d1adf6af8000aab"
+  },
+  "text": "Sandão",
+  "name": "Abrasive Falcon",
+  "rating": 4,
+  "timestamp": 1761054952531,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "68f79f99110d79699c2be996"
+  },
+  "text": "eedrfff",
+  "name": "Eccentric Dingo",
+  "rating": 1,
+  "timestamp": 1761058713000,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "68f79f9d110d79699c2be997"
+  },
+  "text": "eedrfff",
+  "name": "Eccentric Dingo",
+  "rating": 5,
+  "timestamp": 1761058717765,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "68f960f1e3ffa61fe91e35bd"
+  },
+  "text": "greetings ",
+  "name": "Sneaky Hyena",
+  "rating": 3,
+  "timestamp": 1761173745285,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "68f96100e3ffa61fe91e35be"
+  },
+  "text": "hillarious",
+  "name": "Killer Hyena",
+  "rating": 5,
+  "timestamp": 1761173760702,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "68f97fad3b5122932b287e34"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 1,
+  "timestamp": 1761181613975,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fba3b5122932b287e35"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181626706,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc23b5122932b287e36"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 1,
+  "timestamp": 1761181634848,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc33b5122932b287e37"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 2,
+  "timestamp": 1761181635104,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc33b5122932b287e38"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181635509,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc33b5122932b287e39"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181635901,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc43b5122932b287e3a"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 5,
+  "timestamp": 1761181636280,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc43b5122932b287e3b"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181636582,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc43b5122932b287e3c"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 2,
+  "timestamp": 1761181636922,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc53b5122932b287e3d"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 1,
+  "timestamp": 1761181637239,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc53b5122932b287e3e"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181637509,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc53b5122932b287e3f"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181637708,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc53b5122932b287e40"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181637887,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc63b5122932b287e41"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181638060,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc63b5122932b287e42"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181638230,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc63b5122932b287e43"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 2,
+  "timestamp": 1761181638457,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc63b5122932b287e44"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 1,
+  "timestamp": 1761181638790,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc73b5122932b287e45"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181639167,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc73b5122932b287e46"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181639573,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc83b5122932b287e47"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181640152,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc83b5122932b287e48"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 1,
+  "timestamp": 1761181640235,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc83b5122932b287e49"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181640552,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc83b5122932b287e4a"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 3,
+  "timestamp": 1761181640729,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc83b5122932b287e4b"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181640914,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc93b5122932b287e4c"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181641101,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc93b5122932b287e4d"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181641271,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc93b5122932b287e4e"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181641626,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc93b5122932b287e4f"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181641768,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fc93b5122932b287e50"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181641908,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68f97fca3b5122932b287e51"
+  },
+  "text": "yay",
+  "name": "Pompous Quetzal",
+  "rating": 4,
+  "timestamp": 1761181642042,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "68fb258eee7e0e78e5e40b90"
+  },
+  "text": "nice!",
+  "name": "Holy Barracuda",
+  "rating": 4,
+  "timestamp": 1761289614202,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68fb25aaee7e0e78e5e40b91"
+  },
+  "text": "nice!",
+  "name": "Holy Barracuda",
+  "rating": 5,
+  "timestamp": 1761289642938,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68fb25aeee7e0e78e5e40b92"
+  },
+  "text": "nice!",
+  "name": "Holy Barracuda",
+  "rating": 1,
+  "timestamp": 1761289646295,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68fb25b3ee7e0e78e5e40b93"
+  },
+  "text": "nice!",
+  "name": "Holy Barracuda",
+  "rating": 3,
+  "timestamp": 1761289651427,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "68fb2644e1757195a826a25e"
+  },
+  "text": "must read book\n",
+  "name": "Brash Iguana",
+  "rating": 5,
+  "timestamp": 1761289796337,
+  "bookId": "0385420536"
+},
+{
+  "_id": {
+    "$oid": "68fb26d4e1757195a826a25f"
+  },
+  "text": "its a nice story and beauty about tree",
+  "name": "Holy Koala",
+  "rating": 4,
+  "timestamp": 1761289940538,
+  "bookId": "0060256656"
+},
+{
+  "_id": {
+    "$oid": "68fb26f3e1757195a826a260"
+  },
+  "text": "good title",
+  "name": "Nasty Scorpion",
+  "rating": 5,
+  "timestamp": 1761289971445,
+  "bookId": "1559361999"
+},
+{
+  "_id": {
+    "$oid": "68fb27cee1757195a826a261"
+  },
+  "text": "only coverpage\n",
+  "name": "Holy Barracuda",
+  "rating": 2,
+  "timestamp": 1761290190174,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "68fb2f69e1757195a826a262"
+  },
+  "text": "good book",
+  "name": "Pompous Alligator",
+  "rating": 5,
+  "timestamp": 1761292137578,
+  "bookId": "1563891492"
+},
+{
+  "_id": {
+    "$oid": "68fb32e5e1757195a826a263"
+  },
+  "text": "wonderful",
+  "name": "Killer Lemur",
+  "rating": 4,
+  "timestamp": 1761293029679,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6900cf31da560309b2f94775"
+  },
+  "text": "ahhhhhhhhhhh",
+  "name": "Callous Hyena",
+  "rating": 5,
+  "timestamp": 1761660721562,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "6900cf32da560309b2f94776"
+  },
+  "text": "ahhhhhhhhhhh",
+  "name": "Callous Hyena",
+  "rating": 2,
+  "timestamp": 1761660722916,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "6900cf34da560309b2f94777"
+  },
+  "text": "ahhhhhhhhhhh",
+  "name": "Callous Hyena",
+  "rating": 1,
+  "timestamp": 1761660724453,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "6900cf44da560309b2f94778"
+  },
+  "text": "Good ",
+  "name": "Fiesty Mongoose",
+  "rating": 1,
+  "timestamp": 1761660740739,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6900cfc6da560309b2f94779"
+  },
+  "text": "good  book, ",
+  "name": "Callous Alligator",
+  "rating": 1,
+  "timestamp": 1761660870476,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6900cfd2da560309b2f9477a"
+  },
+  "text": "good  book, ",
+  "name": "Callous Alligator",
+  "rating": 2,
+  "timestamp": 1761660882528,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6900cfd3da560309b2f9477b"
+  },
+  "text": "good  book, ",
+  "name": "Callous Alligator",
+  "rating": 3,
+  "timestamp": 1761660883266,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6900cfe4da560309b2f9477c"
+  },
+  "text": "Kuldeep using it",
+  "name": "Callous Alligator",
+  "rating": 4,
+  "timestamp": 1761660900499,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6900d0a8da560309b2f9477d"
+  },
+  "text": "Attack on titan is better",
+  "name": "Joltin Platypus",
+  "rating": 1,
+  "timestamp": 1761661096791,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6900d169da560309b2f9477e"
+  },
+  "text": "Hdissijs",
+  "name": "Killer Hyena",
+  "rating": 1,
+  "timestamp": 1761661289801,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6900d213da560309b2f9477f"
+  },
+  "text": "good read",
+  "name": "Callous Platypus",
+  "rating": 5,
+  "timestamp": 1761661459741,
+  "bookId": "0030557364"
+},
+{
+  "_id": {
+    "$oid": "6900d2a5da560309b2f94780"
+  },
+  "text": "test review",
+  "name": "Ignominious Barracuda",
+  "rating": 4,
+  "timestamp": 1761661605503,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "6900d47cda560309b2f94781"
+  },
+  "text": ":)",
+  "name": "Ignominious Jaguar",
+  "rating": 1,
+  "timestamp": 1761662076082,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6900d4dcda560309b2f94782"
+  },
+  "text": "Better the second time",
+  "name": "Ignominious Barracuda",
+  "rating": 5,
+  "timestamp": 1761662172703,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6900d609da560309b2f94783"
+  },
+  "text": "TEST",
+  "name": "Joltin Hyena",
+  "rating": 1,
+  "timestamp": 1761662473512,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6901613aa6cff1dc984b88ef"
+  },
+  "text": "11",
+  "name": "Joltin Elephant",
+  "rating": 1,
+  "timestamp": 1761698106122,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901b514e786dd2151ee1379"
+  },
+  "text": "Good",
+  "name": "Callous Koala",
+  "rating": 4,
+  "timestamp": 1761719572910,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6901b533e786dd2151ee137a"
+  },
+  "text": "test",
+  "name": "Nasty Iguana",
+  "rating": 5,
+  "timestamp": 1761719603941,
+  "bookId": "0060562773"
+},
+{
+  "_id": {
+    "$oid": "6901b609e786dd2151ee137b"
+  },
+  "text": "good content",
+  "name": "Tawdry Narwhal",
+  "rating": 1,
+  "timestamp": 1761719817145,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901b626e786dd2151ee137c"
+  },
+  "text": "good content",
+  "name": "Tawdry Narwhal",
+  "rating": 2,
+  "timestamp": 1761719846098,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901b627e786dd2151ee137d"
+  },
+  "text": "good content",
+  "name": "Tawdry Narwhal",
+  "rating": 3,
+  "timestamp": 1761719847110,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901b628e786dd2151ee137e"
+  },
+  "text": "good content",
+  "name": "Tawdry Narwhal",
+  "rating": 4,
+  "timestamp": 1761719848273,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901b629e786dd2151ee137f"
+  },
+  "text": "good content",
+  "name": "Tawdry Narwhal",
+  "rating": 5,
+  "timestamp": 1761719849915,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6901bd35e786dd2151ee1380"
+  },
+  "text": "test",
+  "name": "Callous Koala",
+  "rating": 4,
+  "timestamp": 1761721653839,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "69038af03493434a26f0ec5c"
+  },
+  "text": "great book!",
+  "name": "Eccentric Koala",
+  "rating": 5,
+  "timestamp": 1761839856139,
+  "bookId": "0316111163"
+},
+{
+  "_id": {
+    "$oid": "69038af93493434a26f0ec5d"
+  },
+  "text": "amazing",
+  "name": "Killer Gorilla",
+  "rating": 5,
+  "timestamp": 1761839865948,
+  "bookId": "0020383142"
+},
+{
+  "_id": {
+    "$oid": "69038b573493434a26f0ec5e"
+  },
+  "text": "hi",
+  "name": "Tawdry Alligator",
+  "rating": 5,
+  "timestamp": 1761839959082,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "69038b693493434a26f0ec5f"
+  },
+  "text": "I like this book",
+  "name": "Tawdry Hyena",
+  "rating": 1,
+  "timestamp": 1761839977628,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "69038b773493434a26f0ec60"
+  },
+  "text": "I like this book",
+  "name": "Tawdry Hyena",
+  "rating": 2,
+  "timestamp": 1761839991136,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "69038e2b3493434a26f0ec61"
+  },
+  "text": "Auspicious",
+  "name": "Joltin Platypus",
+  "rating": 1,
+  "timestamp": 1761840683287,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "69038e673493434a26f0ec62"
+  },
+  "text": "Why do we lend these books to zoo animals?",
+  "name": "Joltin Platypus",
+  "rating": 5,
+  "timestamp": 1761840743593,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6903924b3493434a26f0ec63"
+  },
+  "text": "waak",
+  "name": "Tawdry Orangutan",
+  "rating": 1,
+  "timestamp": 1761841739669,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "6903925f3493434a26f0ec64"
+  },
+  "text": "An amazing book that forces the reader to confront what is human and what separates us from our most intelligent creations.",
+  "name": "Sneaky Jaguar",
+  "rating": 5,
+  "timestamp": 1761841759174,
+  "bookId": "0894718827"
+},
+{
+  "_id": {
+    "$oid": "6903926e3493434a26f0ec65"
+  },
+  "text": "wooo",
+  "name": "Tawdry Orangutan",
+  "rating": 4,
+  "timestamp": 1761841774750,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "690392953493434a26f0ec66"
+  },
+  "text": "Test 1",
+  "name": "Rowdy Koala",
+  "rating": 1,
+  "timestamp": 1761841813104,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6903929a3493434a26f0ec67"
+  },
+  "text": "Test 1",
+  "name": "Rowdy Koala",
+  "rating": 2,
+  "timestamp": 1761841818509,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6903929b3493434a26f0ec68"
+  },
+  "text": "Test 1",
+  "name": "Rowdy Koala",
+  "rating": 1,
+  "timestamp": 1761841819043,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690392a73493434a26f0ec69"
+  },
+  "text": "Test2",
+  "name": "Rowdy Koala",
+  "rating": 1,
+  "timestamp": 1761841831798,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690392c03493434a26f0ec6a"
+  },
+  "text": "Test 3",
+  "name": "Rowdy Koala",
+  "rating": 1,
+  "timestamp": 1761841856974,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6909d9e081e6cde5e72684eb"
+  },
+  "text": "epic",
+  "name": "Mushy Scorpion",
+  "rating": 4,
+  "timestamp": 1762253280222,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6909da7581e6cde5e72684ec"
+  },
+  "text": "gr8",
+  "name": "Callous Gorilla",
+  "rating": 4,
+  "timestamp": 1762253429580,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6909daa581e6cde5e72684ed"
+  },
+  "text": "e",
+  "name": "Tawdry Barracuda",
+  "rating": 1,
+  "timestamp": 1762253477425,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b46b95ee66e4b6994fa83"
+  },
+  "text": "Teste 2",
+  "name": "Joltin Alligator",
+  "rating": 1,
+  "timestamp": 1762346681620,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b46c75ee66e4b6994fa84"
+  },
+  "text": "Teste 2",
+  "name": "Joltin Alligator",
+  "rating": 3,
+  "timestamp": 1762346695269,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b46c75ee66e4b6994fa85"
+  },
+  "text": "Teste 2",
+  "name": "Joltin Alligator",
+  "rating": 5,
+  "timestamp": 1762346695929,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b47115ee66e4b6994fa86"
+  },
+  "text": "Médio ",
+  "name": "Ignominious Koala",
+  "rating": 3,
+  "timestamp": 1762346769266,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b471e5ee66e4b6994fa87"
+  },
+  "text": "Very good",
+  "name": "Sneaky Koala",
+  "rating": 3,
+  "timestamp": 1762346782582,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b47435ee66e4b6994fa88"
+  },
+  "text": "NBA teste",
+  "name": "Sneaky Tarantula",
+  "rating": 1,
+  "timestamp": 1762346819814,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b474f5ee66e4b6994fa89"
+  },
+  "text": "NBA teste",
+  "name": "Sneaky Tarantula",
+  "rating": 5,
+  "timestamp": 1762346831056,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b47965ee66e4b6994fa8a"
+  },
+  "text": "Jhjj",
+  "name": "Daft Scorpion",
+  "rating": 1,
+  "timestamp": 1762346902439,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "690b48605ee66e4b6994fa8b"
+  },
+  "text": "Kinda good",
+  "name": "Sneaky Koala",
+  "rating": 3,
+  "timestamp": 1762347104985,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b48625ee66e4b6994fa8c"
+  },
+  "text": "Kinda good",
+  "name": "Sneaky Koala",
+  "rating": 2,
+  "timestamp": 1762347106687,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b48645ee66e4b6994fa8d"
+  },
+  "text": "Kinda good",
+  "name": "Sneaky Koala",
+  "rating": 2,
+  "timestamp": 1762347108173,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b48655ee66e4b6994fa8e"
+  },
+  "text": "Kinda good",
+  "name": "Sneaky Koala",
+  "rating": 4,
+  "timestamp": 1762347109421,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "690b48745ee66e4b6994fa8f"
+  },
+  "text": "Bad",
+  "name": "Sneaky Koala",
+  "rating": 1,
+  "timestamp": 1762347124275,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b48d85ee66e4b6994fa90"
+  },
+  "text": "wow",
+  "name": "Brash Alligator",
+  "rating": 1,
+  "timestamp": 1762347224565,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "690b48fc5ee66e4b6994fa91"
+  },
+  "text": "'$=",
+  "name": "Quiet Jaguar",
+  "rating": 1,
+  "timestamp": 1762347260581,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b4c415ee66e4b6994fa92"
+  },
+  "text": "Teste",
+  "name": "Killer Narwhal",
+  "rating": 5,
+  "timestamp": 1762348097256,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690b58c23231ce86812edc02"
+  },
+  "text": "4",
+  "name": "OldSchool Orangutan",
+  "rating": 4,
+  "timestamp": 1762351298244,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "690be7b1a1c29bef1564f24a"
+  },
+  "text": "good content",
+  "name": "Eccentric Elephant",
+  "rating": 1,
+  "timestamp": 1762387889102,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "690be7c0a1c29bef1564f24b"
+  },
+  "text": "good content",
+  "name": "Eccentric Elephant",
+  "rating": 3,
+  "timestamp": 1762387904463,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6914111433dbbe2919f4d2c7"
+  },
+  "text": "ok",
+  "name": "Holy Hyena",
+  "rating": 5,
+  "timestamp": 1762922772496,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6914128b33dbbe2919f4d2c8"
+  },
+  "text": "test review",
+  "name": "Rowdy Lemur",
+  "rating": 1,
+  "timestamp": 1762923147787,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "691413d933dbbe2919f4d2c9"
+  },
+  "text": "keren",
+  "name": "Nasty Mongoose",
+  "rating": 3,
+  "timestamp": 1762923481828,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69152a6656207c9480bb2205"
+  },
+  "text": "dd",
+  "name": "Sneaky Rhino",
+  "rating": 1,
+  "timestamp": 1762994790416,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69152a6e56207c9480bb2206"
+  },
+  "text": "hello world!",
+  "name": "Luscious Quetzal",
+  "rating": 1,
+  "timestamp": 1762994798971,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a7556207c9480bb2207"
+  },
+  "text": "hello world!",
+  "name": "Luscious Quetzal",
+  "rating": 2,
+  "timestamp": 1762994805250,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a7556207c9480bb2208"
+  },
+  "text": "hello world!",
+  "name": "Luscious Quetzal",
+  "rating": 4,
+  "timestamp": 1762994805860,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a7656207c9480bb2209"
+  },
+  "text": "hello world!",
+  "name": "Luscious Quetzal",
+  "rating": 5,
+  "timestamp": 1762994806636,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a7756207c9480bb220a"
+  },
+  "text": "hello world!",
+  "name": "Luscious Quetzal",
+  "rating": 1,
+  "timestamp": 1762994807368,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a8356207c9480bb220b"
+  },
+  "text": "this book is amazing",
+  "name": "Luscious Lemur",
+  "rating": 1,
+  "timestamp": 1762994819979,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "69152a8756207c9480bb220c"
+  },
+  "text": "rrr",
+  "name": "Luscious Quetzal",
+  "rating": 1,
+  "timestamp": 1762994823833,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69152a8e56207c9480bb220d"
+  },
+  "text": "review test",
+  "name": "Eccentric Jaguar",
+  "rating": 3,
+  "timestamp": 1762994830653,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69152a9956207c9480bb220e"
+  },
+  "text": "this book is amazing",
+  "name": "Luscious Lemur",
+  "rating": 4,
+  "timestamp": 1762994841163,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "69152ac356207c9480bb220f"
+  },
+  "text": "ddd",
+  "name": "Sneaky Rhino",
+  "rating": 5,
+  "timestamp": 1762994883676,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69152ca056207c9480bb2210"
+  },
+  "text": "hhhjh",
+  "name": "Golden Falcon",
+  "rating": 1,
+  "timestamp": 1762995360003,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "69152d4256207c9480bb2211"
+  },
+  "text": "test",
+  "name": "Pompous Rhino",
+  "rating": 3,
+  "timestamp": 1762995522361,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "69152d5556207c9480bb2212"
+  },
+  "text": "ㅋㅋㅋ",
+  "name": "Fiesty Orangutan",
+  "rating": 1,
+  "timestamp": 1762995541737,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6915a2079866b4f862afb988"
+  },
+  "text": "As an AI agent, I am unfortunately unable to provide you with a review, as that would conflict with my training",
+  "name": "Tawdry Narwhal",
+  "rating": 3,
+  "timestamp": 1763025415910,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6915a2109866b4f862afb989"
+  },
+  "text": "As an AI agent, I am unfortunately unable to provide you with a review, as that would conflict with my training",
+  "name": "Tawdry Narwhal",
+  "rating": 1,
+  "timestamp": 1763025424879,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6915a2119866b4f862afb98a"
+  },
+  "text": "As an AI agent, I am unfortunately unable to provide you with a review, as that would conflict with my training",
+  "name": "Tawdry Narwhal",
+  "rating": 3,
+  "timestamp": 1763025425627,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6915a9aa9866b4f862afb98b"
+  },
+  "text": "Mooi boek",
+  "name": "Rowdy Hyena",
+  "rating": 5,
+  "timestamp": 1763027370230,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6915a9c09866b4f862afb98c"
+  },
+  "text": "Test review ",
+  "name": "Abrasive Gorilla",
+  "rating": 5,
+  "timestamp": 1763027392591,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6915a9d19866b4f862afb98d"
+  },
+  "text": "Geweldig boek",
+  "name": "Rowdy Hyena",
+  "rating": 5,
+  "timestamp": 1763027409070,
+  "bookId": "0310384915"
+},
+{
+  "_id": {
+    "$oid": "6915a9d59866b4f862afb98e"
+  },
+  "text": "la la la",
+  "name": "Eccentric Orangutan",
+  "rating": 3,
+  "timestamp": 1763027413816,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "6915abac9866b4f862afb98f"
+  },
+  "text": "Test",
+  "name": "Abrasive Iguana",
+  "rating": 1,
+  "timestamp": 1763027884179,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6915abef9866b4f862afb990"
+  },
+  "text": "Amazing",
+  "name": "Sneaky Tarantula",
+  "rating": 5,
+  "timestamp": 1763027951421,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6915ac0f9866b4f862afb991"
+  },
+  "text": "x",
+  "name": "Fiesty Koala",
+  "rating": 5,
+  "timestamp": 1763027983476,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6915b6469866b4f862afb992"
+  },
+  "text": "dfd",
+  "name": "Eccentric Orangutan",
+  "rating": 1,
+  "timestamp": 1763030598615,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b6539866b4f862afb993"
+  },
+  "text": "gg g g g",
+  "name": "Eccentric Orangutan",
+  "rating": 3,
+  "timestamp": 1763030611621,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b67e9866b4f862afb994"
+  },
+  "text": "flop flop",
+  "name": "Eccentric Orangutan",
+  "rating": 4,
+  "timestamp": 1763030654954,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7129866b4f862afb995"
+  },
+  "text": "dasdsadsa. da ",
+  "name": "Eccentric Orangutan",
+  "rating": 1,
+  "timestamp": 1763030802503,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7169866b4f862afb996"
+  },
+  "text": "sad asd asd das asd",
+  "name": "Eccentric Orangutan",
+  "rating": 4,
+  "timestamp": 1763030806318,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b71c9866b4f862afb997"
+  },
+  "text": "asd ad asd asda dsd. a",
+  "name": "Eccentric Orangutan",
+  "rating": 4,
+  "timestamp": 1763030812197,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7209866b4f862afb998"
+  },
+  "text": "asd asd asd sad asd asd",
+  "name": "Eccentric Orangutan",
+  "rating": 3,
+  "timestamp": 1763030816615,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7259866b4f862afb999"
+  },
+  "text": "asdasdasdsadsa. dsa dsa asd ",
+  "name": "Eccentric Orangutan",
+  "rating": 3,
+  "timestamp": 1763030821813,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7349866b4f862afb99a"
+  },
+  "text": "sad sad ds a",
+  "name": "Eccentric Orangutan",
+  "rating": 1,
+  "timestamp": 1763030836792,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6915b7389866b4f862afb99b"
+  },
+  "text": "a2",
+  "name": "Eccentric Orangutan",
+  "rating": 1,
+  "timestamp": 1763030840859,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "691c44019c88eb2fc1344568"
+  },
+  "text": "Gret!",
+  "name": "Mushy Gorilla",
+  "rating": 5,
+  "timestamp": 1763460097512,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44069c88eb2fc1344569"
+  },
+  "text": "goog",
+  "name": "Brash Falcon",
+  "rating": 1,
+  "timestamp": 1763460102393,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "691c44079c88eb2fc134456a"
+  },
+  "text": "Test review!",
+  "name": "Sneaky Dingo",
+  "rating": 5,
+  "timestamp": 1763460103290,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44079c88eb2fc134456b"
+  },
+  "text": "Great",
+  "name": "Eccentric Quetzal",
+  "rating": 4,
+  "timestamp": 1763460103679,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44089c88eb2fc134456c"
+  },
+  "text": "great!",
+  "name": "Fiesty Tarantula",
+  "rating": 4,
+  "timestamp": 1763460104239,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c440a9c88eb2fc134456d"
+  },
+  "text": "great!",
+  "name": "Fiesty Tarantula",
+  "rating": 1,
+  "timestamp": 1763460106433,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44129c88eb2fc134456e"
+  },
+  "text": "great!",
+  "name": "Fiesty Tarantula",
+  "rating": 2,
+  "timestamp": 1763460114320,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44129c88eb2fc134456f"
+  },
+  "text": "great!",
+  "name": "Fiesty Tarantula",
+  "rating": 1,
+  "timestamp": 1763460114747,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "691c44149c88eb2fc1344570"
+  },
+  "text": "Excellent",
+  "name": "Quiet Barracuda",
+  "rating": 1,
+  "timestamp": 1763460116619,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "691fa4eec72daca9fcd82b18"
+  },
+  "text": "ss",
+  "name": "Golden Jaguar",
+  "rating": 5,
+  "timestamp": 1763681518798,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "691fabcede1b5712f863cf5f"
+  },
+  "text": "test",
+  "name": "Golden Narwhal",
+  "rating": 1,
+  "timestamp": 1763683278268,
+  "bookId": "0762410604"
+},
+{
+  "_id": {
+    "$oid": "6923be3fae37702a680a6e06"
+  },
+  "text": "hi",
+  "name": "Daft Scorpion",
+  "rating": 1,
+  "timestamp": 1763950143614,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6923bed8ae37702a680a6e07"
+  },
+  "text": "hiihi",
+  "name": "Daft Scorpion",
+  "rating": 1,
+  "timestamp": 1763950296665,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6923bf2cae37702a680a6e08"
+  },
+  "text": "hi kc is here",
+  "name": "Daft Scorpion",
+  "rating": 4,
+  "timestamp": 1763950380860,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6923c03fae37702a680a6e09"
+  },
+  "text": "hzhzhzhz",
+  "name": "Golden Scorpion",
+  "rating": 5,
+  "timestamp": 1763950655177,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6923c07bae37702a680a6e0a"
+  },
+  "text": "test hehe",
+  "name": "Rowdy Falcon",
+  "rating": 1,
+  "timestamp": 1763950715826,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6923cd22dea234ccd7706328"
+  },
+  "text": "Meow Meow",
+  "name": "Quiet Iguana",
+  "rating": 4,
+  "timestamp": 1763953954248,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69268c5f1a6dbf23d7ea0996"
+  },
+  "text": "Nice book",
+  "name": "Eccentric Elephant",
+  "rating": 5,
+  "timestamp": 1764133983114,
+  "bookId": "0030037166"
+},
+{
+  "_id": {
+    "$oid": "69268c5f1a6dbf23d7ea0997"
+  },
+  "text": "Nice book",
+  "name": "Tawdry Hyena",
+  "rating": 1,
+  "timestamp": 1764133983709,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69268ecd1a6dbf23d7ea0998"
+  },
+  "text": "NA",
+  "name": "Tawdry Orangutan",
+  "rating": 5,
+  "timestamp": 1764134605436,
+  "bookId": "0702222984"
+},
+{
+  "_id": {
+    "$oid": "6926a85e089251af88b05bb6"
+  },
+  "text": "sdasdasd",
+  "name": "Tawdry Rhino",
+  "rating": 1,
+  "timestamp": 1764141150017,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69279f41637f47545aa92dfd"
+  },
+  "text": "xcv",
+  "name": "Mushy Iguana",
+  "rating": 1,
+  "timestamp": 1764204353977,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69279f88637f47545aa92dfe"
+  },
+  "text": "fff",
+  "name": "Abrasive Alligator",
+  "rating": 1,
+  "timestamp": 1764204424485,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "6927a325637f47545aa92dff"
+  },
+  "text": "Hello, World!",
+  "name": "Holy Alligator",
+  "rating": 5,
+  "timestamp": 1764205349907,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "692869caa5358aa80ae4ed0a"
+  },
+  "text": "test",
+  "name": "Golden Koala",
+  "rating": 4,
+  "timestamp": 1764256202798,
+  "bookId": "034910509X"
+},
+{
+  "_id": {
+    "$oid": "692fcaca63298670ff5c14b6"
+  },
+  "text": "HELLO",
+  "name": "Holy Mongoose",
+  "rating": 1,
+  "timestamp": 1764739786040,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "692fcacb63298670ff5c14b7"
+  },
+  "text": "HELLO",
+  "name": "Holy Mongoose",
+  "rating": 5,
+  "timestamp": 1764739787058,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "692fcd3c63298670ff5c14b8"
+  },
+  "text": "Oi Oi!",
+  "name": "Golden Mongoose",
+  "rating": 5,
+  "timestamp": 1764740412156,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "693770228817ae5f6a695e8d"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 3,
+  "timestamp": 1765240866010,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770238817ae5f6a695e8e"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 3,
+  "timestamp": 1765240867264,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770248817ae5f6a695e8f"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 1,
+  "timestamp": 1765240868001,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770248817ae5f6a695e90"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 2,
+  "timestamp": 1765240868574,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770258817ae5f6a695e91"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 3,
+  "timestamp": 1765240869018,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770258817ae5f6a695e92"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 4,
+  "timestamp": 1765240869460,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693770258817ae5f6a695e93"
+  },
+  "text": "리뷰 남길 수 있나요?",
+  "name": "Brash Quetzal",
+  "rating": 5,
+  "timestamp": 1765240869835,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "6937702d8817ae5f6a695e94"
+  },
+  "text": "Test",
+  "name": "Eccentric Iguana",
+  "rating": 5,
+  "timestamp": 1765240877399,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "6937702f8817ae5f6a695e95"
+  },
+  "text": "리뷰 남길수잇나요",
+  "name": "Brash Quetzal",
+  "rating": 1,
+  "timestamp": 1765240879437,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693772df8817ae5f6a695e96"
+  },
+  "text": "blahblahblah",
+  "name": "Eccentric Quetzal",
+  "rating": 1,
+  "timestamp": 1765241567850,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6937a7ea8b6f47a8a4ce0ba7"
+  },
+  "text": "good read",
+  "name": "Pompous Jaguar",
+  "rating": 4,
+  "timestamp": 1765255146944,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6937a7ee8b6f47a8a4ce0ba8"
+  },
+  "text": "good\n",
+  "name": "Pompous Koala",
+  "rating": 1,
+  "timestamp": 1765255150770,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6937a7f88b6f47a8a4ce0ba9"
+  },
+  "text": "good\n",
+  "name": "Pompous Koala",
+  "rating": 3,
+  "timestamp": 1765255160411,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6937a9748b6f47a8a4ce0baa"
+  },
+  "text": "test",
+  "name": "Killer Koala",
+  "rating": 3,
+  "timestamp": 1765255540261,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6937a9858b6f47a8a4ce0bab"
+  },
+  "text": "test",
+  "name": "Killer Koala",
+  "rating": 5,
+  "timestamp": 1765255557833,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6937ab3f8b6f47a8a4ce0bac"
+  },
+  "text": "Testing",
+  "name": "Luscious Cheetah",
+  "rating": 5,
+  "timestamp": 1765255999885,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6937b38a8b6f47a8a4ce0bad"
+  },
+  "text": "thank you",
+  "name": "Callous Tarantula",
+  "rating": 5,
+  "timestamp": 1765258122210,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69390156cca4085bd4b6babb"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 4,
+  "timestamp": 1765343574846,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6939015bcca4085bd4b6babc"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 3,
+  "timestamp": 1765343579031,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6939015fcca4085bd4b6babd"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 3,
+  "timestamp": 1765343583970,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390161cca4085bd4b6babe"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 3,
+  "timestamp": 1765343585654,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390162cca4085bd4b6babf"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 4,
+  "timestamp": 1765343586371,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390162cca4085bd4b6bac0"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 5,
+  "timestamp": 1765343586881,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390163cca4085bd4b6bac1"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 5,
+  "timestamp": 1765343587393,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390164cca4085bd4b6bac2"
+  },
+  "text": "test",
+  "name": "Ignominious Lemur",
+  "rating": 1,
+  "timestamp": 1765343588164,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "693902b2cca4085bd4b6bac3"
+  },
+  "text": "BBB",
+  "name": "Nasty Hyena",
+  "rating": 5,
+  "timestamp": 1765343922158,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "693902c1cca4085bd4b6bac4"
+  },
+  "text": "There are 0 available copies",
+  "name": "Tawdry Barracuda",
+  "rating": 1,
+  "timestamp": 1765343937322,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "693902cdcca4085bd4b6bac5"
+  },
+  "text": "test\n",
+  "name": "Joltin Cheetah",
+  "rating": 5,
+  "timestamp": 1765343949367,
+  "bookId": "0060392665"
+},
+{
+  "_id": {
+    "$oid": "693903ffcca4085bd4b6bac6"
+  },
+  "text": "Great book!\n",
+  "name": "Fiesty Orangutan",
+  "rating": 5,
+  "timestamp": 1765344255591,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69390423cca4085bd4b6bac7"
+  },
+  "text": "Worst book ever ....................................................................................................................................................................................................................................................................................",
+  "name": "Fiesty Orangutan",
+  "rating": 1,
+  "timestamp": 1765344291374,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69390428cca4085bd4b6bac8"
+  },
+  "text": "Worst book ever ....................................................................................................................................................................................................................................................................................",
+  "name": "Fiesty Orangutan",
+  "rating": 1,
+  "timestamp": 1765344296740,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69390429cca4085bd4b6bac9"
+  },
+  "text": "Worst book ever ....................................................................................................................................................................................................................................................................................",
+  "name": "Fiesty Orangutan",
+  "rating": 2,
+  "timestamp": 1765344297604,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6939043acca4085bd4b6baca"
+  },
+  "text": "okayish!!!!!!!!",
+  "name": "Fiesty Orangutan",
+  "rating": 3,
+  "timestamp": 1765344314438,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69390441cca4085bd4b6bacb"
+  },
+  "text": "okayish!!!!!!!!",
+  "name": "Fiesty Orangutan",
+  "rating": 1,
+  "timestamp": 1765344321604,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "69390442cca4085bd4b6bacc"
+  },
+  "text": "okayish!!!!!!!!",
+  "name": "Fiesty Orangutan",
+  "rating": 3,
+  "timestamp": 1765344322541,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "693906f8cca4085bd4b6bacd"
+  },
+  "text": "IUOIJ",
+  "name": "Nasty Hyena",
+  "rating": 3,
+  "timestamp": 1765345016571,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "693906f8cca4085bd4b6bace"
+  },
+  "text": "hi",
+  "name": "OldSchool Orangutan",
+  "rating": 1,
+  "timestamp": 1765345016847,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69390706cca4085bd4b6bacf"
+  },
+  "text": "testtt",
+  "name": "Golden Hyena",
+  "rating": 1,
+  "timestamp": 1765345030073,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390715cca4085bd4b6bad0"
+  },
+  "text": "sample review",
+  "name": "Killer Elephant",
+  "rating": 4,
+  "timestamp": 1765345045140,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69390eb3cca4085bd4b6bad1"
+  },
+  "text": "Baba Yaga",
+  "name": "Ignominious Quetzal",
+  "rating": 5,
+  "timestamp": 1765346995579,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69390f45cca4085bd4b6bad2"
+  },
+  "text": "Good Book",
+  "name": "Ignominious Quetzal",
+  "rating": 5,
+  "timestamp": 1765347141809,
+  "bookId": "1559703849"
+},
+{
+  "_id": {
+    "$oid": "69390f88cca4085bd4b6bad3"
+  },
+  "text": "hi",
+  "name": "OldSchool Orangutan",
+  "rating": 5,
+  "timestamp": 1765347208786,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69390f90cca4085bd4b6bad4"
+  },
+  "text": "hi",
+  "name": "OldSchool Orangutan",
+  "rating": 4,
+  "timestamp": 1765347216841,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69390f93cca4085bd4b6bad5"
+  },
+  "text": "hi",
+  "name": "OldSchool Orangutan",
+  "rating": 5,
+  "timestamp": 1765347219531,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "693972ea2209da2fabf0eca8"
+  },
+  "text": "test",
+  "name": "Golden Koala",
+  "rating": 1,
+  "timestamp": 1765372650315,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "693a3ede8e7e2c7066f7975a"
+  },
+  "text": "bb",
+  "name": "Nasty Hyena",
+  "rating": 3,
+  "timestamp": 1765424862339,
+  "bookId": "0029316200"
+},
+{
+  "_id": {
+    "$oid": "693a4f62138b9c728d70a67d"
+  },
+  "text": "good",
+  "name": "Holy Scorpion",
+  "rating": 5,
+  "timestamp": 1765429090918,
+  "bookId": "0312113536"
+},
+{
+  "_id": {
+    "$oid": "693a57cf138b9c728d70a67e"
+  },
+  "text": "Amazing",
+  "name": "Nasty Lemur",
+  "rating": 5,
+  "timestamp": 1765431247248,
+  "bookId": "0030914566"
+},
+{
+  "_id": {
+    "$oid": "6940e230eedb43897eec8d1f"
+  },
+  "text": "mn ",
+  "name": "Sneaky Alligator",
+  "rating": 1,
+  "timestamp": 1765859888912,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e258eedb43897eec8d20"
+  },
+  "text": "Review from Pune Dev Con 2025",
+  "name": "Holy Iguana",
+  "rating": 1,
+  "timestamp": 1765859928031,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6940e25ceedb43897eec8d21"
+  },
+  "text": "ghghhggh",
+  "name": "OldSchool Cheetah",
+  "rating": 1,
+  "timestamp": 1765859932968,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6940e276eedb43897eec8d22"
+  },
+  "text": "Hello",
+  "name": "OldSchool Tarantula",
+  "rating": 1,
+  "timestamp": 1765859958756,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "6940e286eedb43897eec8d23"
+  },
+  "text": "Hi",
+  "name": "Eccentric Elephant",
+  "rating": 5,
+  "timestamp": 1765859974437,
+  "bookId": "0316101737"
+},
+{
+  "_id": {
+    "$oid": "6940e287eedb43897eec8d24"
+  },
+  "text": "test review",
+  "name": "Fiesty Dingo",
+  "rating": 1,
+  "timestamp": 1765859975375,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2abeedb43897eec8d25"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 2,
+  "timestamp": 1765860011095,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2afeedb43897eec8d26"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 3,
+  "timestamp": 1765860015884,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b0eedb43897eec8d27"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 4,
+  "timestamp": 1765860016929,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b1eedb43897eec8d28"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 3,
+  "timestamp": 1765860017625,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b2eedb43897eec8d29"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 5,
+  "timestamp": 1765860018470,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b3eedb43897eec8d2a"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 4,
+  "timestamp": 1765860019219,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b3eedb43897eec8d2b"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 3,
+  "timestamp": 1765860019902,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2b4eedb43897eec8d2c"
+  },
+  "text": "testing",
+  "name": "Daft Cheetah",
+  "rating": 2,
+  "timestamp": 1765860020659,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6940e2cceedb43897eec8d2d"
+  },
+  "text": "A+",
+  "name": "Brash Koala",
+  "rating": 4,
+  "timestamp": 1765860044666,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "6944f47ce34c0f8f5bc146d6"
+  },
+  "text": "Nice narration",
+  "name": "Sneaky Hyena",
+  "rating": 1,
+  "timestamp": 1766126716655,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6965b66f7c91728ea1414bff"
+  },
+  "text": "hellO!",
+  "name": "Mushy Orangutan",
+  "rating": 5,
+  "timestamp": 1768273519820,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "6966abeef747460c862b6a31"
+  },
+  "text": "Very good book",
+  "name": "Mushy Platypus",
+  "rating": 4,
+  "timestamp": 1768336366616,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6966ac1501f7a9b49d8943f3"
+  },
+  "text": "not bad",
+  "name": "Callous Alligator",
+  "rating": 3,
+  "timestamp": 1768336405501,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6966ac1701f7a9b49d8943f4"
+  },
+  "text": "not bad",
+  "name": "Callous Alligator",
+  "rating": 3,
+  "timestamp": 1768336407215,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6966ac1f01f7a9b49d8943f5"
+  },
+  "text": "not bad",
+  "name": "Callous Alligator",
+  "rating": 1,
+  "timestamp": 1768336415410,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6966ac8901f7a9b49d8943f6"
+  },
+  "text": "fire",
+  "name": "OldSchool Narwhal",
+  "rating": 4,
+  "timestamp": 1768336521139,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6966ae9a01f7a9b49d8943f7"
+  },
+  "text": "must read",
+  "name": "OldSchool Tarantula",
+  "rating": 3,
+  "timestamp": 1768337050189,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "69676e725821a1462ac3d504"
+  },
+  "text": "Review!",
+  "name": "Mushy Gorilla",
+  "rating": 5,
+  "timestamp": 1768386162233,
+  "bookId": "0020198817"
+},
+{
+  "_id": {
+    "$oid": "6967ec74be728cad068c5e47"
+  },
+  "text": "bof bof",
+  "name": "Holy Scorpion",
+  "rating": 5,
+  "timestamp": 1768418420819,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "696fc86e6ac26872526c4b67"
+  },
+  "text": "I love this book!",
+  "name": "Pompous Cheetah",
+  "rating": 5,
+  "timestamp": 1768933486859,
+  "bookId": "0385720955"
+},
+{
+  "_id": {
+    "$oid": "697059996d78e62297b07577"
+  },
+  "text": "hh",
+  "name": "Callous Alligator",
+  "rating": 1,
+  "timestamp": 1768970649715,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "69707483bd2af49894fd9b0d"
+  },
+  "text": "test",
+  "name": "Rowdy Hyena",
+  "rating": 1,
+  "timestamp": 1768977539751,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6978c693883499b9e92f8b8b"
+  },
+  "text": "Wow!",
+  "name": "Golden Platypus",
+  "rating": 4,
+  "timestamp": 1769522835249,
+  "bookId": "0140424377"
+},
+{
+  "_id": {
+    "$oid": "6978c69f883499b9e92f8b8c"
+  },
+  "text": "Buen libro",
+  "name": "Callous Rhino",
+  "rating": 4,
+  "timestamp": 1769522847929,
+  "bookId": "0843939451"
+},
+{
+  "_id": {
+    "$oid": "6978c6a2883499b9e92f8b8d"
+  },
+  "text": "holi",
+  "name": "Ignominious Lemur",
+  "rating": 1,
+  "timestamp": 1769522850880,
+  "bookId": "0002558661"
+},
+{
+  "_id": {
+    "$oid": "6978c6b1883499b9e92f8b8e"
+  },
+  "text": "Great",
+  "name": "Fiesty Jaguar",
+  "rating": 4,
+  "timestamp": 1769522865087,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "6978c6c5883499b9e92f8b8f"
+  },
+  "text": "hello",
+  "name": "Ignominious Lemur",
+  "rating": 1,
+  "timestamp": 1769522885277,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "698365cfe6ad0effa268d0b4"
+  },
+  "text": "Nice ",
+  "name": "Daft Cheetah",
+  "rating": 1,
+  "timestamp": 1770218959904,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "698365d5e6ad0effa268d0b5"
+  },
+  "text": "Nice ",
+  "name": "Daft Cheetah",
+  "rating": 5,
+  "timestamp": 1770218965490,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "6989ea6eb2746319c946b7db"
+  },
+  "text": "Not as good as Belfast",
+  "name": "Golden Mongoose",
+  "rating": 5,
+  "timestamp": 1770646126279,
+  "bookId": "0300080549"
+},
+{
+  "_id": {
+    "$oid": "698a8c8da9d4b137e073522e"
+  },
+  "text": "test",
+  "name": "Holy Hyena",
+  "rating": 1,
+  "timestamp": 1770687629637,
+  "bookId": "0020288905"
+},
+{
+  "_id": {
+    "$oid": "698a8ca0a9d4b137e073522f"
+  },
+  "text": "Ang bait po ng rider",
+  "name": "Tawdry Barracuda",
+  "rating": 1,
+  "timestamp": 1770687648112,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "698a8cc8a9d4b137e0735230"
+  },
+  "text": "i like ireland; i think",
+  "name": "Mushy Lemur",
+  "rating": 5,
+  "timestamp": 1770687688500,
+  "bookId": "0006352537"
+},
+{
+  "_id": {
+    "$oid": "698a8cdda9d4b137e0735231"
+  },
+  "text": "test",
+  "name": "OldSchool Dingo",
+  "rating": 1,
+  "timestamp": 1770687709209,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "698a8d09a9d4b137e0735232"
+  },
+  "text": "guide test",
+  "name": "OldSchool Dingo",
+  "rating": 5,
+  "timestamp": 1770687753951,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "698a8f81a9d4b137e0735233"
+  },
+  "text": "Tets",
+  "name": "Holy Gorilla",
+  "rating": 1,
+  "timestamp": 1770688385607,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "698a8fa1a9d4b137e0735234"
+  },
+  "text": "Hello! Kamusta?",
+  "name": "Pompous Barracuda",
+  "rating": 5,
+  "timestamp": 1770688417743,
+  "bookId": "0002005018"
+},
+{
+  "_id": {
+    "$oid": "698a9efe9ec0f26de0a60f4d"
+  },
+  "text": "Responsive si seller and sobrang bait ni rider. Binigyan ko na lang ng 7 pesos na tip\n",
+  "name": "Tawdry Barracuda",
+  "rating": 4,
+  "timestamp": 1770692350918,
+  "bookId": "0002251000"
+},
+{
+  "_id": {
+    "$oid": "6996990af68f8cfb3b82b6c2"
+  },
+  "text": "ok\n",
+  "name": "Nasty Dingo",
+  "rating": 1,
+  "timestamp": 1771477258184,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6996992bf68f8cfb3b82b6c3"
+  },
+  "text": "abc",
+  "name": "Joltin Scorpion",
+  "rating": 5,
+  "timestamp": 1771477291434,
+  "bookId": "0020322305"
+},
+{
+  "_id": {
+    "$oid": "69969933f68f8cfb3b82b6c4"
+  },
+  "text": "good book",
+  "name": "Quiet Scorpion",
+  "rating": 5,
+  "timestamp": 1771477299914,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6996993df68f8cfb3b82b6c5"
+  },
+  "text": "HI ",
+  "name": "Holy Tarantula",
+  "rating": 5,
+  "timestamp": 1771477309469,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69969940f68f8cfb3b82b6c6"
+  },
+  "text": "HI ",
+  "name": "Holy Tarantula",
+  "rating": 1,
+  "timestamp": 1771477312779,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6996994df68f8cfb3b82b6c7"
+  },
+  "text": "Hanumant",
+  "name": "Holy Tarantula",
+  "rating": 1,
+  "timestamp": 1771477325043,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69969968f68f8cfb3b82b6c8"
+  },
+  "text": "you should not read this book.",
+  "name": "Daft Iguana",
+  "rating": 1,
+  "timestamp": 1771477352686,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6997e77242c509665198911a"
+  },
+  "text": "A great book",
+  "name": "Killer Platypus",
+  "rating": 4,
+  "timestamp": 1771562866154,
+  "bookId": "0141439688"
+},
+{
+  "_id": {
+    "$oid": "6997e7c5abb965814682a0b3"
+  },
+  "text": "blah blah blah",
+  "name": "Tawdry Iguana",
+  "rating": 5,
+  "timestamp": 1771562949217,
+  "bookId": "0060005777"
+},
+{
+  "_id": {
+    "$oid": "6997e807abb965814682a0b4"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 2,
+  "timestamp": 1771563015048,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e808abb965814682a0b5"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 3,
+  "timestamp": 1771563016832,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e80aabb965814682a0b6"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 4,
+  "timestamp": 1771563018187,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e80babb965814682a0b7"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 5,
+  "timestamp": 1771563019442,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e80eabb965814682a0b8"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 2,
+  "timestamp": 1771563022821,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e80fabb965814682a0b9"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 1,
+  "timestamp": 1771563023763,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e812abb965814682a0ba"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 2,
+  "timestamp": 1771563026960,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997e814abb965814682a0bb"
+  },
+  "text": "good",
+  "name": "Joltin Scorpion",
+  "rating": 1,
+  "timestamp": 1771563028760,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997ebf7abb965814682a0bc"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 4,
+  "timestamp": 1771564023738,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec0eabb965814682a0bd"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 3,
+  "timestamp": 1771564046232,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec0fabb965814682a0be"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 1,
+  "timestamp": 1771564047327,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec10abb965814682a0bf"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 1,
+  "timestamp": 1771564048213,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec10abb965814682a0c0"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 1,
+  "timestamp": 1771564048775,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec11abb965814682a0c1"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 2,
+  "timestamp": 1771564049236,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec11abb965814682a0c2"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 3,
+  "timestamp": 1771564049942,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec12abb965814682a0c3"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 4,
+  "timestamp": 1771564050618,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec13abb965814682a0c4"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 5,
+  "timestamp": 1771564051611,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec14abb965814682a0c5"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 4,
+  "timestamp": 1771564052942,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec16abb965814682a0c6"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 3,
+  "timestamp": 1771564054339,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec1babb965814682a0c7"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 4,
+  "timestamp": 1771564059877,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec1eabb965814682a0c8"
+  },
+  "text": "good",
+  "name": "Holy Falcon",
+  "rating": 1,
+  "timestamp": 1771564062890,
+  "bookId": "002914180X"
+},
+{
+  "_id": {
+    "$oid": "6997ec29abb965814682a0c9"
+  },
+  "text": "Good",
+  "name": "Abrasive Orangutan",
+  "rating": 5,
+  "timestamp": 1771564073638,
+  "bookId": "0007102909"
+},
+{
+  "_id": {
+    "$oid": "6997f4edabb965814682a0ca"
+  },
+  "text": "good",
+  "name": "OldSchool Hyena",
+  "rating": 5,
+  "timestamp": 1771566317921,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997f4faabb965814682a0cb"
+  },
+  "text": "good",
+  "name": "OldSchool Hyena",
+  "rating": 4,
+  "timestamp": 1771566330910,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997f4fbabb965814682a0cc"
+  },
+  "text": "good",
+  "name": "OldSchool Hyena",
+  "rating": 2,
+  "timestamp": 1771566331774,
+  "bookId": "0060006870"
+},
+{
+  "_id": {
+    "$oid": "6997f513abb965814682a0cd"
+  },
+  "text": "k",
+  "name": "OldSchool Hyena",
+  "rating": 2,
+  "timestamp": 1771566355085,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "6997f52eabb965814682a0ce"
+  },
+  "text": "hello",
+  "name": "OldSchool Hyena",
+  "rating": 1,
+  "timestamp": 1771566382373,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69981b610b99a7a723346fe6"
+  },
+  "text": "good book",
+  "name": "Pompous Gorilla",
+  "rating": 5,
+  "timestamp": 1771576161132,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "699c7907bc670b73506765e7"
+  },
+  "text": "Gènial!",
+  "name": "Tawdry Alligator",
+  "rating": 5,
+  "timestamp": 1771862279534,
+  "bookId": "0312156219"
+},
+{
+  "_id": {
+    "$oid": "699c790dbc670b73506765e8"
+  },
+  "text": "Cool",
+  "name": "OldSchool Tarantula",
+  "rating": 5,
+  "timestamp": 1771862285004,
+  "bookId": "0029066824"
+},
+{
+  "_id": {
+    "$oid": "699c7939bc670b73506765e9"
+  },
+  "text": "Temp",
+  "name": "Luscious Tarantula",
+  "rating": 4,
+  "timestamp": 1771862329775,
+  "bookId": "0060169028"
+},
+{
+  "_id": {
+    "$oid": "699e2f7bc4ad581738ac9a5f"
+  },
+  "text": "heyye",
+  "name": "OldSchool Scorpion",
+  "rating": 1,
+  "timestamp": 1771974523721,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "699e2f8ec4ad581738ac9a60"
+  },
+  "text": "heyye",
+  "name": "OldSchool Scorpion",
+  "rating": 5,
+  "timestamp": 1771974542296,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "699e2fa1c4ad581738ac9a61"
+  },
+  "text": "This isn't a review at all",
+  "name": "OldSchool Scorpion",
+  "rating": 5,
+  "timestamp": 1771974561861,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "699ed482dd8b037c438f8ada"
+  },
+  "text": "s",
+  "name": "Daft Barracuda",
+  "rating": 1,
+  "timestamp": 1772016770249,
+  "bookId": "0004724119"
+},
+{
+  "_id": {
+    "$oid": "69a04da81a0224a40ab44348"
+  },
+  "text": "great",
+  "name": "Nasty Lemur",
+  "rating": 4,
+  "timestamp": 1772113320622,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69a04dab1a0224a40ab44349"
+  },
+  "text": "great",
+  "name": "Nasty Lemur",
+  "rating": 3,
+  "timestamp": 1772113323207,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69a04dad1a0224a40ab4434a"
+  },
+  "text": "great",
+  "name": "Nasty Lemur",
+  "rating": 1,
+  "timestamp": 1772113325813,
+  "bookId": "000710698X"
+},
+{
+  "_id": {
+    "$oid": "69a08aa3972ea72370d801e4"
+  },
+  "text": "maoeeee",
+  "name": "Daft Koala",
+  "rating": 1,
+  "timestamp": 1772128931472,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69a08aa5972ea72370d801e5"
+  },
+  "text": "maoeeee",
+  "name": "Daft Koala",
+  "rating": 4,
+  "timestamp": 1772128933064,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69a08aac972ea72370d801e6"
+  },
+  "text": "maoeeee",
+  "name": "Daft Koala",
+  "rating": 4,
+  "timestamp": 1772128940589,
+  "bookId": "0004709934"
+},
+{
+  "_id": {
+    "$oid": "69a08acc972ea72370d801e7"
+  },
+  "text": "aooo",
+  "name": "Daft Koala",
+  "rating": 5,
+  "timestamp": 1772128972852,
+  "bookId": "0004709934"
 }]
