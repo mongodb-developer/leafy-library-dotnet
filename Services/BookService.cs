@@ -35,26 +35,12 @@ public class BookService
 
     public async Task<List<Book>> SearchAsync(string query, int page = 1, int pageSize = 20)
     {
-        var filter = Builders<Book>.Filter.Or(
-            Builders<Book>.Filter.Regex(b => b.Title, new MongoDB.Bson.BsonRegularExpression(query, "i")),
-            Builders<Book>.Filter.Regex(b => b.LongTitle, new MongoDB.Bson.BsonRegularExpression(query, "i"))
-        );
-
-        return await _books
-            .Find(filter)
-            .Skip((page - 1) * pageSize)
-            .Limit(pageSize)
-            .ToListAsync();
+       return null; // TODO: implement search
     }
 
     public async Task<long> SearchCountAsync(string query)
     {
-        var filter = Builders<Book>.Filter.Or(
-            Builders<Book>.Filter.Regex(b => b.Title, new MongoDB.Bson.BsonRegularExpression(query, "i")),
-            Builders<Book>.Filter.Regex(b => b.LongTitle, new MongoDB.Bson.BsonRegularExpression(query, "i"))
-        );
-
-        return await _books.CountDocumentsAsync(filter);
+       return null; // TODO: implement search count
     }
 
     public async Task CreateAsync(Book book)

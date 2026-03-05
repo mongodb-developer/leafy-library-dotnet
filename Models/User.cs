@@ -10,7 +10,7 @@ public class User
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    [BsonElement("name")]
+    [BsonElement("username")]
     public string Name { get; set; } = string.Empty;
 
     [BsonElement("isAdmin")]

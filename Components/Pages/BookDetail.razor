@@ -2,6 +2,7 @@
 @attribute [Authorize]
 @using System.Text.RegularExpressions
 @inject Leafy_Library.Services.BookService BookService
+@inject Leafy_Library.Services.ReservationService ReservationService
 
 <PageTitle>@(book?.Title ?? "Book Details")</PageTitle>
 
@@ -80,13 +81,38 @@ else
                     <h3>Availability</h3>
                     <div class="availability-bar">
                         <span class="available-count @(book.Available > 0 ? "in-stock" : "out-of-stock")">
-                            @book.Available available
+                            @book.Available available @(book.Available == 1 ? "copy" : "copies")
                         </span>
                         <span class="total-count">of @book.TotalInventory total</span>
                     </div>
-                    <button class="btn btn-primary reserve-btn" disabled="@(book.Available <= 0)">
-                        @(book.Available > 0 ? "Reserve this book" : "Currently unavailable")
-                    </button>
+
+                    <AuthorizeView>
+                        <Authorized>
+                            @if (reservation is not null)
+                            {
+                                <div class="reservation-active">
+                                    <CountDown EndDate="@reservation.ExpirationDate!.Value" />
+                                    <button class="btn btn-danger cancel-btn" @onclick="CancelReservation" disabled="@reserving">
+                                        Cancel Reservation
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <button class="btn btn-primary reserve-btn" @onclick="Reserve"
+                                        disabled="@(book.Available <= 0 || reserving)">
+                                    @if (reserving)
+                                    {
+                                        <span>Reserving...</span>
+                                    }
+                                    else
+                                    {
+                                        @(book.Available > 0 ? "Reserve this book" : "Currently unavailable")
+                                    }
+                                </button>
+                            }
+                        </Authorized>
+                    </AuthorizeView>
                 </div>
             </div>
         </div>
@@ -118,31 +144,27 @@ else
         }
 
         <div class="book-reviews">
-            <h2>Reviews (@book.Reviews.Count)</h2>
+            <h2>Reviews</h2>
+
+            <AuthorizeView>
+                <Authorized>
+                    <ReviewForm BookId="@BookId" UserName="@context.User.Identity?.Name" OnReviewAdded="OnReviewAdded" />
+                </Authorized>
+            </AuthorizeView>
+
             @if (book.Reviews.Count == 0)
             {
-                <p class="no-reviews">No reviews yet.</p>
+                <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
             }
             else
             {
                 @foreach (var review in book.Reviews.OrderByDescending(r => r.Timestamp))
                 {
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="reviewer-name">@review.Name</span>
-                            @if (review.Rating.HasValue)
-                            {
-                                <span class="review-rating">
-                                    @for (int i = 0; i < 5; i++)
-                                    {
-                                        <span class="@(i < review.Rating.Value ? "star filled" : "star")">★</span>
-                                    }
-                                </span>
-                            }
-                            <span class="review-date">@FormatTimestamp(review.Timestamp)</span>
-                        </div>
-                        <p class="review-text">@review.Text</p>
-                    </div>
+                    <ReviewDisplay @key="review.Id"
+                                   ReviewerName="@review.Name"
+                                   Text="@review.Text"
+                                   Rating="@review.Rating"
+                                   Timestamp="@review.Timestamp" />
                 }
             }
         </div>
@@ -153,23 +175,88 @@ else
     [Parameter]
     public string BookId { get; set; } = string.Empty;
 
+    [CascadingParameter] private Task<AuthenticationState> AuthStateTask { get; set; } = null!;
+
     private Leafy_Library.Models.Book? book;
+    private Leafy_Library.Models.IssueDetail? reservation;
+    private string? userId;
+    private string? userName;
+    private bool reserving;
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
 
     protected override async Task OnInitializedAsync()
     {
+        var authState = await AuthStateTask;
+        userId = authState.User.FindFirst("sub")?.Value;
+        userName = authState.User.Identity?.Name;
+
         book = await BookService.GetByIdAsync(BookId);
+
+        if (!string.IsNullOrEmpty(userId))
+        {
+            reservation = await ReservationService.GetReservationAsync(BookId, userId);
+        }
+    }
+
+    private async Task Reserve()
+    {
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || reserving) return;
+
+        reserving = true;
+        try
+        {
+            await ReservationService.CreateReservationAsync(BookId, userId, userName);
+            await RefreshData();
+        }
+        catch
+        {
+            // Reservation failed — refresh to show current state
+            await RefreshData();
+        }
+        finally
+        {
+            reserving = false;
+        }
+    }
+
+    private async Task CancelReservation()
+    {
+        if (string.IsNullOrEmpty(userId) || reserving) return;
+
+        reserving = true;
+        try
+        {
+            await ReservationService.CancelReservationAsync(BookId, userId);
+            await RefreshData();
+        }
+        catch
+        {
+            await RefreshData();
+        }
+        finally
+        {
+            reserving = false;
+        }
+    }
+
+    private async Task RefreshData()
+    {
+        book = await BookService.GetByIdAsync(BookId);
+        reservation = !string.IsNullOrEmpty(userId)
+            ? await ReservationService.GetReservationAsync(BookId, userId)
+            : null;
+        StateHasChanged();
+    }
+
+    private async Task OnReviewAdded()
+    {
+        book = await BookService.GetByIdAsync(BookId);
+        StateHasChanged();
     }
 
     private static string StripHtml(string? html)
     {
         if (string.IsNullOrWhiteSpace(html)) return string.Empty;
         return Regex.Replace(html, "<[^>]+>", " ").Trim();
-    }
-
-    private static string FormatTimestamp(long timestampMs)
-    {
-        var dto = DateTimeOffset.FromUnixTimeMilliseconds(timestampMs);
-        return dto.ToString("d MMM yyyy");
     }
 }

@@ -134,4 +134,113 @@ public class IssueDetailService
             .Find(i => i.Id == id)
             .FirstOrDefaultAsync();
     }
+
+    /// <summary>
+    /// Gets a paginated list of all borrowed books (admin).
+    /// </summary>
+    public async Task<PagedResult<IssueDetail>> GetBorrowedBooksPageAsync(int limit, int skip)
+    {
+        var filter = Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook);
+        var totalCount = await _issueDetails.CountDocumentsAsync(filter);
+        var data = await _issueDetails.Find(filter)
+            .SortByDescending(i => i.BorrowDate)
+            .Skip(skip)
+            .Limit(limit)
+            .ToListAsync();
+        return new PagedResult<IssueDetail> { Data = data, TotalCount = totalCount };
+    }
+
+    /// <summary>
+    /// Admin: Lend a book to a user. Converts a reservation to a borrow if one exists.
+    /// Only decrements inventory if the borrow doesn't replace an existing reservation
+    /// and is not a renewal of an existing borrow.
+    /// </summary>
+    public async Task<IssueDetail?> AdminBorrowBookAsync(string bookId, string userId, string userName)
+    {
+        var book = await _bookService.GetByIdAsync(bookId);
+        if (book is null) return null;
+
+        var now = DateTime.UtcNow;
+
+        // Check for existing active borrow (renewal case)
+        var existingFilter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
+            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
+        );
+
+        var existingBorrow = await _issueDetails.Find(existingFilter).FirstOrDefaultAsync();
+        bool isRenewal = false;
+        IssueDetail result;
+
+        if (existingBorrow is not null)
+        {
+            // Renewal — update existing borrow record
+            var update = Builders<IssueDetail>.Update
+                .Set(i => i.BorrowDate, now)
+                .Set(i => i.DueDate, now.AddDays(BorrowDurationDays));
+            await _issueDetails.UpdateOneAsync(existingFilter, update);
+            isRenewal = true;
+            existingBorrow.BorrowDate = now;
+            existingBorrow.DueDate = now.AddDays(BorrowDurationDays);
+            result = existingBorrow;
+        }
+        else
+        {
+            // New borrow
+            result = new IssueDetail
+            {
+                Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+                Book = new IssueDetailBook { Id = bookId, Title = book.Title },
+                User = new IssueDetailUser { Id = userId, Name = userName },
+                BorrowDate = now,
+                DueDate = now.AddDays(BorrowDurationDays),
+                RecordType = IssueDetailType.BorrowedBook,
+                Returned = false
+            };
+            await _issueDetails.InsertOneAsync(result);
+        }
+
+        // Delete matching reservation if one exists
+        var reservationId = $"{userId}R{bookId}";
+        var deleteResult = await _issueDetails.DeleteOneAsync(i => i.Id == reservationId);
+        var borrowReplacesReservation = deleteResult.DeletedCount == 1;
+
+        // Only decrement inventory if no reservation was deleted AND not a renewal
+        if (!borrowReplacesReservation && !isRenewal)
+        {
+            await _bookService.DecrementAvailableAsync(bookId);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Admin: Return a borrowed book by bookId and userId.
+    /// Finds the active borrow, marks as returned, increments inventory.
+    /// </summary>
+    public async Task<bool> AdminReturnBookAsync(string bookId, string userId)
+    {
+        var filter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
+            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
+        );
+
+        var update = Builders<IssueDetail>.Update
+            .Set(i => i.Returned, true)
+            .Set(i => i.ReturnedDate, DateTime.UtcNow);
+
+        var result = await _issueDetails.UpdateOneAsync(filter, update);
+
+        if (result.ModifiedCount > 0)
+        {
+            await _bookService.IncrementAvailableAsync(bookId);
+            return true;
+        }
+
+        return false;
+    }
 }

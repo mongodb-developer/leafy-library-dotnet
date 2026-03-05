@@ -1,0 +1,43 @@
+@namespace Leafy_Library.Components.Shared
+
+<div class="star-rating @(Fixed ? "" : "interactive")">
+    @for (int i = 1; i <= StarCount; i++)
+    {
+        var starIndex = i;
+        <span class="star @(starIndex <= DisplayRating ? "filled" : "")"
+              @onclick="() => OnStarClick(starIndex)"
+              @onmouseover="() => OnStarHover(starIndex)"
+              @onmouseout="OnStarLeave"
+              title="@(Fixed ? "" : $"{starIndex} star{(starIndex > 1 ? "s" : "")}")">★</span>
+    }
+</div>
+
+@code {
+    [Parameter] public int Rating { get; set; } = 1;
+    [Parameter] public int StarCount { get; set; } = 5;
+    [Parameter] public bool Fixed { get; set; } = false;
+    [Parameter] public EventCallback<int> RatingChanged { get; set; }
+
+    private int? hoverRating;
+
+    private int DisplayRating => hoverRating ?? Rating;
+
+    private async Task OnStarClick(int star)
+    {
+        if (Fixed) return;
+        Rating = star;
+        await RatingChanged.InvokeAsync(star);
+    }
+
+    private void OnStarHover(int star)
+    {
+        if (Fixed) return;
+        hoverRating = star;
+    }
+
+    private void OnStarLeave()
+    {
+        if (Fixed) return;
+        hoverRating = null;
+    }
+}

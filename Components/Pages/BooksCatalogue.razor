@@ -94,22 +94,14 @@
 
     private async Task LoadBooksAsync()
     {
-        if (string.IsNullOrWhiteSpace(searchQuery))
-        {
-            books = await BookService.GetAllAsync(currentPage, pageSize);
-            totalCount = await BookService.GetCountAsync();
-        }
-        else
-        {
-            books = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
-            totalCount = await BookService.SearchCountAsync(searchQuery);
-        }
+        books = await BookService.GetAllAsync(currentPage, pageSize);
+        totalCount = await BookService.GetCountAsync();
     }
 
-    private async Task OnSearchAsync()
+    private Task OnSearchAsync()
     {
-        currentPage = 1;
-        await LoadBooksAsync();
+        // TODO: Implement search functionality
+        return Task.CompletedTask;
     }
 
     private async Task PreviousPage()

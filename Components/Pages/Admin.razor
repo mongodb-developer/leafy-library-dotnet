@@ -1,0 +1,256 @@
+@page "/admin"
+@attribute [Authorize(Policy = "Admin")]
+@inject Leafy_Library.Services.ReservationService ReservationService
+@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+
+<PageTitle>Admin Dashboard</PageTitle>
+
+<div class="dashboard-wrapper">
+    <div class="title-wrapper">
+        <h1>Admin Dashboard</h1>
+    </div>
+
+    <div class="reservations">
+        <h2>Reservations</h2>
+
+        @if (reservations is not null && reservations.Count > 0)
+        {
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>User</th>
+                        <th>Expires on</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in reservations)
+                    {
+                        <tr>
+                            <td>@reservation.Book.Title</td>
+                            <td>@reservation.User.Name</td>
+                            <td>@reservation.ExpirationDate?.ToString("dd MMM yyyy, HH:mm")</td>
+                            <td>
+                                <button class="btn-action btn-lend" @onclick="() => LendBook(reservation)" disabled="@isProcessing">
+                                    Lend
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (reservationsTotalCount > reservationsPageSize)
+            {
+                <div class="pagination">
+                    <button class="btn btn-primary" disabled="@(reservationsPage <= 1)" @onclick="PreviousReservationsPage">
+                        Previous
+                    </button>
+                    <span class="page-info">Page @reservationsPage of @reservationsTotalPages</span>
+                    <select class="page-size-select" value="@reservationsPageSize" @onchange="OnReservationsPageSizeChanged">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <button class="btn btn-primary" disabled="@(reservationsPage >= reservationsTotalPages)" @onclick="NextReservationsPage">
+                        Next
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            <span class="no-data">No reservations.</span>
+        }
+    </div>
+
+    <div class="borrowed">
+        <h2>Borrowed Books</h2>
+
+        @if (borrowedBooks is not null && borrowedBooks.Count > 0)
+        {
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>User</th>
+                        <th>Borrowed on</th>
+                        <th>Due date</th>
+                        <th>Returned on</th>
+                        <th>Returned</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var borrow in borrowedBooks)
+                    {
+                        <tr>
+                            <td>@borrow.Book.Title</td>
+                            <td>@borrow.User.Name</td>
+                            <td>@borrow.BorrowDate?.ToString("dd MMM yyyy")</td>
+                            <td>@borrow.DueDate?.ToString("dd MMM yyyy")</td>
+                            <td>@(borrow.ReturnedDate?.ToString("dd MMM yyyy") ?? "")</td>
+                            <td>@(borrow.Returned == true ? "✅" : "")</td>
+                            <td>
+                                @if (borrow.Returned != true)
+                                {
+                                    <button class="btn-action btn-return" @onclick="() => ReturnBook(borrow)" disabled="@isProcessing">
+                                        Return
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (borrowedBooksTotalCount > borrowedBooksPageSize)
+            {
+                <div class="pagination">
+                    <button class="btn btn-primary" disabled="@(borrowedBooksPage <= 1)" @onclick="PreviousBorrowedBooksPage">
+                        Previous
+                    </button>
+                    <span class="page-info">Page @borrowedBooksPage of @borrowedBooksTotalPages</span>
+                    <select class="page-size-select" value="@borrowedBooksPageSize" @onchange="OnBorrowedBooksPageSizeChanged">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <button class="btn btn-primary" disabled="@(borrowedBooksPage >= borrowedBooksTotalPages)" @onclick="NextBorrowedBooksPage">
+                        Next
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            <span class="no-data">No borrowed books.</span>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Leafy_Library.Models.IssueDetail>? reservations;
+    private long reservationsTotalCount;
+    private int reservationsPage = 1;
+    private int reservationsPageSize = 10;
+    private int reservationsTotalPages => (int)Math.Ceiling((double)reservationsTotalCount / reservationsPageSize);
+
+    private List<Leafy_Library.Models.IssueDetail>? borrowedBooks;
+    private long borrowedBooksTotalCount;
+    private int borrowedBooksPage = 1;
+    private int borrowedBooksPageSize = 10;
+    private int borrowedBooksTotalPages => (int)Math.Ceiling((double)borrowedBooksTotalCount / borrowedBooksPageSize);
+
+    private bool isProcessing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.WhenAll(FetchReservations(), FetchBorrowedBooks());
+    }
+
+    // --- Data Loading ---
+
+    private async Task FetchReservations()
+    {
+        var skip = (reservationsPage - 1) * reservationsPageSize;
+        var result = await ReservationService.GetReservationsPageAsync(reservationsPageSize, skip);
+        reservations = result.Data;
+        reservationsTotalCount = result.TotalCount;
+    }
+
+    private async Task FetchBorrowedBooks()
+    {
+        var skip = (borrowedBooksPage - 1) * borrowedBooksPageSize;
+        var result = await IssueDetailService.GetBorrowedBooksPageAsync(borrowedBooksPageSize, skip);
+        borrowedBooks = result.Data;
+        borrowedBooksTotalCount = result.TotalCount;
+    }
+
+    // --- Admin Actions ---
+
+    private async Task LendBook(Leafy_Library.Models.IssueDetail reservation)
+    {
+        isProcessing = true;
+        try
+        {
+            await IssueDetailService.AdminBorrowBookAsync(
+                reservation.Book.Id, reservation.User.Id!, reservation.User.Name);
+            await Task.WhenAll(FetchReservations(), FetchBorrowedBooks());
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private async Task ReturnBook(Leafy_Library.Models.IssueDetail borrowedBook)
+    {
+        isProcessing = true;
+        try
+        {
+            await IssueDetailService.AdminReturnBookAsync(
+                borrowedBook.Book.Id, borrowedBook.User.Id!);
+            await Task.WhenAll(FetchReservations(), FetchBorrowedBooks());
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    // --- Reservations Pagination ---
+
+    private async Task PreviousReservationsPage()
+    {
+        if (reservationsPage > 1)
+        {
+            reservationsPage--;
+            await FetchReservations();
+        }
+    }
+
+    private async Task NextReservationsPage()
+    {
+        if (reservationsPage < reservationsTotalPages)
+        {
+            reservationsPage++;
+            await FetchReservations();
+        }
+    }
+
+    private async Task OnReservationsPageSizeChanged(ChangeEventArgs e)
+    {
+        reservationsPageSize = int.Parse(e.Value?.ToString() ?? "10");
+        reservationsPage = 1;
+        await FetchReservations();
+    }
+
+    // --- Borrowed Books Pagination ---
+
+    private async Task PreviousBorrowedBooksPage()
+    {
+        if (borrowedBooksPage > 1)
+        {
+            borrowedBooksPage--;
+            await FetchBorrowedBooks();
+        }
+    }
+
+    private async Task NextBorrowedBooksPage()
+    {
+        if (borrowedBooksPage < borrowedBooksTotalPages)
+        {
+            borrowedBooksPage++;
+            await FetchBorrowedBooks();
+        }
+    }
+
+    private async Task OnBorrowedBooksPageSizeChanged(ChangeEventArgs e)
+    {
+        borrowedBooksPageSize = int.Parse(e.Value?.ToString() ?? "10");
+        borrowedBooksPage = 1;
+        await FetchBorrowedBooks();
+    }
+}

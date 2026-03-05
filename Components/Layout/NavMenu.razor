@@ -1,44 +1,46 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">
-            <img src="leaf-logo.svg" alt="Leafy Library" class="brand-logo" />
-            Leafy Library
-        </a>
-    </div>
-</div>
+﻿<nav class="top-navbar">
+    <a class="navbar-brand" href="">
+        <img src="leaf-logo.svg" alt="Leafy Library" class="brand-logo" />
+        Leafy Library
+    </a>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+    <input type="checkbox" title="Navigation menu" class="navbar-toggler" id="nav-toggle" />
+    <label class="navbar-toggler-label" for="nav-toggle">
+        <span class="toggler-icon"></span>
+    </label>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
+    <div class="nav-items">
+        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+        </NavLink>
 
         <AuthorizeView>
             <Authorized>
-                <div class="nav-item px-3 nav-user-section">
-                    <div class="nav-user-info">
+                @if (context.User.IsInRole("Admin"))
+                {
+                    <a class="admin-panel" href="/admin">
+                        <span class="bi bi-gear-fill-nav-menu" aria-hidden="true"></span>
+                        <span>Librarian Dashboard</span>
+                    </a>
+                }
+                <div class="nav-user-section">
+                    <a class="nav-user-info" href="/profile/@context.User.Identity?.Name">
                         <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
                         <span class="nav-user-name">@context.User.Identity?.Name</span>
-                    </div>
+                    </a>
                     <button class="btn btn-link nav-link nav-logout-btn" @onclick="Logout">
                         <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Logout
                     </button>
                 </div>
             </Authorized>
             <NotAuthorized>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="login">
-                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> Login
-                    </NavLink>
-                </div>
+                <NavLink class="nav-link" href="login">
+                    <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> Login
+                </NavLink>
             </NotAuthorized>
         </AuthorizeView>
-    </nav>
-</div>
+    </div>
+</nav>
 
 @using Leafy_Library.Services
 @inject JwtAuthenticationStateProvider AuthStateProvider

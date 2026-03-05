@@ -32,7 +32,8 @@ public class ReviewService
 
     /// <summary>
     /// Creates a review in the reviews collection and also pushes it
-    /// as an embedded document into the book's reviews array.
+    /// into the book's embedded reviews array (subset pattern: sorted
+    /// by timestamp descending, sliced to the 5 most recent).
     /// </summary>
     public async Task<Review> CreateAsync(string bookId, string reviewerName, string text, int? rating)
     {
@@ -48,7 +49,7 @@ public class ReviewService
 
         await _reviews.InsertOneAsync(review);
 
-        // Also embed into the book document
+        // Build the embedded review (without bookId — it's implied by the parent document)
         var embeddedReview = new BsonDocument
         {
             { "_id", new ObjectId(review.Id) },
@@ -58,8 +59,26 @@ public class ReviewService
             { "timestamp", new BsonInt64(review.Timestamp) }
         };
 
-        var update = Builders<Book>.Update.Push("reviews", embeddedReview);
-        await _books.UpdateOneAsync(b => b.Id == bookId, update);
+        // Subset pattern: push with $each, $sort by timestamp desc, $slice to 5
+        var rawUpdate = new BsonDocument
+        {
+            { "$push", new BsonDocument
+                {
+                    { "reviews", new BsonDocument
+                        {
+                            { "$each", new BsonArray { embeddedReview } },
+                            { "$sort", new BsonDocument("timestamp", -1) },
+                            { "$slice", 5 }
+                        }
+                    }
+                }
+            }
+        };
+
+        var booksCollection = _books.Database.GetCollection<BsonDocument>(_books.CollectionNamespace.CollectionName);
+        await booksCollection.UpdateOneAsync(
+            new BsonDocument("_id", bookId),
+            rawUpdate);
 
         return review;
     }

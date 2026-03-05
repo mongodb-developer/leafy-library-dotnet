@@ -1,0 +1,58 @@
+@namespace Leafy_Library.Components.Shared
+@implements IDisposable
+
+<div class="countdown @(isExpired ? "expired" : "")">
+    @if (isExpired)
+    {
+        <span class="countdown-label">Reservation expired</span>
+    }
+    else
+    {
+        <span class="countdown-label">Reservation expires in:</span>
+        <span class="countdown-time">@FormatTimeRemaining()</span>
+    }
+</div>
+
+@code {
+    [Parameter] public DateTime EndDate { get; set; }
+
+    private Timer? timer;
+    private TimeSpan remaining;
+    private bool isExpired;
+
+    protected override void OnInitialized()
+    {
+        UpdateRemaining();
+        timer = new Timer(_ =>
+        {
+            UpdateRemaining();
+            InvokeAsync(StateHasChanged);
+        }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+    }
+
+    private void UpdateRemaining()
+    {
+        remaining = EndDate.ToUniversalTime() - DateTime.UtcNow;
+        if (remaining <= TimeSpan.Zero)
+        {
+            remaining = TimeSpan.Zero;
+            isExpired = true;
+            timer?.Dispose();
+            timer = null;
+        }
+    }
+
+    private string FormatTimeRemaining()
+    {
+        if (remaining.TotalHours >= 1)
+            return $"{(int)remaining.TotalHours}h {remaining.Minutes:D2}m {remaining.Seconds:D2}s";
+        if (remaining.TotalMinutes >= 1)
+            return $"{remaining.Minutes}m {remaining.Seconds:D2}s";
+        return $"{remaining.Seconds}s";
+    }
+
+    public void Dispose()
+    {
+        timer?.Dispose();
+    }
+}

@@ -1,0 +1,22 @@
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.countdown-label {
+    color: #001E2B;
+    font-weight: 500;
+}
+
+.countdown-time {
+    font-weight: 700;
+    color: #00684A;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown.expired .countdown-label {
+    color: #e50000;
+}

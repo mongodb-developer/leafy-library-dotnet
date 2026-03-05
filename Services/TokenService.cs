@@ -21,13 +21,18 @@ public class TokenService
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var claims = new[]
+        var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id!),
-            new Claim("username", user.Name),
-            new Claim("isAdmin", (user.IsAdmin ?? false).ToString().ToLower()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new(JwtRegisteredClaimNames.Sub, user.Id!),
+            new("username", user.Name),
+            new("isAdmin", (user.IsAdmin ?? false).ToString().ToLower()),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
+
+        if (user.IsAdmin == true)
+        {
+            claims.Add(new Claim("role", "Admin"));
+        }
 
         var token = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
@@ -60,7 +65,8 @@ public class TokenService
                 ValidAudience = _jwtSettings.Audience,
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero,
-                NameClaimType = "username"
+                NameClaimType = "username",
+                RoleClaimType = "role"
             }, out _);
 
             return principal;

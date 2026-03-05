@@ -139,6 +139,21 @@
     width: 100%;
 }
 
+.cancel-btn {
+    width: 100%;
+    background-color: #e50000;
+    border-color: #e50000;
+}
+
+.cancel-btn:hover:not(:disabled) {
+    background-color: #c50000;
+    border-color: #c50000;
+}
+
+.reservation-active {
+    margin-top: 0.25rem;
+}
+
 /* Synopsis */
 .book-synopsis {
     margin-bottom: 2rem;
@@ -205,53 +220,6 @@
     font-style: italic;
 }
 
-.review-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.reviewer-name {
-    font-weight: 600;
-    color: #001E2B;
-    font-size: 0.95rem;
-}
-
-.review-rating {
-    font-size: 0.95rem;
-}
-
-.star {
-    color: #ccc;
-}
-
-.star.filled {
-    color: #f5a623;
-}
-
-.review-date {
-    color: #6c757d;
-    font-size: 0.85rem;
-    margin-left: auto;
-}
-
-.review-text {
-    color: #444;
-    line-height: 1.6;
-    font-size: 0.9rem;
-    margin: 0;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .book-detail-header {
@@ -273,9 +241,5 @@
 
     .book-genres {
         justify-content: center;
-    }
-
-    .review-date {
-        margin-left: 0;
     }
 }

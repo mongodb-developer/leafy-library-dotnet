@@ -75,6 +75,49 @@ public class IssueDetailsController : ControllerBase
 
         return Ok(new { message = "Book returned successfully" });
     }
+
+    /// <summary>
+    /// Get a paginated list of all borrowed books (admin only).
+    /// </summary>
+    [HttpGet("borrow/page")]
+    [Authorize(Policy = "Admin")]
+    public async Task<ActionResult> GetBorrowedBooksPage([FromQuery] int limit = 10, [FromQuery] int skip = 0)
+    {
+        var result = await _issueDetailService.GetBorrowedBooksPageAsync(limit, skip);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Admin: Lend a book to a user (converts reservation to borrow).
+    /// </summary>
+    [HttpPost("borrow/{bookId}/{userId}")]
+    [Authorize(Policy = "Admin")]
+    public async Task<ActionResult> AdminBorrowBook(string bookId, string userId, [FromServices] UserService userService)
+    {
+        var user = await userService.GetUserByIdAsync(userId);
+        if (user is null)
+            return NotFound(new { message = "User not found" });
+
+        var issue = await _issueDetailService.AdminBorrowBookAsync(bookId, userId, user.Name);
+        if (issue is null)
+            return Conflict(new { message = "Book not found" });
+
+        return Ok(issue);
+    }
+
+    /// <summary>
+    /// Admin: Return a borrowed book on behalf of a user.
+    /// </summary>
+    [HttpPost("borrow/{bookId}/{userId}/return")]
+    [Authorize(Policy = "Admin")]
+    public async Task<ActionResult> AdminReturnBook(string bookId, string userId)
+    {
+        var returned = await _issueDetailService.AdminReturnBookAsync(bookId, userId);
+        if (!returned)
+            return NotFound(new { message = "Active borrow record not found" });
+
+        return Ok(new { message = "Book returned successfully" });
+    }
 }
 
 public class BorrowRequest

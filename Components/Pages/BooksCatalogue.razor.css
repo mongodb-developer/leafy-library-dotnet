@@ -2,6 +2,7 @@
 .search-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -109,7 +110,7 @@
 
 .book-authors a {
     color: #6c757d;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .book-authors a:hover {

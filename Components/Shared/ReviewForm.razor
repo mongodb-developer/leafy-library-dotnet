@@ -1,0 +1,84 @@
+@namespace Leafy_Library.Components.Shared
+
+<div class="review-form-wrapper">
+    @if (submitted)
+    {
+        <div class="review-submitted">
+            <span class="check-icon">✓</span> Your review has been submitted!
+        </div>
+    }
+    else
+    {
+        <EditForm Model="model" OnValidSubmit="Submit" FormName="reviewForm">
+            <DataAnnotationsValidator />
+
+            <div class="rating-section">
+                <label>Your rating:</label>
+                <StarRating Rating="@model.Rating" RatingChanged="UpdateRating" />
+            </div>
+
+            <div class="text-section">
+                <label for="reviewText">Your review:</label>
+                <textarea id="reviewText" @bind="model.Text" placeholder="Enter your review..." rows="4"
+                          disabled="@submitting"></textarea>
+                <ValidationMessage For="() => model.Text" />
+            </div>
+
+            <button type="submit" class="submit-button" disabled="@(submitting || string.IsNullOrWhiteSpace(model.Text))">
+                @if (submitting)
+                {
+                    <span>Submitting...</span>
+                }
+                else
+                {
+                    <span>Submit</span>
+                }
+            </button>
+        </EditForm>
+    }
+</div>
+
+@using System.ComponentModel.DataAnnotations
+@inject Leafy_Library.Services.ReviewService ReviewService
+
+@code {
+    [Parameter] public string BookId { get; set; } = string.Empty;
+    [Parameter] public string UserName { get; set; } = string.Empty;
+    [Parameter] public EventCallback OnReviewAdded { get; set; }
+
+    private ReviewFormModel model = new();
+    private bool submitting = false;
+    private bool submitted = false;
+
+    private void UpdateRating(int rating)
+    {
+        model.Rating = rating;
+    }
+
+    private async Task Submit()
+    {
+        if (string.IsNullOrWhiteSpace(model.Text)) return;
+
+        submitting = true;
+
+        try
+        {
+            await ReviewService.CreateAsync(BookId, UserName, model.Text, model.Rating);
+            submitted = true;
+            await OnReviewAdded.InvokeAsync();
+        }
+        catch
+        {
+            submitting = false;
+        }
+    }
+
+    private class ReviewFormModel
+    {
+        [Required(ErrorMessage = "Review text is required")]
+        public string Text { get; set; } = string.Empty;
+
+        [Range(1, 5)]
+        public int Rating { get; set; } = 1;
+    }
+}

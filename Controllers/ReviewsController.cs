@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leafy_Library.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/books/{bookId}/reviews")]
 public class ReviewsController : ControllerBase
 {
     private readonly ReviewService _reviewService;
@@ -16,7 +16,7 @@ public class ReviewsController : ControllerBase
         _reviewService = reviewService;
     }
 
-    [HttpGet("book/{bookId}")]
+    [HttpGet]
     public async Task<ActionResult<List<Review>>> GetByBookId(string bookId)
     {
         var reviews = await _reviewService.GetByBookIdAsync(bookId);
@@ -35,13 +35,15 @@ public class ReviewsController : ControllerBase
 
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<Review>> Create([FromBody] CreateReviewRequest request)
+    public async Task<ActionResult<Review>> Create(string bookId, [FromBody] CreateReviewRequest request)
     {
-        if (string.IsNullOrWhiteSpace(request.BookId))
-            return BadRequest(new { message = "BookId is required" });
+        // Get the reviewer's name from JWT claims — the user can't fake who they are
+        var userName = User.Identity?.Name;
+        if (string.IsNullOrWhiteSpace(userName))
+            return Unauthorized(new { message = "Unable to determine user identity" });
 
-        if (string.IsNullOrWhiteSpace(request.Name))
-            return BadRequest(new { message = "Reviewer name is required" });
+        if (string.IsNullOrWhiteSpace(bookId))
+            return BadRequest(new { message = "BookId is required" });
 
         if (string.IsNullOrWhiteSpace(request.Text))
             return BadRequest(new { message = "Review text is required" });
@@ -50,9 +52,9 @@ public class ReviewsController : ControllerBase
             return BadRequest(new { message = "Rating must be between 1 and 5" });
 
         var review = await _reviewService.CreateAsync(
-            request.BookId, request.Name, request.Text, request.Rating);
+            bookId, userName, request.Text, request.Rating);
 
-        return CreatedAtAction(nameof(GetById), new { id = review.Id }, review);
+        return CreatedAtAction(nameof(GetById), new { bookId, id = review.Id }, review);
     }
 
     [Authorize]
@@ -69,8 +71,6 @@ public class ReviewsController : ControllerBase
 
 public class CreateReviewRequest
 {
-    public string BookId { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
     public string Text { get; set; } = string.Empty;
     public int? Rating { get; set; }
 }

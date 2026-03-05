@@ -1,0 +1,145 @@
+@page "/profile/{Username}"
+@attribute [Authorize]
+@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+
+<PageTitle>Profile — @Username</PageTitle>
+
+@if (!isAuthorized)
+{
+    <p class="access-denied">You can only view your own profile.</p>
+}
+else if (loading)
+{
+    <p class="loading-text">Loading profile...</p>
+}
+else
+{
+    <div class="profile-page">
+        <div class="title-wrapper">
+            <h2>@Username</h2>
+            <h3>@(isAdmin ? "Librarian" : "Reader")</h3>
+        </div>
+
+        <div class="user-card">
+            <h4>Contact information</h4>
+            <div class="user-details">
+                <div class="detail-row">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value">@email</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Address</span>
+                    <span class="detail-value">@address</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Borrowed Books (@borrowedBooks.Count)</h3>
+            @if (borrowedBooks.Count == 0)
+            {
+                <p class="empty-state">No books currently borrowed.</p>
+            }
+            else
+            {
+                <div class="issue-list">
+                    @foreach (var issue in borrowedBooks)
+                    {
+                        <div class="issue-card">
+                            <div class="issue-book-title">
+                                <a href="/books/@issue.Book.Id">@issue.Book.Title</a>
+                            </div>
+                            <div class="issue-meta">
+                                <span>Borrowed: @issue.BorrowDate?.ToString("d MMM yyyy")</span>
+                                <span>Due: @issue.DueDate?.ToString("d MMM yyyy")</span>
+                                @if (issue.DueDate < DateTime.UtcNow)
+                                {
+                                    <span class="overdue-badge">Overdue</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="section">
+            <h3>Reservations (@reservations.Count)</h3>
+            @if (reservations.Count == 0)
+            {
+                <p class="empty-state">No active reservations.</p>
+            }
+            else
+            {
+                <div class="issue-list">
+                    @foreach (var reservation in reservations)
+                    {
+                        <div class="issue-card">
+                            <div class="issue-book-title">
+                                <a href="/books/@reservation.Book.Id">@reservation.Book.Title</a>
+                            </div>
+                            @if (reservation.ExpirationDate.HasValue)
+                            {
+                                <div class="issue-meta">
+                                    <span>Expires: @reservation.ExpirationDate.Value.ToString("d MMM yyyy")</span>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string Username { get; set; } = string.Empty;
+
+    [CascadingParameter] private Task<AuthenticationState> AuthStateTask { get; set; } = null!;
+
+    private bool isAuthorized;
+    private bool loading = true;
+    private bool isAdmin;
+    private string email = string.Empty;
+    private string address = string.Empty;
+
+    private List<Leafy_Library.Models.IssueDetail> borrowedBooks = new();
+    private List<Leafy_Library.Models.IssueDetail> reservations = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateTask;
+        var user = authState.User;
+
+        // Guard: can only view your own profile
+        var currentUsername = user.Identity?.Name;
+        if (currentUsername != Username)
+        {
+            isAuthorized = false;
+            loading = false;
+            return;
+        }
+
+        isAuthorized = true;
+        isAdmin = user.HasClaim("isAdmin", "true");
+
+        // Generate fake contact info (matches the Angular app's pattern)
+        email = $"{Username.ToLowerInvariant()}@mongodb-library.com";
+        address = $"{Random.Shared.Next(1, 100)} Main Street";
+
+        // Get the user's ObjectId from the JWT sub claim
+        var userId = user.FindFirst("sub")?.Value;
+        if (!string.IsNullOrEmpty(userId))
+        {
+            var allIssues = await IssueDetailService.GetByUserIdAsync(userId);
+            borrowedBooks = allIssues
+                .Where(i => i.RecordType == Leafy_Library.Models.IssueDetailType.BorrowedBook && i.Returned == false)
+                .ToList();
+            reservations = allIssues
+                .Where(i => i.RecordType == Leafy_Library.Models.IssueDetailType.Reservation)
+                .ToList();
+        }
+
+        loading = false;
+    }
+}
