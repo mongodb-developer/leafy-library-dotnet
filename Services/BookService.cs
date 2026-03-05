@@ -33,14 +33,14 @@ public class BookService
             .FirstOrDefaultAsync();
     }
 
-    public async Task<List<Book>> SearchAsync(string query, int page = 1, int pageSize = 20)
+    public async Task<List<Book>?> SearchAsync(string query, int page = 1, int pageSize = 20)
     {
        return null; // TODO: implement search
     }
 
     public async Task<long> SearchCountAsync(string query)
     {
-       return null; // TODO: implement search count
+       return 0; // TODO: implement search count
     }
 
     public async Task CreateAsync(Book book)
