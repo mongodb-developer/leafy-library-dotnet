@@ -18,16 +18,16 @@
             <Authorized>
                 @if (context.User.IsInRole("Admin"))
                 {
-                    <a class="admin-panel" href="/admin">
+                    <NavLink class="nav-link admin-panel" href="admin">
                         <span class="bi bi-gear-fill-nav-menu" aria-hidden="true"></span>
                         <span>Librarian Dashboard</span>
-                    </a>
+                    </NavLink>
                 }
                 <div class="nav-user-section">
-                    <a class="nav-user-info" href="/profile/@context.User.Identity?.Name">
+                    <NavLink class="nav-link nav-user-info" href="@($"profile/{context.User.Identity?.Name}")">
                         <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
                         <span class="nav-user-name">@context.User.Identity?.Name</span>
-                    </a>
+                    </NavLink>
                     <button class="btn btn-link nav-link nav-logout-btn" @onclick="Logout">
                         <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Logout
                     </button>
