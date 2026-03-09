@@ -17,8 +17,6 @@
 .borrowed {
     background: white;
     padding: 40px;
-    width: calc(100% + 77px);
-    margin-left: -70px;
 }
 
 .reservations h2,

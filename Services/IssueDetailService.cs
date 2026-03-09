@@ -1,4 +1,6 @@
 using Leafy_Library.Models;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -21,11 +23,355 @@ public class IssueDetailService
     /// </summary>
     public async Task<List<IssueDetail>> GetByUserIdAsync(string userId)
     {
-        var filter = Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}"));
+        var filter = Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}"));
         return await _issueDetails
             .Find(filter)
             .SortByDescending(i => i.BorrowDate)
             .ToListAsync();
+    }
+
+    /// <summary>
+    /// Gets active loans for a user with computed daysToDue and status via aggregation.
+    /// </summary>
+    public async Task<List<LoanSummary>> GetLoanSummariesAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId)),
+            Builders<IssueDetail>.Filter.Eq(x => x.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Eq(x => x.Returned, false)
+        );
+
+        const string daysToDueStage = """
+        {
+          "$addFields": {
+            "daysToDue": {
+              "$dateDiff": {
+                "startDate": "$$NOW",
+                "endDate": "$dueDate",
+                "unit": "day"
+              }
+            }
+          }
+        }
+        """;
+
+        const string statusStage = """
+        {
+          "$addFields": {
+            "status": {
+              "$switch": {
+                "branches": [
+                  { "case": { "$lt": ["$daysToDue", 0] }, "then": "Overdue" },
+                  { "case": { "$lte": ["$daysToDue", 3] }, "then": "Due soon" }
+                ],
+                "default": "OK"
+              }
+            }
+          }
+        }
+        """;
+
+        var results = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<LoanSummaryIntermediate>(daysToDueStage)
+            .AppendStage<LoanSummaryIntermediate>(statusStage)
+            .Project(x => new LoanSummary
+            {
+                Title = x.Book.Title,
+                BorrowDate = x.BorrowDate,
+                DueDate = x.DueDate,
+                DaysToDue = x.DaysToDue,
+                Status = x.Status
+            })
+            .SortBy(x => x.DueDate)
+            .ToListAsync();
+
+        return results;
+    }
+
+    [BsonIgnoreExtraElements]
+    private sealed class LoanSummaryIntermediate
+    {
+        [BsonElement("book")]
+        public BookReference Book { get; set; } = null!;
+
+        [BsonElement("borrowDate")]
+        public DateTime BorrowDate { get; set; }
+
+        [BsonElement("dueDate")]
+        public DateTime DueDate { get; set; }
+
+        [BsonElement("daysToDue")]
+        public int DaysToDue { get; set; }
+
+        [BsonElement("status")]
+        public string Status { get; set; } = string.Empty;
+    }
+
+    [BsonIgnoreExtraElements]
+    private sealed class BookReference
+    {
+        [BsonElement("title")]
+        public string Title { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// Gets the top 5 genres a user has borrowed, by count.
+    /// </summary>
+    public async Task<List<GenreCount>> GetTopGenresAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId));
+
+        const string lookupStage = """
+        {
+          "$lookup": {
+            "from": "books",
+            "localField": "book._id",
+            "foreignField": "_id",
+            "as": "bookDetails"
+          }
+        }
+        """;
+
+        const string unwindBookDetails = """
+        { "$unwind": "$bookDetails" }
+        """;
+
+        const string unwindGenres = """
+        { "$unwind": "$bookDetails.genres" }
+        """;
+
+        const string groupStage = """
+        {
+          "$group": {
+            "_id": "$bookDetails.genres",
+            "count": { "$sum": 1 }
+          }
+        }
+        """;
+
+        var results = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<BsonDocument>(lookupStage)
+            .AppendStage<BsonDocument>(unwindBookDetails)
+            .AppendStage<BsonDocument>(unwindGenres)
+            .AppendStage<GenreCount>(groupStage)
+            .SortByDescending(x => x.Count)
+            .Limit(5)
+            .ToListAsync();
+
+        return results;
+    }
+
+    /// <summary>
+    /// Gets loan history grouped by month (YYYY-MM), sorted chronologically.
+    /// </summary>
+    public async Task<List<MonthlyLoanCount>> GetLoanHistoryByMonthAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId));
+
+        const string groupStage = """
+        {
+          "$group": {
+            "_id": {
+              "$dateToString": {
+                "format": "%Y-%m",
+                "date": "$borrowDate"
+              }
+            },
+            "count": { "$sum": 1 }
+          }
+        }
+        """;
+
+        var results = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<MonthlyLoanCount>(groupStage)
+            .SortBy(x => x.Month)
+            .ToListAsync();
+
+        return results;
+    }
+
+    /// <summary>
+    /// Gets the average reading time in days for returned books.
+    /// </summary>
+    public async Task<double?> GetAverageReadingTimeAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId)),
+            Builders<IssueDetail>.Filter.Eq(x => x.Returned, true)
+        );
+
+        const string projectStage = """
+        {
+          "$project": {
+            "readingDays": {
+              "$dateDiff": {
+                "startDate": "$borrowDate",
+                "endDate": "$returnedDate",
+                "unit": "day"
+              }
+            }
+          }
+        }
+        """;
+
+        const string groupStage = """
+        {
+          "$group": {
+            "_id": null,
+            "avgReadingTime": { "$avg": "$readingDays" }
+          }
+        }
+        """;
+
+        var result = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<BsonDocument>(projectStage)
+            .AppendStage<BsonDocument>(groupStage)
+            .FirstOrDefaultAsync();
+
+        return result?["avgReadingTime"]?.AsNullableDouble;
+    }
+
+    /// <summary>
+    /// Gets loan summary stats (active, overdue, due soon, returned) via $facet.
+    /// </summary>
+    public async Task<LoanSummaryStats> GetLoanSummaryStatsAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId));
+
+        const string daysToDueStage = """
+        {
+          "$addFields": {
+            "daysToDue": {
+              "$dateDiff": {
+                "startDate": "$$NOW",
+                "endDate": "$dueDate",
+                "unit": "day"
+              }
+            }
+          }
+        }
+        """;
+
+        const string facetStage = """
+        {
+          "$facet": {
+            "activeLoans": [
+              { "$match": { "returned": false } },
+              { "$count": "count" }
+            ],
+            "overdue": [
+              { "$match": { "returned": false, "daysToDue": { "$lt": 0 } } },
+              { "$count": "count" }
+            ],
+            "dueSoon": [
+              { "$match": { "returned": false, "daysToDue": { "$gte": 0, "$lte": 3 } } },
+              { "$count": "count" }
+            ],
+            "returned": [
+              { "$match": { "returned": true } },
+              { "$count": "count" }
+            ],
+            "avgReadingTime": [
+              { "$match": { "returned": true } },
+              {
+                "$project": {
+                  "readingDays": {
+                    "$dateDiff": {
+                      "startDate": "$borrowDate",
+                      "endDate": "$returnedDate",
+                      "unit": "day"
+                    }
+                  }
+                }
+              },
+              {
+                "$group": {
+                  "_id": null,
+                  "avgDays": { "$avg": "$readingDays" }
+                }
+              }
+            ]
+          }
+        }
+        """;
+
+        var result = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<BsonDocument>(daysToDueStage)
+            .AppendStage<BsonDocument>(facetStage)
+            .FirstOrDefaultAsync();
+
+        if (result is null)
+            return new LoanSummaryStats();
+
+        static int ExtractCount(BsonDocument doc, string field)
+        {
+            var arr = doc[field].AsBsonArray;
+            return arr.Count > 0 ? arr[0].AsBsonDocument["count"].AsInt32 : 0;
+        }
+
+        return new LoanSummaryStats
+        {
+            ActiveLoans = ExtractCount(result, "activeLoans"),
+            Overdue = ExtractCount(result, "overdue"),
+            DueSoon = ExtractCount(result, "dueSoon"),
+            Returned = ExtractCount(result, "returned"),
+            AvgReadingDays = result["avgReadingTime"].AsBsonArray is { Count: > 0 } arr
+                ? arr[0].AsBsonDocument["avgDays"].AsNullableDouble
+                : null
+        };
+    }
+
+    /// <summary>
+    /// Counts loans due soon (0–3 days remaining) for a user.
+    /// </summary>
+    public async Task<int> GetDueSoonCountAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId)),
+            Builders<IssueDetail>.Filter.Eq(x => x.Returned, false)
+        );
+
+        const string daysToDueStage = """
+        {
+          "$addFields": {
+            "daysToDue": {
+              "$dateDiff": {
+                "startDate": "$$NOW",
+                "endDate": "$dueDate",
+                "unit": "day"
+              }
+            }
+          }
+        }
+        """;
+
+        const string dueSoonMatch = """
+        {
+          "$match": {
+            "daysToDue": { "$lte": 3, "$gte": 0 }
+          }
+        }
+        """;
+
+        var result = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<BsonDocument>(daysToDueStage)
+            .AppendStage<BsonDocument>(dueSoonMatch)
+            .Count()
+            .FirstOrDefaultAsync();
+
+        return (int)(result?.Count ?? 0);
     }
 
     /// <summary>

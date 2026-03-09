@@ -1,0 +1,190 @@
+@page "/dashboard"
+@attribute [Authorize]
+@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+
+<PageTitle>Dashboard</PageTitle>
+
+<div class="dashboard-wrapper">
+    <div class="title-wrapper">
+        <h1>Dashboard</h1>
+    </div>
+
+    @if (dueSoonCount > 0)
+    {
+        <div class="due-soon-banner">
+            <span class="due-soon-icon">⚠</span>
+            You have <strong>@dueSoonCount</strong> book@(dueSoonCount == 1 ? "" : "s") due soon!
+        </div>
+    }
+
+    <div class="summary-cards">
+        <div class="summary-card">
+            <span class="summary-value">@summaryStats.ActiveLoans</span>
+            <span class="summary-label">Active loans</span>
+        </div>
+        <div class="summary-card summary-overdue">
+            <span class="summary-value">@summaryStats.Overdue</span>
+            <span class="summary-label">Overdue</span>
+        </div>
+        <div class="summary-card summary-due-soon">
+            <span class="summary-value">@summaryStats.DueSoon</span>
+            <span class="summary-label">Due soon</span>
+        </div>
+        <div class="summary-card summary-returned">
+            <span class="summary-value">@summaryStats.Returned</span>
+            <span class="summary-label">Returned</span>
+        </div>
+        <div class="summary-card summary-avg">
+            <span class="summary-value">@(summaryStats.AvgReadingDays.HasValue ? $"{summaryStats.AvgReadingDays.Value:F1}" : "—")</span>
+            <span class="summary-label">Avg. days to read</span>
+        </div>
+    </div>
+
+    <div class="loans-section">
+        <h2>Your loans right now</h2>
+
+        @if (loans is null)
+        {
+            <p>Loading...</p>
+        }
+        else if (loans.Count == 0)
+        {
+            <p class="no-data">You have no active loans.</p>
+        }
+        else
+        {
+            <table class="loans-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Borrowed date</th>
+                        <th>Due date</th>
+                        <th>Days until due</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var loan in loans)
+                    {
+                        <tr>
+                            <td>@loan.Title</td>
+                            <td>@loan.BorrowDate?.ToString("dd MMM yyyy")</td>
+                            <td>@loan.DueDate?.ToString("dd MMM yyyy")</td>
+                            <td>
+                                @if (loan.DaysToDue < 0)
+                                {
+                                    <span>@Math.Abs(loan.DaysToDue) days overdue</span>
+                                }
+                                else
+                                {
+                                    @loan.DaysToDue
+                                }
+                            </td>
+                            <td>
+                                <span class="status-badge status-@loan.Status.ToLower().Replace(" ", "-")">@loan.Status</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="genres-section">
+        <h2>Your top genres</h2>
+
+        @if (topGenres is null)
+        {
+            <p>Loading...</p>
+        }
+        else if (topGenres.Count == 0)
+        {
+            <p class="no-data">No genre data yet.</p>
+        }
+        else
+        {
+            <div class="genre-bars">
+                @foreach (var genre in topGenres)
+                {
+                    var pct = maxGenreCount > 0 ? (int)(100.0 * genre.Count / maxGenreCount) : 0;
+                    <div class="genre-row">
+                        <span class="genre-label">@genre.Genre</span>
+                        <div class="genre-bar-track">
+                            <div class="genre-bar-fill" style="width: @(pct)%"></div>
+                        </div>
+                        <span class="genre-count">@genre.Count</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="history-section">
+        <h2>Loan history by month</h2>
+
+        @if (monthlyHistory is null)
+        {
+            <p>Loading...</p>
+        }
+        else if (monthlyHistory.Count == 0)
+        {
+            <p class="no-data">No loan history yet.</p>
+        }
+        else
+        {
+            <div class="history-bars">
+                @foreach (var month in monthlyHistory)
+                {
+                    var pct = maxMonthCount > 0 ? (int)(100.0 * month.Count / maxMonthCount) : 0;
+                    <div class="history-row">
+                        <span class="history-label">@FormatMonth(month.Month)</span>
+                        <div class="history-bar-track">
+                            <div class="history-bar-fill" style="width: @(pct)%"></div>
+                        </div>
+                        <span class="history-count">@month.Count</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Leafy_Library.Models.LoanSummary>? loans;
+    private List<Leafy_Library.Models.GenreCount>? topGenres;
+    private List<Leafy_Library.Models.MonthlyLoanCount>? monthlyHistory;
+    private Leafy_Library.Models.LoanSummaryStats summaryStats = new();
+    private int dueSoonCount;
+    private int maxGenreCount;
+    private int maxMonthCount;
+
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthStateTask is not null)
+        {
+            var authState = await AuthStateTask;
+            var userId = authState.User.FindFirst("sub")?.Value;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                loans = await IssueDetailService.GetLoanSummariesAsync(userId);
+                summaryStats = await IssueDetailService.GetLoanSummaryStatsAsync(userId);
+                dueSoonCount = summaryStats.DueSoon;
+                topGenres = await IssueDetailService.GetTopGenresAsync(userId);
+                maxGenreCount = topGenres.Count > 0 ? topGenres.Max(g => g.Count) : 0;
+                monthlyHistory = await IssueDetailService.GetLoanHistoryByMonthAsync(userId);
+                maxMonthCount = monthlyHistory.Count > 0 ? monthlyHistory.Max(m => m.Count) : 0;
+            }
+        }
+        loans ??= new();
+    }
+
+    private static string FormatMonth(string yyyyMm)
+    {
+        return DateTime.TryParseExact(yyyyMm, "yyyy-MM", null, System.Globalization.DateTimeStyles.None, out var date)
+            ? date.ToString("MMM yyyy")
+            : yyyyMm;
+    }
+}
