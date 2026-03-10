@@ -5,6 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Leafy_Library.Controllers;
 
+public class BorrowRequest
+{
+    public string BookId { get; set; } = string.Empty;
+    public string UserId { get; set; } = string.Empty;
+    public string UserName { get; set; } = string.Empty;
+}
+
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
@@ -16,6 +23,10 @@ public class IssueDetailsController : ControllerBase
     {
         _issueDetailService = issueDetailService;
     }
+
+    // ──────────────────────────────────────────────
+    //  Queries
+    // ──────────────────────────────────────────────
 
     [HttpGet("user/{userId}")]
     public async Task<ActionResult<List<IssueDetail>>> GetByUserId(string userId)
@@ -48,6 +59,10 @@ public class IssueDetailsController : ControllerBase
         return Ok(issue);
     }
 
+    // ──────────────────────────────────────────────
+    //  User actions
+    // ──────────────────────────────────────────────
+
     [HttpPost("borrow")]
     public async Task<ActionResult<IssueDetail>> BorrowBook([FromBody] BorrowRequest request)
     {
@@ -75,6 +90,10 @@ public class IssueDetailsController : ControllerBase
 
         return Ok(new { message = "Book returned successfully" });
     }
+
+    // ──────────────────────────────────────────────
+    //  Admin endpoints
+    // ──────────────────────────────────────────────
 
     /// <summary>
     /// Get a paginated list of all borrowed books (admin only).
@@ -118,11 +137,4 @@ public class IssueDetailsController : ControllerBase
 
         return Ok(new { message = "Book returned successfully" });
     }
-}
-
-public class BorrowRequest
-{
-    public string BookId { get; set; } = string.Empty;
-    public string UserId { get; set; } = string.Empty;
-    public string UserName { get; set; } = string.Empty;
 }

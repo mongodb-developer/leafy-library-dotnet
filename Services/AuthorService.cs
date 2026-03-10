@@ -1,4 +1,5 @@
 using Leafy_Library.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -47,7 +48,7 @@ public class AuthorService
     {
         var filter = Builders<Author>.Filter.Regex(
             a => a.Name,
-            new MongoDB.Bson.BsonRegularExpression(query, "i"));
+            new BsonRegularExpression(query, "i"));
 
         return await _authors
             .Find(filter)

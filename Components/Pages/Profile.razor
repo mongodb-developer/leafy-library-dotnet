@@ -1,6 +1,6 @@
 @page "/profile/{Username}"
 @attribute [Authorize]
-@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+@inject IssueDetailService IssueDetailService
 
 <PageTitle>Profile — @Username</PageTitle>
 
@@ -103,8 +103,8 @@ else
     private string email = string.Empty;
     private string address = string.Empty;
 
-    private List<Leafy_Library.Models.IssueDetail> borrowedBooks = new();
-    private List<Leafy_Library.Models.IssueDetail> reservations = new();
+    private List<IssueDetail> borrowedBooks = new();
+    private List<IssueDetail> reservations = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -133,10 +133,10 @@ else
         {
             var allIssues = await IssueDetailService.GetByUserIdAsync(userId);
             borrowedBooks = allIssues
-                .Where(i => i.RecordType == Leafy_Library.Models.IssueDetailType.BorrowedBook && i.Returned == false)
+                .Where(i => i.RecordType == IssueDetailType.BorrowedBook && i.Returned == false)
                 .ToList();
             reservations = allIssues
-                .Where(i => i.RecordType == Leafy_Library.Models.IssueDetailType.Reservation)
+                .Where(i => i.RecordType == IssueDetailType.Reservation)
                 .ToList();
         }
 

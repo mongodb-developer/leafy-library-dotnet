@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace Leafy_Library.Models;
 
@@ -94,9 +95,9 @@ public class BookAttribute
     public string Value { get; set; } = string.Empty;
 }
 
-public class FlexibleStringSerializer : MongoDB.Bson.Serialization.Serializers.SerializerBase<string>
+public class FlexibleStringSerializer : SerializerBase<string>
 {
-    public override string Deserialize(MongoDB.Bson.Serialization.BsonDeserializationContext context, MongoDB.Bson.Serialization.BsonDeserializationArgs args)
+    public override string Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
     {
         var bsonType = context.Reader.GetCurrentBsonType();
         if (bsonType == BsonType.Null)
@@ -116,7 +117,7 @@ public class FlexibleStringSerializer : MongoDB.Bson.Serialization.Serializers.S
         };
     }
 
-    public override void Serialize(MongoDB.Bson.Serialization.BsonSerializationContext context, MongoDB.Bson.Serialization.BsonSerializationArgs args, string value)
+    public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, string value)
     {
         context.Writer.WriteString(value);
     }

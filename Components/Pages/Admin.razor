@@ -1,7 +1,7 @@
 @page "/admin"
 @attribute [Authorize(Policy = "Admin")]
-@inject Leafy_Library.Services.ReservationService ReservationService
-@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+@inject ReservationService ReservationService
+@inject IssueDetailService IssueDetailService
 
 <PageTitle>Admin Dashboard</PageTitle>
 
@@ -131,13 +131,13 @@
 </div>
 
 @code {
-    private List<Leafy_Library.Models.IssueDetail>? reservations;
+    private List<IssueDetail>? reservations;
     private long reservationsTotalCount;
     private int reservationsPage = 1;
     private int reservationsPageSize = 10;
     private int reservationsTotalPages => (int)Math.Ceiling((double)reservationsTotalCount / reservationsPageSize);
 
-    private List<Leafy_Library.Models.IssueDetail>? borrowedBooks;
+    private List<IssueDetail>? borrowedBooks;
     private long borrowedBooksTotalCount;
     private int borrowedBooksPage = 1;
     private int borrowedBooksPageSize = 10;
@@ -170,7 +170,7 @@
 
     // --- Admin Actions ---
 
-    private async Task LendBook(Leafy_Library.Models.IssueDetail reservation)
+    private async Task LendBook(IssueDetail reservation)
     {
         isProcessing = true;
         try
@@ -185,7 +185,7 @@
         }
     }
 
-    private async Task ReturnBook(Leafy_Library.Models.IssueDetail borrowedBook)
+    private async Task ReturnBook(IssueDetail borrowedBook)
     {
         isProcessing = true;
         try

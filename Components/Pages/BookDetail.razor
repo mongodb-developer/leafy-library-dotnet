@@ -1,8 +1,8 @@
 @page "/books/{BookId}"
 @attribute [Authorize]
 @using System.Text.RegularExpressions
-@inject Leafy_Library.Services.BookService BookService
-@inject Leafy_Library.Services.ReservationService ReservationService
+@inject BookService BookService
+@inject ReservationService ReservationService
 
 <PageTitle>@(book?.Title ?? "Book Details")</PageTitle>
 
@@ -177,8 +177,8 @@ else
 
     [CascadingParameter] private Task<AuthenticationState> AuthStateTask { get; set; } = null!;
 
-    private Leafy_Library.Models.Book? book;
-    private Leafy_Library.Models.IssueDetail? reservation;
+    private Book? book;
+    private IssueDetail? reservation;
     private string? userId;
     private string? userName;
     private bool reserving;

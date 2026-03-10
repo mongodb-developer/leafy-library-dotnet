@@ -18,6 +18,20 @@ public class IssueDetailService
         _bookService = bookService;
     }
 
+    // ──────────────────────────────────────────────
+    //  Queries
+    // ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Gets a single issue detail by its ID.
+    /// </summary>
+    public async Task<IssueDetail?> GetByIdAsync(string id)
+    {
+        return await _issueDetails
+            .Find(i => i.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
     /// <summary>
     /// Gets all borrow records for a specific user.
     /// </summary>
@@ -28,6 +42,128 @@ public class IssueDetailService
             .Find(filter)
             .SortByDescending(i => i.BorrowDate)
             .ToListAsync();
+    }
+
+    /// <summary>
+    /// Gets all active (unreturned) borrows for a user.
+    /// </summary>
+    public async Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId)
+    {
+        var filter = Builders<IssueDetail>.Filter.And(
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
+            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
+        );
+        return await _issueDetails
+            .Find(filter)
+            .ToListAsync();
+    }
+
+    /// <summary>
+    /// Gets all borrow records for a specific book.
+    /// </summary>
+    public async Task<List<IssueDetail>> GetByBookIdAsync(string bookId)
+    {
+        return await _issueDetails
+            .Find(i => i.Book.Id == bookId)
+            .SortByDescending(i => i.BorrowDate)
+            .ToListAsync();
+    }
+
+    // ──────────────────────────────────────────────
+    //  Dashboard aggregations
+    // ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Gets loan summary stats (active, overdue, due soon, returned, avg reading time) via $facet.
+    /// </summary>
+    public async Task<LoanSummaryStats> GetLoanSummaryStatsAsync(string userId)
+    {
+        var matchFilter = Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId));
+
+        const string daysToDueStage = """
+        {
+          "$addFields": {
+            "daysToDue": {
+              "$dateDiff": {
+                "startDate": "$$NOW",
+                "endDate": "$dueDate",
+                "unit": "day"
+              }
+            }
+          }
+        }
+        """;
+
+        const string facetStage = """
+        {
+          "$facet": {
+            "activeLoans": [
+              { "$match": { "returned": false } },
+              { "$count": "count" }
+            ],
+            "overdue": [
+              { "$match": { "returned": false, "daysToDue": { "$lt": 0 } } },
+              { "$count": "count" }
+            ],
+            "dueSoon": [
+              { "$match": { "returned": false, "daysToDue": { "$gte": 0, "$lte": 3 } } },
+              { "$count": "count" }
+            ],
+            "returned": [
+              { "$match": { "returned": true } },
+              { "$count": "count" }
+            ],
+            "avgReadingTime": [
+              { "$match": { "returned": true } },
+              {
+                "$project": {
+                  "readingDays": {
+                    "$dateDiff": {
+                      "startDate": "$borrowDate",
+                      "endDate": "$returnedDate",
+                      "unit": "day"
+                    }
+                  }
+                }
+              },
+              {
+                "$group": {
+                  "_id": null,
+                  "avgDays": { "$avg": "$readingDays" }
+                }
+              }
+            ]
+          }
+        }
+        """;
+
+        var result = await _issueDetails
+            .Aggregate()
+            .Match(matchFilter)
+            .AppendStage<BsonDocument>(daysToDueStage)
+            .AppendStage<BsonDocument>(facetStage)
+            .FirstOrDefaultAsync();
+
+        if (result is null)
+            return new LoanSummaryStats();
+
+        static int ExtractCount(BsonDocument doc, string field)
+        {
+            var arr = doc[field].AsBsonArray;
+            return arr.Count > 0 ? arr[0].AsBsonDocument["count"].AsInt32 : 0;
+        }
+
+        return new LoanSummaryStats
+        {
+            ActiveLoans = ExtractCount(result, "activeLoans"),
+            Overdue = ExtractCount(result, "overdue"),
+            DueSoon = ExtractCount(result, "dueSoon"),
+            Returned = ExtractCount(result, "returned"),
+            AvgReadingDays = result["avgReadingTime"].AsBsonArray is { Count: > 0 } arr
+                ? arr[0].AsBsonDocument["avgDays"].AsNullableDouble
+                : null
+        };
     }
 
     /// <summary>
@@ -88,32 +224,6 @@ public class IssueDetailService
             .ToListAsync();
 
         return results;
-    }
-
-    [BsonIgnoreExtraElements]
-    private sealed class LoanSummaryIntermediate
-    {
-        [BsonElement("book")]
-        public BookReference Book { get; set; } = null!;
-
-        [BsonElement("borrowDate")]
-        public DateTime BorrowDate { get; set; }
-
-        [BsonElement("dueDate")]
-        public DateTime DueDate { get; set; }
-
-        [BsonElement("daysToDue")]
-        public int DaysToDue { get; set; }
-
-        [BsonElement("status")]
-        public string Status { get; set; } = string.Empty;
-    }
-
-    [BsonIgnoreExtraElements]
-    private sealed class BookReference
-    {
-        [BsonElement("title")]
-        public string Title { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -240,98 +350,6 @@ public class IssueDetailService
     }
 
     /// <summary>
-    /// Gets loan summary stats (active, overdue, due soon, returned) via $facet.
-    /// </summary>
-    public async Task<LoanSummaryStats> GetLoanSummaryStatsAsync(string userId)
-    {
-        var matchFilter = Builders<IssueDetail>.Filter.Eq("user._id", new ObjectId(userId));
-
-        const string daysToDueStage = """
-        {
-          "$addFields": {
-            "daysToDue": {
-              "$dateDiff": {
-                "startDate": "$$NOW",
-                "endDate": "$dueDate",
-                "unit": "day"
-              }
-            }
-          }
-        }
-        """;
-
-        const string facetStage = """
-        {
-          "$facet": {
-            "activeLoans": [
-              { "$match": { "returned": false } },
-              { "$count": "count" }
-            ],
-            "overdue": [
-              { "$match": { "returned": false, "daysToDue": { "$lt": 0 } } },
-              { "$count": "count" }
-            ],
-            "dueSoon": [
-              { "$match": { "returned": false, "daysToDue": { "$gte": 0, "$lte": 3 } } },
-              { "$count": "count" }
-            ],
-            "returned": [
-              { "$match": { "returned": true } },
-              { "$count": "count" }
-            ],
-            "avgReadingTime": [
-              { "$match": { "returned": true } },
-              {
-                "$project": {
-                  "readingDays": {
-                    "$dateDiff": {
-                      "startDate": "$borrowDate",
-                      "endDate": "$returnedDate",
-                      "unit": "day"
-                    }
-                  }
-                }
-              },
-              {
-                "$group": {
-                  "_id": null,
-                  "avgDays": { "$avg": "$readingDays" }
-                }
-              }
-            ]
-          }
-        }
-        """;
-
-        var result = await _issueDetails
-            .Aggregate()
-            .Match(matchFilter)
-            .AppendStage<BsonDocument>(daysToDueStage)
-            .AppendStage<BsonDocument>(facetStage)
-            .FirstOrDefaultAsync();
-
-        if (result is null)
-            return new LoanSummaryStats();
-
-        static int ExtractCount(BsonDocument doc, string field)
-        {
-            var arr = doc[field].AsBsonArray;
-            return arr.Count > 0 ? arr[0].AsBsonDocument["count"].AsInt32 : 0;
-        }
-
-        return new LoanSummaryStats
-        {
-            ActiveLoans = ExtractCount(result, "activeLoans"),
-            Overdue = ExtractCount(result, "overdue"),
-            DueSoon = ExtractCount(result, "dueSoon"),
-            Returned = ExtractCount(result, "returned"),
-            AvgReadingDays = result["avgReadingTime"].AsBsonArray is { Count: > 0 } arr
-                ? arr[0].AsBsonDocument["avgDays"].AsNullableDouble
-                : null
-        };
-    }
-
-    /// <summary>
     /// Counts loans due soon (0–3 days remaining) for a user.
     /// </summary>
     public async Task<int> GetDueSoonCountAsync(string userId)
@@ -374,31 +392,9 @@ public class IssueDetailService
         return (int)(result?.Count ?? 0);
     }
 
-    /// <summary>
-    /// Gets all active (unreturned) borrows for a user.
-    /// </summary>
-    public async Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId)
-    {
-        var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
-            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
-        );
-        return await _issueDetails
-            .Find(filter)
-            .ToListAsync();
-    }
-
-    /// <summary>
-    /// Gets all borrow records for a specific book.
-    /// </summary>
-    public async Task<List<IssueDetail>> GetByBookIdAsync(string bookId)
-    {
-        return await _issueDetails
-            .Find(i => i.Book.Id == bookId)
-            .SortByDescending(i => i.BorrowDate)
-            .ToListAsync();
-    }
+    // ──────────────────────────────────────────────
+    //  Borrow / Return operations
+    // ──────────────────────────────────────────────
 
     /// <summary>
     /// Borrows a book for a user. Decrements available count and creates an issue record.
@@ -412,7 +408,7 @@ public class IssueDetailService
 
         // Check if user already has this book borrowed
         var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
@@ -431,7 +427,7 @@ public class IssueDetailService
         var now = DateTime.UtcNow;
         var issueDetail = new IssueDetail
         {
-            Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+            Id = $"{userId}_{ObjectId.GenerateNewId()}",
             Book = new IssueDetailBook { Id = bookId, Title = book.Title },
             User = new IssueDetailUser { Id = userId, Name = userName },
             BorrowDate = now,
@@ -471,15 +467,9 @@ public class IssueDetailService
         return false;
     }
 
-    /// <summary>
-    /// Gets a single issue detail by its ID.
-    /// </summary>
-    public async Task<IssueDetail?> GetByIdAsync(string id)
-    {
-        return await _issueDetails
-            .Find(i => i.Id == id)
-            .FirstOrDefaultAsync();
-    }
+    // ──────────────────────────────────────────────
+    //  Admin operations
+    // ──────────────────────────────────────────────
 
     /// <summary>
     /// Gets a paginated list of all borrowed books (admin).
@@ -510,7 +500,7 @@ public class IssueDetailService
 
         // Check for existing active borrow (renewal case)
         var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
@@ -537,7 +527,7 @@ public class IssueDetailService
             // New borrow
             result = new IssueDetail
             {
-                Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+                Id = $"{userId}_{ObjectId.GenerateNewId()}",
                 Book = new IssueDetailBook { Id = bookId, Title = book.Title },
                 User = new IssueDetailUser { Id = userId, Name = userName },
                 BorrowDate = now,
@@ -569,7 +559,7 @@ public class IssueDetailService
     public async Task<bool> AdminReturnBookAsync(string bookId, string userId)
     {
         var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
@@ -588,5 +578,35 @@ public class IssueDetailService
         }
 
         return false;
+    }
+
+    // ──────────────────────────────────────────────
+    //  Private types (aggregation intermediates)
+    // ──────────────────────────────────────────────
+
+    [BsonIgnoreExtraElements]
+    private sealed class LoanSummaryIntermediate
+    {
+        [BsonElement("book")]
+        public BookReference Book { get; set; } = null!;
+
+        [BsonElement("borrowDate")]
+        public DateTime BorrowDate { get; set; }
+
+        [BsonElement("dueDate")]
+        public DateTime DueDate { get; set; }
+
+        [BsonElement("daysToDue")]
+        public int DaysToDue { get; set; }
+
+        [BsonElement("status")]
+        public string Status { get; set; } = string.Empty;
+    }
+
+    [BsonIgnoreExtraElements]
+    private sealed class BookReference
+    {
+        [BsonElement("title")]
+        public string Title { get; set; } = string.Empty;
     }
 }

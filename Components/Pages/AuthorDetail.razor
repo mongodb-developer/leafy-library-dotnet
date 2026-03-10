@@ -1,6 +1,6 @@
 @page "/authors/{AuthorId}"
 @attribute [Authorize]
-@inject Leafy_Library.Services.AuthorService AuthorService
+@inject AuthorService AuthorService
 
 <PageTitle>@(author?.Name ?? "Author Details")</PageTitle>
 
@@ -56,7 +56,7 @@ else
     [Parameter]
     public string AuthorId { get; set; } = string.Empty;
 
-    private Leafy_Library.Models.AuthorResponse? author;
+    private AuthorResponse? author;
     private bool notFound;
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
 

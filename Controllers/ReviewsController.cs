@@ -5,6 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Leafy_Library.Controllers;
 
+public class CreateReviewRequest
+{
+    public string Text { get; set; } = string.Empty;
+    public int? Rating { get; set; }
+}
+
 [ApiController]
 [Route("api/books/{bookId}/reviews")]
 public class ReviewsController : ControllerBase
@@ -67,10 +73,4 @@ public class ReviewsController : ControllerBase
 
         return NoContent();
     }
-}
-
-public class CreateReviewRequest
-{
-    public string Text { get; set; } = string.Empty;
-    public int? Rating { get; set; }
 }

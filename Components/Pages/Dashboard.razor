@@ -1,6 +1,6 @@
 @page "/dashboard"
 @attribute [Authorize]
-@inject Leafy_Library.Services.IssueDetailService IssueDetailService
+@inject IssueDetailService IssueDetailService
 
 <PageTitle>Dashboard</PageTitle>
 
@@ -150,10 +150,10 @@
 </div>
 
 @code {
-    private List<Leafy_Library.Models.LoanSummary>? loans;
-    private List<Leafy_Library.Models.GenreCount>? topGenres;
-    private List<Leafy_Library.Models.MonthlyLoanCount>? monthlyHistory;
-    private Leafy_Library.Models.LoanSummaryStats summaryStats = new();
+    private List<LoanSummary>? loans;
+    private List<GenreCount>? topGenres;
+    private List<MonthlyLoanCount>? monthlyHistory;
+    private LoanSummaryStats summaryStats = new();
     private int dueSoonCount;
     private int maxGenreCount;
     private int maxMonthCount;
