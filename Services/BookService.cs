@@ -1,4 +1,5 @@
 using Leafy_Library.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -35,12 +36,42 @@ public class BookService
 
     public async Task<List<Book>?> SearchAsync(string query, int page = 1, int pageSize = 20)
     {
-       return null; // TODO: implement search
+        var pipeline = new BsonDocument("$search", new BsonDocument
+        {
+            { "index", "fulltextsearch" },
+            { "text", new BsonDocument
+                {
+                    { "query", query },
+                    { "path", new BsonArray { "title", "authors.name", "genres" } }
+                }
+            }
+        });
+
+        return await _books.Aggregate()
+            .AppendStage<Book>(pipeline)
+            .Skip((page - 1) * pageSize)
+            .Limit(pageSize)
+            .ToListAsync();
     }
 
     public async Task<long> SearchCountAsync(string query)
     {
-       return 0; // TODO: implement search count
+        var pipeline = new BsonDocument("$search", new BsonDocument
+        {
+            { "index", "fulltextsearch" },
+            { "text", new BsonDocument
+                {
+                    { "query", query },
+                    { "path", new BsonArray { "title", "authors.name", "genres" } }
+                }
+            }
+        });
+
+        var results = await _books.Aggregate()
+            .AppendStage<Book>(pipeline)
+            .ToListAsync();
+
+        return results.Count;
     }
 
     public async Task CreateAsync(Book book)

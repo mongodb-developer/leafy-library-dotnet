@@ -102,4 +102,8 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+// Ensure the Atlas Search index exists before accepting requests
+var dbService = app.Services.GetRequiredService<DatabaseService>();
+await dbService.EnsureSearchIndexAsync();
+
 app.Run();
