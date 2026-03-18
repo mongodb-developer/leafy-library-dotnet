@@ -37,7 +37,7 @@ public class IssueDetailService
     /// </summary>
     public async Task<List<IssueDetail>> GetByUserIdAsync(string userId)
     {
-        var filter = Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}"));
+        var filter = Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId);
         return await _issueDetails
             .Find(filter)
             .SortByDescending(i => i.BorrowDate)
@@ -50,7 +50,7 @@ public class IssueDetailService
     public async Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId)
     {
         var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
         );
@@ -408,7 +408,7 @@ public class IssueDetailService
 
         // Check if user already has this book borrowed
         var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
@@ -500,7 +500,7 @@ public class IssueDetailService
 
         // Check for existing active borrow (renewal case)
         var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
@@ -559,7 +559,7 @@ public class IssueDetailService
     public async Task<bool> AdminReturnBookAsync(string bookId, string userId)
     {
         var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
+            Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId),
             Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
             Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
             Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
