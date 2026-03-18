@@ -27,7 +27,8 @@ public class Book
     public int? Pages { get; set; }
 
     [BsonElement("year")]
-    public int Year { get; set; }
+    [BsonIgnoreIfNull]
+    public int? Year { get; set; }
 
     [BsonElement("synopsis")]
     [BsonIgnoreIfNull]
@@ -68,6 +69,10 @@ public class Book
     [BsonElement("bookOfTheMonth")]
     [BsonIgnoreIfNull]
     public bool? BookOfTheMonth { get; set; }
+
+    [BsonElement("embedding")]
+    [BsonIgnoreIfNull]
+    public double[]? Embedding { get; set; }
 }
 
 /// <summary>

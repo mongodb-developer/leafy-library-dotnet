@@ -84,6 +84,7 @@
     private int pageSize = 20;
     private long totalCount;
     private int totalPages => (int)Math.Ceiling((double)totalCount / pageSize);
+    private CancellationTokenSource? _debounceCts;
 
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
 
@@ -100,6 +101,19 @@
 
     private async Task OnSearchAsync()
     {
+        _debounceCts?.Cancel();
+        _debounceCts = new CancellationTokenSource();
+        var token = _debounceCts.Token;
+
+        try
+        {
+            await Task.Delay(300, token);
+        }
+        catch (TaskCanceledException)
+        {
+            return;
+        }
+
         currentPage = 1;
 
         if (string.IsNullOrWhiteSpace(searchQuery))

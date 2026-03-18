@@ -17,7 +17,7 @@ public class Review
 
     [BsonElement("rating")]
     [BsonIgnoreIfNull]
-    public int? Rating { get; set; }
+    public double? Rating { get; set; }
 
     [BsonElement("name")]
     public string Name { get; set; } = string.Empty;

@@ -4,6 +4,7 @@ using Leafy_Library.Models;
 using Leafy_Library.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,8 +17,13 @@ builder.Services.Configure<MongoDbSettings>(
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("Jwt"));
 
+// Embedding settings
+builder.Services.Configure<EmbeddingSettings>(
+    builder.Configuration.GetSection("Embedding"));
+
 // Services
 builder.Services.AddSingleton<DatabaseService>();
+builder.Services.AddHttpClient<EmbeddingService>();
 builder.Services.AddSingleton<BookService>();
 builder.Services.AddSingleton<AuthorService>();
 builder.Services.AddSingleton<ReviewService>();
@@ -102,8 +108,12 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-// Ensure the Atlas Search index exists before accepting requests
+// Ensure the Atlas Vector Search index exists and generate embeddings
 var dbService = app.Services.GetRequiredService<DatabaseService>();
-await dbService.EnsureSearchIndexAsync();
+var embeddingSettings = app.Services.GetRequiredService<IOptions<EmbeddingSettings>>();
+await dbService.EnsureSearchIndexAsync(embeddingSettings.Value.Dimensions);
+
+var bookService = app.Services.GetRequiredService<BookService>();
+await bookService.GenerateEmbeddingsAsync();
 
 app.Run();
