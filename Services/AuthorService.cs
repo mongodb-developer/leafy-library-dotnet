@@ -15,26 +15,17 @@ public class AuthorService
         _books = db.Books;
     }
 
-    public async Task<List<Author>> GetAllAsync(int page = 1, int pageSize = 20)
-    {
-        return await _authors
-            .Find(_ => true)
+    public Task<List<Author>> GetAllAsync(int page = 1, int pageSize = 20) =>
+        _authors.Find(_ => true)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
-    }
 
-    public async Task<long> GetCountAsync()
-    {
-        return await _authors.CountDocumentsAsync(_ => true);
-    }
+    public Task<long> GetCountAsync() =>
+        _authors.CountDocumentsAsync(_ => true);
 
-    public async Task<Author?> GetByIdAsync(string id)
-    {
-        return await _authors
-            .Find(a => a.Id == id)
-            .FirstOrDefaultAsync();
-    }
+    public async Task<Author?> GetByIdAsync(string id) =>
+        await _authors.Find(a => a.Id == id).FirstOrDefaultAsync();
 
     public async Task<Author?> GetByNameAsync(string name)
     {

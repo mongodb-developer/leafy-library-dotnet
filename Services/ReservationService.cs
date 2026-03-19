@@ -1,5 +1,4 @@
 using Leafy_Library.Models;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -23,6 +22,10 @@ public class ReservationService
     /// </summary>
     public async Task<IssueDetail> CreateReservationAsync(string bookId, string userId, string userName)
     {
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(userId);
+        ArgumentException.ThrowIfNullOrEmpty(userName);
+
         var book = await _bookService.GetByIdAsync(bookId);
         if (book is null)
             throw new InvalidOperationException("Book not found");
@@ -59,6 +62,9 @@ public class ReservationService
     /// </summary>
     public async Task<bool> CancelReservationAsync(string bookId, string userId)
     {
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(userId);
+
         var reservationId = GetReservationId(bookId, userId);
         var result = await _issueDetails.DeleteOneAsync(i => i.Id == reservationId);
 
@@ -72,16 +78,11 @@ public class ReservationService
     /// <summary>
     /// Gets all reservations for the current user.
     /// </summary>
-    public async Task<List<IssueDetail>> GetUserReservationsAsync(string userId)
-    {
-        var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.Reservation)
-        );
-        return await _issueDetails
-            .Find(filter)
+    public Task<List<IssueDetail>> GetUserReservationsAsync(string userId) =>
+        _issueDetails.Find(
+            Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.Reservation))
             .ToListAsync();
-    }
 
     /// <summary>
     /// Gets a specific reservation for a user and book, if it exists.
@@ -111,8 +112,6 @@ public class ReservationService
     /// <summary>
     /// Composite _id: {userId}R{bookId}
     /// </summary>
-    private static string GetReservationId(string bookId, string userId)
-    {
-        return $"{userId}R{bookId}";
-    }
+    private static string GetReservationId(string bookId, string userId) =>
+        $"{userId}R{bookId}";
 }
