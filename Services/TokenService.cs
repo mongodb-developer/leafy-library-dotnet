@@ -16,10 +16,14 @@ public class TokenService
         _jwtSettings = jwtSettings.Value;
     }
 
+    private SymmetricSecurityKey SigningKey =>
+        new(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+
     public string CreateToken(User user)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
-        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        ArgumentNullException.ThrowIfNull(user);
+
+        var credentials = new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
 
         var claims = new List<Claim>
         {
@@ -47,7 +51,8 @@ public class TokenService
 
     public ClaimsPrincipal? ValidateToken(string token)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+        ArgumentException.ThrowIfNullOrEmpty(token);
+
         var handler = new JwtSecurityTokenHandler
         {
             MapInboundClaims = false
@@ -58,7 +63,7 @@ public class TokenService
             var principal = handler.ValidateToken(token, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = key,
+                IssuerSigningKey = SigningKey,
                 ValidateIssuer = true,
                 ValidIssuer = _jwtSettings.Issuer,
                 ValidateAudience = true,

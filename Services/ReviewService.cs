@@ -23,12 +23,8 @@ public class ReviewService
             .ToListAsync();
     }
 
-    public async Task<Review?> GetByIdAsync(string id)
-    {
-        return await _reviews
-            .Find(r => r.Id == id)
-            .FirstOrDefaultAsync();
-    }
+    public async Task<Review?> GetByIdAsync(string id) =>
+        await _reviews.Find(r => r.Id == id).FirstOrDefaultAsync();
 
     /// <summary>
     /// Creates a review in the reviews collection and also pushes it
@@ -37,6 +33,10 @@ public class ReviewService
     /// </summary>
     public async Task<Review> CreateAsync(string bookId, string reviewerName, string text, int? rating)
     {
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(reviewerName);
+        ArgumentException.ThrowIfNullOrEmpty(text);
+
         var review = new Review
         {
             Id = ObjectId.GenerateNewId().ToString(),
@@ -85,6 +85,7 @@ public class ReviewService
 
     public async Task<bool> DeleteAsync(string id)
     {
+        ArgumentException.ThrowIfNullOrEmpty(id);
         var review = await GetByIdAsync(id);
         if (review is null) return false;
 

@@ -14,6 +14,8 @@ public class UserService
 
     public async Task<User> GetOrCreateUserAsync(string username)
     {
+        ArgumentException.ThrowIfNullOrEmpty(username);
+
         var user = await _usersCollection
             .Find(u => u.Name == username)
             .FirstOrDefaultAsync();
@@ -31,17 +33,9 @@ public class UserService
         return user;
     }
 
-    public async Task<User?> GetUserByIdAsync(string id)
-    {
-        return await _usersCollection
-            .Find(u => u.Id == id)
-            .FirstOrDefaultAsync();
-    }
+    public async Task<User?> GetUserByIdAsync(string id) =>
+        await _usersCollection.Find(u => u.Id == id).FirstOrDefaultAsync();
 
-    public async Task<User?> GetUserByUsernameAsync(string username)
-    {
-        return await _usersCollection
-            .Find(u => u.Name == username)
-            .FirstOrDefaultAsync();
-    }
+    public async Task<User?> GetUserByUsernameAsync(string username) =>
+        await _usersCollection.Find(u => u.Name == username).FirstOrDefaultAsync();
 }
