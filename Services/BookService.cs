@@ -7,10 +7,12 @@ namespace Leafy_Library.Services;
 public class BookService
 {
     private readonly IMongoCollection<Book> _books;
+    private readonly EmbeddingService _embeddingService;
 
-    public BookService(DatabaseService db)
+    public BookService(DatabaseService db, EmbeddingService embeddingService)
     {
         _books = db.Books;
+        _embeddingService = embeddingService;
     }
 
     public Task<List<Book>> GetAllAsync(int page = 1, int pageSize = 20) =>
@@ -27,19 +29,19 @@ public class BookService
 
     public async Task<List<Book>?> SearchAsync(string query, int page = 1, int pageSize = 20)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
+        var queryEmbedding = await _embeddingService.GetEmbeddingAsync(query);
+
+        var vectorSearchStage = new BsonDocument("$vectorSearch", new BsonDocument
         {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
+            { "index", "vectorsearch" },
+            { "path", "embeddings" },
+            { "queryVector", new BsonArray(queryEmbedding.Select(v => (double)v)) },
+            { "numCandidates", 100 },
+            { "limit", (page * pageSize) + pageSize }
         });
 
         return await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
+            .AppendStage<Book>(vectorSearchStage)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
@@ -47,19 +49,19 @@ public class BookService
 
     public async Task<long> SearchCountAsync(string query)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
+        var queryEmbedding = await _embeddingService.GetEmbeddingAsync(query);
+
+        var vectorSearchStage = new BsonDocument("$vectorSearch", new BsonDocument
         {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
+            { "index", "vectorsearch" },
+            { "path", "embeddings" },
+            { "queryVector", new BsonArray(queryEmbedding.Select(v => (double)v)) },
+            { "numCandidates", 200 },
+            { "limit", 200 }
         });
 
         var results = await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
+            .AppendStage<Book>(vectorSearchStage)
             .ToListAsync();
 
         return results.Count;

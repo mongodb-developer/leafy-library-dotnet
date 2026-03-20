@@ -13,7 +13,9 @@ public class DatabaseService
     public IMongoCollection<User> Users { get; }
     public IMongoCollection<IssueDetail> IssueDetails { get; }
 
-    public DatabaseService(IOptions<MongoDbSettings> settings)
+    private readonly int _embeddingDimensions;
+
+    public DatabaseService(IOptions<MongoDbSettings> settings, IOptions<EmbeddingSettings> embeddingSettings)
     {
         var connectionString = settings.Value.ConnectionString;
 
@@ -34,6 +36,8 @@ public class DatabaseService
         Reviews = database.GetCollection<Review>("reviews");
         Users = database.GetCollection<User>("users");
         IssueDetails = database.GetCollection<IssueDetail>("issueDetails");
+
+        _embeddingDimensions = embeddingSettings.Value.Dimensions;
     }
 
     public async Task EnsureSearchIndexAsync()
@@ -92,5 +96,79 @@ public class DatabaseService
 
             await Task.Delay(1000);
         }
+    }
+
+    public async Task EnsureVectorSearchIndexAsync()
+    {
+        const string indexName = "vectorsearch";
+
+        using var cursor = await Books.SearchIndexes.ListAsync(indexName);
+        var indexes = await cursor.ToListAsync();
+
+        if (indexes.Any(i => i["name"] == indexName))
+        {
+            return;
+        }
+
+        var definition = new BsonDocument
+        {
+            { "fields", new BsonArray
+                {
+                    new BsonDocument
+                    {
+                        { "type", "vector" },
+                        { "path", "embeddings" },
+                        { "numDimensions", _embeddingDimensions },
+                        { "similarity", "cosine" }
+                    }
+                }
+            }
+        };
+
+        var model = new CreateSearchIndexModel(indexName, SearchIndexType.VectorSearch, definition);
+        await Books.SearchIndexes.CreateOneAsync(model);
+
+        Console.WriteLine($"Waiting for '{indexName}' index to be ready...");
+
+        while (true)
+        {
+            using var statusCursor = await Books.SearchIndexes.ListAsync(indexName);
+            var statusList = await statusCursor.ToListAsync();
+            var index = statusList.FirstOrDefault(i => i["name"] == indexName);
+
+            if (index is not null && index["queryable"].AsBoolean)
+            {
+                break;
+            }
+
+            await Task.Delay(1000);
+        }
+    }
+
+    public async Task GenerateEmbeddingsAsync(EmbeddingService embeddingService)
+    {
+        // Find all books that don't have an embedding yet
+        var filter = Builders<Book>.Filter.Exists(b => b.Embedding, false)
+            | Builders<Book>.Filter.Eq(b => b.Embedding, null);
+
+        var booksWithoutEmbeddings = await Books
+            .Find(filter)
+            .ToListAsync();
+
+        if (booksWithoutEmbeddings.Count == 0)
+            return;
+
+        Console.WriteLine($"Generating embeddings for {booksWithoutEmbeddings.Count} books...");
+
+        foreach (var book in booksWithoutEmbeddings)
+        {
+            var text = embeddingService.BuildEmbeddingText(book);
+            var embedding = await embeddingService.GetEmbeddingAsync(text);
+
+            var update = Builders<Book>.Update.Set(b => b.Embedding, embedding);
+            await Books.UpdateOneAsync(b => b.Id == book.Id, update);
+        }
+
+        Console.WriteLine("Embedding generation complete.");
     }
 }

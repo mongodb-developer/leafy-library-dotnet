@@ -16,7 +16,12 @@ builder.Services.Configure<MongoDbSettings>(
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("Jwt"));
 
+// Embedding settings
+builder.Services.Configure<EmbeddingSettings>(
+    builder.Configuration.GetSection("Embedding"));
+
 // Services
+builder.Services.AddHttpClient<EmbeddingService>();
 builder.Services.AddSingleton<DatabaseService>();
 builder.Services.AddSingleton<BookService>();
 builder.Services.AddSingleton<AuthorService>();
@@ -105,5 +110,10 @@ app.MapRazorComponents<App>()
 // Ensure the Atlas Search index exists before accepting requests
 var dbService = app.Services.GetRequiredService<DatabaseService>();
 await dbService.EnsureSearchIndexAsync();
+
+// Ensure the vector search index exists and generate embeddings for books without them
+var embeddingService = app.Services.GetRequiredService<EmbeddingService>();
+await dbService.EnsureVectorSearchIndexAsync();
+await dbService.GenerateEmbeddingsAsync(embeddingService);
 
 app.Run();

@@ -10,7 +10,7 @@
         <div class="review-content-header">
             @if (Rating.HasValue)
             {
-                <StarRating Rating="@Rating.Value" Fixed="true" />
+                <StarRating Rating="@((int)Math.Round(Rating.Value))" Fixed="true" />
             }
             <span class="review-date">@FormatTimestamp(Timestamp)</span>
         </div>
@@ -21,7 +21,7 @@
 @code {
     [Parameter] public string ReviewerName { get; set; } = string.Empty;
     [Parameter] public string Text { get; set; } = string.Empty;
-    [Parameter] public int? Rating { get; set; }
+    [Parameter] public double? Rating { get; set; }
     [Parameter] public long Timestamp { get; set; }
 
     private static string FormatTimestamp(long timestampMs)
