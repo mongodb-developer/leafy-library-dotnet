@@ -16,6 +16,9 @@
 
         <AuthorizeView>
             <Authorized>
+                    <NavLink class="nav-link" href="dashboard">
+                        <span class="bi bi-speedometer2" aria-hidden="true"></span> Dashboard
+                    </NavLink>
                 @if (context.User.IsInRole("Admin"))
                 {
                     <NavLink class="nav-link admin-panel" href="admin">
