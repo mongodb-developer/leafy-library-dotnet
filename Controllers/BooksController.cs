@@ -36,13 +36,24 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet("search")]
-    public async Task<ActionResult<object>> Search([FromQuery] string q, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    public async Task<ActionResult<object>> Search([FromQuery] string q, [FromQuery] string mode = "lexical", [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         if (string.IsNullOrWhiteSpace(q))
             return BadRequest(new { message = "Search query is required" });
 
-        var books = await _bookService.SearchAsync(q, page, pageSize);
-        var total = await _bookService.SearchCountAsync(q);
+        List<Book>? books;
+        long total;
+
+        if (mode == "semantic")
+        {
+            books = await _bookService.SemanticSearchAsync(q, page, pageSize);
+            total = await _bookService.SemanticSearchCountAsync(q);
+        }
+        else
+        {
+            books = await _bookService.LexicalSearchAsync(q, page, pageSize);
+            total = await _bookService.LexicalSearchCountAsync(q);
+        }
 
         return Ok(new { books, total, page, pageSize });
     }

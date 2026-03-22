@@ -9,10 +9,14 @@
 <div class="search-bar">
     <input type="text"
            class="form-control search-input"
-           placeholder="Search books by title..."
+           placeholder="Search books..."
            @bind="searchQuery"
            @bind:event="oninput"
            @bind:after="OnSearchAsync" />
+    <div class="search-mode-toggle">
+        <button class="toggle-btn @(useSemanticSearch ? "" : "active")" @onclick="() => SetSearchMode(false)">Lexical</button>
+        <button class="toggle-btn @(useSemanticSearch ? "active" : "")" @onclick="() => SetSearchMode(true)">Semantic</button>
+    </div>
     <span class="search-results-count">@totalCount book(s) found</span>
 </div>
 
@@ -84,6 +88,8 @@
     private int pageSize = 20;
     private long totalCount;
     private int totalPages => (int)Math.Ceiling((double)totalCount / pageSize);
+    private bool useSemanticSearch;
+    private CancellationTokenSource? _debounceCts;
 
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
 
@@ -100,6 +106,19 @@
 
     private async Task OnSearchAsync()
     {
+        _debounceCts?.Cancel();
+        _debounceCts = new CancellationTokenSource();
+        var token = _debounceCts.Token;
+
+        try
+        {
+            await Task.Delay(300, token);
+        }
+        catch (TaskCanceledException)
+        {
+            return;
+        }
+
         currentPage = 1;
 
         if (string.IsNullOrWhiteSpace(searchQuery))
@@ -108,8 +127,35 @@
             return;
         }
 
-        books = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
-        totalCount = await BookService.SearchCountAsync(searchQuery);
+        if (useSemanticSearch)
+        {
+            books = await BookService.SemanticSearchAsync(searchQuery, currentPage, pageSize);
+            totalCount = await BookService.SemanticSearchCountAsync(searchQuery);
+        }
+        else
+        {
+            books = await BookService.LexicalSearchAsync(searchQuery, currentPage, pageSize);
+            totalCount = await BookService.LexicalSearchCountAsync(searchQuery);
+        }
+    }
+
+    private async Task SetSearchMode(bool semantic)
+    {
+        useSemanticSearch = semantic;
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            currentPage = 1;
+            if (useSemanticSearch)
+            {
+                books = await BookService.SemanticSearchAsync(searchQuery, currentPage, pageSize);
+                totalCount = await BookService.SemanticSearchCountAsync(searchQuery);
+            }
+            else
+            {
+                books = await BookService.LexicalSearchAsync(searchQuery, currentPage, pageSize);
+                totalCount = await BookService.LexicalSearchCountAsync(searchQuery);
+            }
+        }
     }
 
     private async Task PreviousPage()

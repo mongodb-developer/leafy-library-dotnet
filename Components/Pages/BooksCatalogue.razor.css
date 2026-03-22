@@ -28,6 +28,33 @@
     white-space: nowrap;
 }
 
+/* Search mode toggle */
+.search-mode-toggle {
+    display: flex;
+    border: 2px solid #023430;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: #023430;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.toggle-btn.active {
+    background-color: #023430;
+    color: #fff;
+}
+
+.toggle-btn:hover:not(.active) {
+    background-color: rgba(2, 52, 48, 0.1);
+}
+
 /* Book card grid */
 .book-card-wrapper {
     display: flex;
