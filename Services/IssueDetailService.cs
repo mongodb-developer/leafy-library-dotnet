@@ -1,4 +1,5 @@
 using Leafy_Library.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -16,43 +17,52 @@ public class IssueDetailService
         _bookService = bookService;
     }
 
+    // ──────────────────────────────────────────────
+    //  Helpers
+    // ──────────────────────────────────────────────
+
+    private static FilterDefinition<IssueDetail> UserMatch(string userId) =>
+        Builders<IssueDetail>.Filter.Eq(i => i.User.Id, userId);
+
+    // ──────────────────────────────────────────────
+    //  Queries
+    // ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Gets a single issue detail by its ID.
+    /// </summary>
+    public async Task<IssueDetail?> GetByIdAsync(string id) =>
+        await _issueDetails.Find(i => i.Id == id).FirstOrDefaultAsync();
+
     /// <summary>
     /// Gets all borrow records for a specific user.
     /// </summary>
-    public async Task<List<IssueDetail>> GetByUserIdAsync(string userId)
-    {
-        var filter = Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}"));
-        return await _issueDetails
-            .Find(filter)
+    public Task<List<IssueDetail>> GetByUserIdAsync(string userId) =>
+        _issueDetails.Find(UserMatch(userId))
             .SortByDescending(i => i.BorrowDate)
             .ToListAsync();
-    }
 
     /// <summary>
     /// Gets all active (unreturned) borrows for a user.
     /// </summary>
-    public async Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId)
-    {
-        var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
-            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
-        );
-        return await _issueDetails
-            .Find(filter)
+    public Task<List<IssueDetail>> GetActiveBorrowsAsync(string userId) =>
+        _issueDetails.Find(
+                UserMatch(userId)
+                & Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook)
+                & Builders<IssueDetail>.Filter.Eq(i => i.Returned, false))
             .ToListAsync();
-    }
 
     /// <summary>
     /// Gets all borrow records for a specific book.
     /// </summary>
-    public async Task<List<IssueDetail>> GetByBookIdAsync(string bookId)
-    {
-        return await _issueDetails
-            .Find(i => i.Book.Id == bookId)
+    public Task<List<IssueDetail>> GetByBookIdAsync(string bookId) =>
+        _issueDetails.Find(i => i.Book.Id == bookId)
             .SortByDescending(i => i.BorrowDate)
             .ToListAsync();
-    }
+
+    // ──────────────────────────────────────────────
+    //  Borrow / Return operations
+    // ──────────────────────────────────────────────
 
     /// <summary>
     /// Borrows a book for a user. Decrements available count and creates an issue record.
@@ -60,17 +70,19 @@ public class IssueDetailService
     /// </summary>
     public async Task<IssueDetail?> BorrowBookAsync(string bookId, string userId, string userName)
     {
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(userId);
+        ArgumentException.ThrowIfNullOrEmpty(userName);
+
         var book = await _bookService.GetByIdAsync(bookId);
         if (book is null || book.Available <= 0)
             return null;
 
-        // Check if user already has this book borrowed
-        var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
-            Builders<IssueDetail>.Filter.Eq(i => i.Returned, false)
-        );
+        var existingFilter = UserMatch(userId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook)
+            & Builders<IssueDetail>.Filter.Eq(i => i.Returned, false);
+
         var existingBorrow = await _issueDetails
             .Find(existingFilter)
             .FirstOrDefaultAsync();
@@ -85,7 +97,7 @@ public class IssueDetailService
         var now = DateTime.UtcNow;
         var issueDetail = new IssueDetail
         {
-            Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+            Id = $"{userId}_{ObjectId.GenerateNewId()}",
             Book = new IssueDetailBook { Id = bookId, Title = book.Title },
             User = new IssueDetailUser { Id = userId, Name = userName },
             BorrowDate = now,
@@ -103,6 +115,8 @@ public class IssueDetailService
     /// </summary>
     public async Task<bool> ReturnBookAsync(string issueId)
     {
+        ArgumentException.ThrowIfNullOrEmpty(issueId);
+
         var issue = await _issueDetails
             .Find(i => i.Id == issueId && i.Returned == false)
             .FirstOrDefaultAsync();
@@ -125,15 +139,9 @@ public class IssueDetailService
         return false;
     }
 
-    /// <summary>
-    /// Gets a single issue detail by its ID.
-    /// </summary>
-    public async Task<IssueDetail?> GetByIdAsync(string id)
-    {
-        return await _issueDetails
-            .Find(i => i.Id == id)
-            .FirstOrDefaultAsync();
-    }
+    // ──────────────────────────────────────────────
+    //  Admin operations
+    // ──────────────────────────────────────────────
 
     /// <summary>
     /// Gets a paginated list of all borrowed books (admin).
@@ -147,6 +155,7 @@ public class IssueDetailService
             .Skip(skip)
             .Limit(limit)
             .ToListAsync();
+
         return new PagedResult<IssueDetail> { Data = data, TotalCount = totalCount };
     }
 
@@ -157,18 +166,19 @@ public class IssueDetailService
     /// </summary>
     public async Task<IssueDetail?> AdminBorrowBookAsync(string bookId, string userId, string userName)
     {
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(userId);
+        ArgumentException.ThrowIfNullOrEmpty(userName);
+
         var book = await _bookService.GetByIdAsync(bookId);
         if (book is null) return null;
 
         var now = DateTime.UtcNow;
 
-        // Check for existing active borrow (renewal case)
-        var existingFilter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
-            Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
-        );
+        var existingFilter = UserMatch(userId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook)
+            & Builders<IssueDetail>.Filter.Ne(i => i.Returned, true);
 
         var existingBorrow = await _issueDetails.Find(existingFilter).FirstOrDefaultAsync();
         bool isRenewal = false;
@@ -176,11 +186,12 @@ public class IssueDetailService
 
         if (existingBorrow is not null)
         {
-            // Renewal — update existing borrow record
             var update = Builders<IssueDetail>.Update
                 .Set(i => i.BorrowDate, now)
                 .Set(i => i.DueDate, now.AddDays(BorrowDurationDays));
+
             await _issueDetails.UpdateOneAsync(existingFilter, update);
+
             isRenewal = true;
             existingBorrow.BorrowDate = now;
             existingBorrow.DueDate = now.AddDays(BorrowDurationDays);
@@ -188,10 +199,9 @@ public class IssueDetailService
         }
         else
         {
-            // New borrow
             result = new IssueDetail
             {
-                Id = $"{userId}_{MongoDB.Bson.ObjectId.GenerateNewId()}",
+                Id = $"{userId}_{ObjectId.GenerateNewId()}",
                 Book = new IssueDetailBook { Id = bookId, Title = book.Title },
                 User = new IssueDetailUser { Id = userId, Name = userName },
                 BorrowDate = now,
@@ -199,15 +209,14 @@ public class IssueDetailService
                 RecordType = IssueDetailType.BorrowedBook,
                 Returned = false
             };
+
             await _issueDetails.InsertOneAsync(result);
         }
 
-        // Delete matching reservation if one exists
         var reservationId = $"{userId}R{bookId}";
         var deleteResult = await _issueDetails.DeleteOneAsync(i => i.Id == reservationId);
         var borrowReplacesReservation = deleteResult.DeletedCount == 1;
 
-        // Only decrement inventory if no reservation was deleted AND not a renewal
         if (!borrowReplacesReservation && !isRenewal)
         {
             await _bookService.DecrementAvailableAsync(bookId);
@@ -222,12 +231,13 @@ public class IssueDetailService
     /// </summary>
     public async Task<bool> AdminReturnBookAsync(string bookId, string userId)
     {
-        var filter = Builders<IssueDetail>.Filter.And(
-            Builders<IssueDetail>.Filter.Regex(i => i.Id, new MongoDB.Bson.BsonRegularExpression($"^{userId}")),
-            Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId),
-            Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook),
-            Builders<IssueDetail>.Filter.Ne(i => i.Returned, true)
-        );
+        ArgumentException.ThrowIfNullOrEmpty(bookId);
+        ArgumentException.ThrowIfNullOrEmpty(userId);
+
+        var filter = UserMatch(userId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.Book.Id, bookId)
+            & Builders<IssueDetail>.Filter.Eq(i => i.RecordType, IssueDetailType.BorrowedBook)
+            & Builders<IssueDetail>.Filter.Ne(i => i.Returned, true);
 
         var update = Builders<IssueDetail>.Update
             .Set(i => i.Returned, true)
