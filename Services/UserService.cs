@@ -20,10 +20,11 @@ public class UserService
 
         if (user is null)
         {
+            var isFirstUser = await _usersCollection.CountDocumentsAsync(FilterDefinition<User>.Empty) == 0;
             user = new User
             {
                 Name = username,
-                IsAdmin = false
+                IsAdmin = isFirstUser
             };
             await _usersCollection.InsertOneAsync(user);
         }
