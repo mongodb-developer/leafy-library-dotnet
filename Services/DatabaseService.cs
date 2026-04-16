@@ -24,6 +24,7 @@ public class DatabaseService
 
         var mongoSettings = MongoClientSettings.FromConnectionString(connectionString);
         mongoSettings.ApplicationName = "devrel.book.building-intelligent-data-applications-with-mongodb";
+        mongoSettings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
         var client = new MongoClient(mongoSettings);
         var database = client.GetDatabase(settings.Value.DatabaseName);
