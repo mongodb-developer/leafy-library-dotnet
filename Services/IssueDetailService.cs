@@ -10,7 +10,16 @@ public class IssueDetailService
     private readonly BookService _bookService;
 
     private const int BorrowDurationDays = 21;
+    private const int DueSoonDays = 3;
 
+    private static readonly BsonDocument DaysToDueStage = new("$addFields",
+        new BsonDocument("daysToDue", new BsonDocument("$dateDiff", new BsonDocument
+        {
+            { "startDate", "$$NOW" },
+            { "endDate", "$dueDate" },
+            { "unit", "day" }
+        })));
+        
     public IssueDetailService(DatabaseService db, BookService bookService)
     {
         _issueDetails = db.IssueDetails;
