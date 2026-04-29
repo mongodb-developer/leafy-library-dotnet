@@ -36,9 +36,9 @@ public class DatabaseService
         IssueDetails = database.GetCollection<IssueDetail>("issueDetails");
     }
 
-    public async Task EnsureSearchIndexAsync(int dimensions)
+    public async Task EnsureSearchIndexAsync()
     {
-        const string indexName = "vector_index";
+        const string indexName = "fulltextsearch";
 
         // Check if the index already exists
         using var cursor = await Books.SearchIndexes.ListAsync(indexName);
@@ -49,24 +49,33 @@ public class DatabaseService
             return;
         }
 
-        // Create the vector search index
+        // Create the search index
         var definition = new BsonDocument
         {
-            { "fields", new BsonArray
+            { "mappings", new BsonDocument
                 {
-                    new BsonDocument
-                    {
-                        { "type", "vector" },
-                        { "path", "embedding" },
-                        { "numDimensions", dimensions },
-                        { "similarity", "cosine" }
+                    { "dynamic", false },
+                    { "fields", new BsonDocument
+                        {
+                            { "authors", new BsonDocument
+                                {
+                                    { "type", "document" },
+                                    { "fields", new BsonDocument
+                                        {
+                                            { "name", new BsonDocument("type", "string") }
+                                        }
+                                    }
+                                }
+                            },
+                            { "genres", new BsonDocument("type", "string") },
+                            { "title", new BsonDocument("type", "string") }
+                        }
                     }
                 }
             }
         };
 
-        var model = new CreateSearchIndexModel(
-            indexName, SearchIndexType.VectorSearch, definition);
+        var model = new CreateSearchIndexModel(indexName, definition);
         await Books.SearchIndexes.CreateOneAsync(model);
 
         // Wait for the index to be ready
