@@ -23,11 +23,22 @@ public class EmbeddingService
     {
         ArgumentException.ThrowIfNullOrEmpty(text);
 
-        var requestBody = new
+        // OpenAI/Azure OpenAI use "dimensions" while some providers (e.g. Voyage) use "output_dimension".
+        var provider = _settings.Provider?.Trim().ToLowerInvariant() ?? string.Empty;
+        object requestBody = provider switch
         {
-            model = _settings.Model,
-            input = new[] { text },
-            output_dimension = _settings.Dimensions
+            "voyageai" or "voyage" => new
+            {
+                model = _settings.Model,
+                input = new[] { text },
+                output_dimension = _settings.Dimensions
+            },
+            _ => new
+            {
+                model = _settings.Model,
+                input = new[] { text },
+                dimensions = _settings.Dimensions
+            }
         };
 
         var content = new StringContent(
