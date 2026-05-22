@@ -1,5 +1,6 @@
 using Leafy_Library.Models;
 using MongoDB.Bson;
+using MongoDB.Driver.Search;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -8,11 +9,13 @@ public class BookService
 {
     private readonly IMongoCollection<Book> _books;
     private readonly EmbeddingService _embeddingService;
+    private readonly ILogger<BookService> _logger;
 
-    public BookService(DatabaseService db, EmbeddingService embeddingService)
+    public BookService(DatabaseService db, EmbeddingService embeddingService, ILogger<BookService> logger)
     {
         _books = db.Books;
         _embeddingService = embeddingService;
+        _logger = logger;
     }
 
     public Task<List<Book>> GetAllAsync(int page = 1, int pageSize = 20) =>
@@ -27,47 +30,155 @@ public class BookService
     public async Task<Book?> GetByIdAsync(string id) =>
         await _books.Find(b => b.Id == id).FirstOrDefaultAsync();
 
-    // ── Lexical search (Atlas Search) ──
+    // Tutorial chapter API
 
-    public async Task<List<Book>?> LexicalSearchAsync(string query, int page = 1, int pageSize = 20)
+    public async Task<List<Book>> SearchAsync(string query, int page, int pageSize)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
+        try
         {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
-        });
+            var searchDef = Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query);
 
-        return await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
+            return await _books
+                .Aggregate()
+                .Search(searchDef, indexName: "fulltextsearch")
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+        }
+        catch (MongoCommandException ex) when (ex.Message.Contains("index not found"))
+        {
+            _logger.LogWarning("Search index not found when running query: {Message}", ex.Message);
+            return [];
+        }
+        catch (MongoCommandException ex)
+        {
+            _logger.LogError(ex, "Search query failed unexpectedly");
+            return [];
+        }
+    }
+
+    public async Task<long> SearchCountAsync(string query)
+    {
+        var searchDef = Builders<Book>.Search.Text(
+            Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+            query);
+
+        var result = await _books
+            .Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Count()
+            .FirstOrDefaultAsync();
+
+        return result?.Count ?? 0;
+    }
+
+    public async Task<List<string>> GetAutocompleteSuggestionsAsync(string query)
+    {
+        var searchDef = Builders<Book>.Search.Autocomplete(
+            "title",
+            query,
+            SearchAutocompleteTokenOrder.Any);
+
+        return await _books
+            .Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Limit(5)
+            .Project<string>(Builders<Book>.Projection.Expression(x => x.Title))
+            .ToListAsync();
+    }
+
+    public async Task<Dictionary<string, int>> GetGenreFacetsAsync(string query)
+    {
+        var pipeline = new BsonDocument[]
+        {
+            new BsonDocument("$searchMeta", new BsonDocument
+            {
+                { "index", "fulltextsearch" },
+                { "facet", new BsonDocument
+                    {
+                        { "operator", new BsonDocument
+                            {
+                                { "text", new BsonDocument
+                                    {
+                                        { "query", query },
+                                        { "path", new BsonArray { "title", "authors.name", "genres" } }
+                                    }
+                                }
+                            }
+                        },
+                        { "facets", new BsonDocument
+                            {
+                                { "genreFacet", new BsonDocument
+                                    {
+                                        { "type", "string" },
+                                        { "path", "genres" },
+                                        { "numBuckets", 10 }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        };
+
+        var result = await _books
+            .Aggregate<BsonDocument>(pipeline)
+            .FirstOrDefaultAsync();
+
+        if (result == null) return [];
+
+        var buckets = result["facet"]["genreFacet"]["buckets"].AsBsonArray;
+
+        return buckets.ToDictionary(
+            b => b["_id"].AsString,
+            b => b["count"].ToInt32());
+    }
+
+    public async Task<List<Book>> SearchInGenreAsync(string query, string genre, int page, int pageSize)
+    {
+        var searchDef = Builders<Book>.Search.Compound()
+            .Must(Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query))
+            .Filter(Builders<Book>.Search.Text("genres", genre));
+
+        return await _books
+            .Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Match(b => b.Genres != null && b.Genres.Contains(genre))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
     }
 
-    public async Task<long> LexicalSearchCountAsync(string query)
+    public async Task<long> SearchInGenreCountAsync(string query, string genre)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
-        {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
-        });
+        var searchDef = Builders<Book>.Search.Compound()
+            .Must(Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query))
+            .Filter(Builders<Book>.Search.Text("genres", genre));
 
-        var results = await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
-            .ToListAsync();
+        var result = await _books
+            .Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Match(b => b.Genres != null && b.Genres.Contains(genre))
+            .Count()
+            .FirstOrDefaultAsync();
 
-        return results.Count;
+        return result?.Count ?? 0;
     }
+
+    // Existing API wrappers used by controllers/other branch work
+
+    public Task<List<Book>> LexicalSearchAsync(string query, int page = 1, int pageSize = 20) =>
+        SearchAsync(query, page, pageSize);
+
+    public Task<long> LexicalSearchCountAsync(string query) =>
+        SearchCountAsync(query);
 
     // ── Semantic search (Atlas Vector Search) ──
 

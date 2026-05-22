@@ -1,6 +1,7 @@
 using Leafy_Library.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
+using MongoDB.Driver.Search;
 using MongoDB.Driver;
 
 namespace Leafy_Library.Services;
@@ -14,9 +15,11 @@ public class DatabaseService
     public IMongoCollection<IssueDetail> IssueDetails { get; }
 
     private readonly int _embeddingDimensions;
+    private readonly ILogger<DatabaseService> _logger;
 
-    public DatabaseService(IOptions<MongoDbSettings> settings, IOptions<EmbeddingSettings> embeddingSettings)
+    public DatabaseService(IOptions<MongoDbSettings> settings, IOptions<EmbeddingSettings> embeddingSettings, ILogger<DatabaseService> logger)
     {
+        _logger = logger;
         var connectionString = settings.Value.ConnectionString;
 
         if (string.IsNullOrWhiteSpace(connectionString))
@@ -45,16 +48,13 @@ public class DatabaseService
     {
         const string indexName = "fulltextsearch";
 
-        // Check if the index already exists
-        using var cursor = await Books.SearchIndexes.ListAsync(indexName);
-        var indexes = await cursor.ToListAsync();
-
-        if (indexes.Any(i => i["name"] == indexName))
+        var cursor = await Books.SearchIndexes.ListAsync();
+        var existing = await cursor.ToListAsync();
+        if (existing.Any(i => i["name"].AsString == indexName))
         {
             return;
         }
 
-        // Create the search index
         var definition = new BsonDocument
         {
             { "mappings", new BsonDocument
@@ -62,18 +62,28 @@ public class DatabaseService
                     { "dynamic", false },
                     { "fields", new BsonDocument
                         {
+                            { "title", new BsonArray
+                                {
+                                    new BsonDocument { { "type", "string" }, { "analyzer", "lucene.english" } },
+                                    new BsonDocument { { "type", "autocomplete" }, { "tokenization", "edgeGram" }, { "minGrams", 2 }, { "maxGrams", 15 } }
+                                }
+                            },
                             { "authors", new BsonDocument
                                 {
                                     { "type", "document" },
                                     { "fields", new BsonDocument
                                         {
-                                            { "name", new BsonDocument("type", "string") }
+                                            { "name", new BsonDocument { { "type", "string" } } }
                                         }
                                     }
                                 }
                             },
-                            { "genres", new BsonDocument("type", "string") },
-                            { "title", new BsonDocument("type", "string") }
+                            { "genres", new BsonArray
+                                {
+                                    new BsonDocument { { "type", "string" } },
+                                    new BsonDocument { { "type", "stringFacet" } }
+                                }
+                            }
                         }
                     }
                 }
@@ -83,20 +93,23 @@ public class DatabaseService
         var model = new CreateSearchIndexModel(indexName, definition);
         await Books.SearchIndexes.CreateOneAsync(model);
 
-        // Wait for the index to be ready
+        _logger.LogInformation(
+            "Search index '{IndexName}' creation started. Waiting for it to become queryable...",
+            indexName);
+
         while (true)
         {
-            using var statusCursor = await Books.SearchIndexes.ListAsync(indexName);
-            var statusList = await statusCursor.ToListAsync();
-            var index = statusList.FirstOrDefault(i => i["name"] == indexName);
-
-            if (index is not null && index["queryable"].AsBoolean)
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            cursor = await Books.SearchIndexes.ListAsync();
+            var indexes = await cursor.ToListAsync();
+            var index = indexes.FirstOrDefault(i => i["name"].AsString == indexName);
+            if (index != null && index.GetValue("queryable", false).AsBoolean)
             {
                 break;
             }
-
-            await Task.Delay(1000);
         }
+
+        _logger.LogInformation("Search index '{IndexName}' is ready.", indexName);
     }
 
     public async Task EnsureVectorSearchIndexAsync()
