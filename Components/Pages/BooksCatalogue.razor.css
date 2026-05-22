@@ -28,6 +28,97 @@
     white-space: nowrap;
 }
 
+.search-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.facets {
+    background: #f7faf8;
+    border: 1px solid #d7e3dd;
+    border-radius: 12px;
+    padding: 1rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.facets h3 {
+    margin: 0 0 0.8rem;
+    font-size: 1rem;
+    color: #023430;
+}
+
+.facet-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.facet-list button {
+    width: 100%;
+    border: 1px solid #b9d5ca;
+    background: #fff;
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    text-align: left;
+    color: #184c40;
+    font-size: 0.92rem;
+    transition: all 0.18s ease;
+}
+
+.facet-list button:hover {
+    border-color: #00ed64;
+    background: #eefcf4;
+}
+
+.facet-list button.active {
+    background: #00684a;
+    border-color: #00684a;
+    color: #fff;
+}
+
+.search-results-count-display {
+    margin: 0 0 1rem;
+    color: #344c45;
+    font-size: 0.96rem;
+}
+
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.9rem;
+}
+
+.search-result-card {
+    border: 1px solid #d8e4de;
+    border-radius: 12px;
+    padding: 0.85rem;
+    background: #fff;
+}
+
+.search-result-title {
+    color: #023430;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.search-result-title:hover {
+    color: #00684a;
+    text-decoration: underline;
+}
+
+.search-result-authors {
+    margin: 0.45rem 0 0;
+    color: #5b6f67;
+    font-size: 0.88rem;
+}
+
 /* Book card grid */
 .book-card-wrapper {
     display: flex;
@@ -165,6 +256,14 @@
 
 /* Responsive */
 @media screen and (max-width: 1000px) {
+    .search-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .facets {
+        position: static;
+    }
+
     .book-card {
         width: 250px;
         height: 350px;
@@ -181,6 +280,10 @@
 }
 
 @media screen and (max-width: 500px) {
+    .search-results-grid {
+        grid-template-columns: 1fr;
+    }
+
     .book-card {
         width: 100%;
         height: auto;
@@ -193,5 +296,4 @@
     .book-card-content {
         display: none;
     }
-}
 }

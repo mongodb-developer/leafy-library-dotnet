@@ -7,9 +7,9 @@
 <PageTitle>Books Catalogue</PageTitle>
 
 <div class="search-bar">
-    <input type="text"
+    <input type="search"
            class="form-control search-input"
-           placeholder="Search books by title..."
+           placeholder="Search books..."
            @bind="searchQuery"
            @bind:event="oninput"
            @bind:after="OnSearchAsync" />
