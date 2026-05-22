@@ -23,7 +23,7 @@ public class DatabaseService
         }
 
         var mongoSettings = MongoClientSettings.FromConnectionString(connectionString);
-        mongoSettings.ApplicationName = "devrel.book.building-intelligent-data-applications-with-mongodb";
+        mongoSettings.ApplicationName = "devrel.book.building-modern-data-applications-with-mongodb-app";
         mongoSettings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
         var client = new MongoClient(mongoSettings);
