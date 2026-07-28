@@ -108,12 +108,7 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-// Ensure the Atlas Vector Search index exists and generate embeddings
 var dbService = app.Services.GetRequiredService<DatabaseService>();
-var embeddingSettings = app.Services.GetRequiredService<IOptions<EmbeddingSettings>>();
-await dbService.EnsureSearchIndexAsync(embeddingSettings.Value.Dimensions);
-
-var bookService = app.Services.GetRequiredService<BookService>();
-await bookService.GenerateEmbeddingsAsync();
+await dbService.EnsureSearchIndexAsync();
 
 app.Run();

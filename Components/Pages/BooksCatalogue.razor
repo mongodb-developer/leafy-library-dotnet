@@ -9,63 +9,98 @@
 <div class="search-bar">
     <input type="text"
            class="form-control search-input"
-           placeholder="Search books by title..."
+           placeholder="Search books..."
            @bind="searchQuery"
            @bind:event="oninput"
            @bind:after="OnSearchAsync" />
     <span class="search-results-count">@totalCount book(s) found</span>
 </div>
 
-<div class="book-card-wrapper">
-    @if (books is null)
-    {
-        <p class="loading-text">Loading books...</p>
-    }
-    else if (books.Count == 0)
-    {
-        <p class="loading-text">No books found.</p>
-    }
-    else
-    {
-        @foreach (var book in books)
+@if (suggestions.Any())
+{
+    <ul class="suggestions">
+        @foreach (var suggestion in suggestions)
         {
-            <div class="book-card">
-                <a href="/books/@book.Id">
-                    <img class="book-thumbnail"
-                         src="@(string.IsNullOrEmpty(book.Cover) ? FallbackImage : book.Cover)"
-                         alt="@book.Title" />
-                </a>
-
-                <div class="book-card-header">
-                    <h3 class="book-title">
-                        <a href="/books/@book.Id">@book.Title</a>
-                    </h3>
-                    <span class="book-authors">
-                        by
-                        @for (int i = 0; i < book.Authors.Count; i++)
-                        {
-                            var author = book.Authors[i];
-                            <a href="/authors/@author.Id">@author.Name</a>
-                            @if (i < book.Authors.Count - 1)
-                            {
-                                <span>, </span>
-                            }
-                        }
-                    </span>
-                </div>
-
-                <div class="book-card-content">
-                    @if (IsBookOfTheMonth(book))
-                    {
-                        <div class="book-details">
-                            <span class="book-of-the-month">🏆 Book of the Month selection 🏆</span>
-                        </div>
-                    }
-                    <p class="book-description">@StripHtml(book.Synopsis)</p>
-                </div>
-            </div>
+            <li @onclick="() => SelectSuggestionAsync(suggestion)">@suggestion</li>
         }
+    </ul>
+}
+
+<div class="search-layout">
+    @if (hasSearched)
+    {
+        <aside class="facets">
+            <h3>Filter by genre</h3>
+            @if (genreFacets.Any())
+            {
+                <ul>
+                    @foreach (var (genre, count) in genreFacets)
+                    {
+                        <li>
+                            <button @onclick="() => ApplyGenreFilterAsync(genre)"
+                                    class="@(selectedGenre == genre ? "active" : string.Empty)">
+                                @genre <span>(@count)</span>
+                            </button>
+                        </li>
+                    }
+                </ul>
+            }
+        </aside>
     }
+
+    <main class="results">
+        <div class="book-card-wrapper">
+            @if (books is null)
+            {
+                <p class="loading-text">Loading books...</p>
+            }
+            else if (books.Count == 0)
+            {
+                <p class="loading-text">@(hasSearched ? "No books found. Try a different search term." : "No books found.")</p>
+            }
+            else
+            {
+                @foreach (var book in books)
+                {
+                    <div class="book-card">
+                        <a href="/books/@book.Id">
+                            <img class="book-thumbnail"
+                                 src="@(string.IsNullOrEmpty(book.Cover) ? FallbackImage : book.Cover)"
+                                 alt="@book.Title" />
+                        </a>
+
+                        <div class="book-card-header">
+                            <h3 class="book-title">
+                                <a href="/books/@book.Id">@book.Title</a>
+                            </h3>
+                            <span class="book-authors">
+                                by
+                                @for (int i = 0; i < book.Authors.Count; i++)
+                                {
+                                    var author = book.Authors[i];
+                                    <a href="/authors/@author.Id">@author.Name</a>
+                                    @if (i < book.Authors.Count - 1)
+                                    {
+                                        <span>, </span>
+                                    }
+                                }
+                            </span>
+                        </div>
+
+                        <div class="book-card-content">
+                            @if (IsBookOfTheMonth(book))
+                            {
+                                <div class="book-details">
+                                    <span class="book-of-the-month">🏆 Book of the Month selection 🏆</span>
+                                </div>
+                            }
+                            <p class="book-description">@StripHtml(book.Synopsis)</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </main>
 </div>
 
 @if (totalCount > pageSize)
@@ -84,6 +119,10 @@
     private int pageSize = 20;
     private long totalCount;
     private int totalPages => (int)Math.Ceiling((double)totalCount / pageSize);
+    private List<string> suggestions = [];
+    private Dictionary<string, int> genreFacets = [];
+    private string? selectedGenre;
+    private bool hasSearched;
     private CancellationTokenSource? _debounceCts;
 
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
@@ -105,25 +144,61 @@
         _debounceCts = new CancellationTokenSource();
         var token = _debounceCts.Token;
 
-        try
-        {
-            await Task.Delay(300, token);
-        }
-        catch (TaskCanceledException)
-        {
-            return;
-        }
-
-        currentPage = 1;
-
         if (string.IsNullOrWhiteSpace(searchQuery))
         {
+            selectedGenre = null;
+            suggestions = [];
+            genreFacets = [];
+            hasSearched = false;
+            currentPage = 1;
             await LoadBooksAsync();
             return;
         }
 
-        books = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
-        totalCount = await BookService.SearchCountAsync(searchQuery);
+        try
+        {
+            await Task.Delay(300, token);
+
+            currentPage = 1;
+            selectedGenre = null;
+            suggestions = await BookService.GetAutocompleteSuggestionsAsync(searchQuery);
+            books = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
+            totalCount = await BookService.SearchCountAsync(searchQuery);
+            genreFacets = await BookService.GetGenreFacetsAsync(searchQuery);
+            hasSearched = true;
+        }
+        catch (OperationCanceledException)
+        {
+            // User typed another character before the delay finished, discard this run.
+        }
+    }
+
+    private async Task SelectSuggestionAsync(string title)
+    {
+        searchQuery = title;
+        suggestions = [];
+        currentPage = 1;
+        selectedGenre = null;
+
+        books = await BookService.SearchAsync(title, currentPage, pageSize);
+        totalCount = await BookService.SearchCountAsync(title);
+        genreFacets = await BookService.GetGenreFacetsAsync(title);
+        hasSearched = true;
+    }
+
+    private async Task ApplyGenreFilterAsync(string genre)
+    {
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            return;
+        }
+
+        selectedGenre = genre;
+        suggestions = [];
+        currentPage = 1;
+        books = await BookService.SearchInGenreAsync(searchQuery, genre, currentPage, pageSize);
+        totalCount = genreFacets.TryGetValue(genre, out var count) ? count : books.Count;
+        hasSearched = true;
     }
 
     private async Task PreviousPage()
@@ -131,7 +206,7 @@
         if (currentPage > 1)
         {
             currentPage--;
-            await LoadBooksAsync();
+            await LoadCurrentViewAsync();
         }
     }
 
@@ -140,8 +215,27 @@
         if (currentPage < totalPages)
         {
             currentPage++;
-            await LoadBooksAsync();
+            await LoadCurrentViewAsync();
         }
+    }
+
+    private async Task LoadCurrentViewAsync()
+    {
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            await LoadBooksAsync();
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(selectedGenre))
+        {
+            books = await BookService.SearchInGenreAsync(searchQuery, selectedGenre, currentPage, pageSize);
+            totalCount = genreFacets.TryGetValue(selectedGenre, out var count) ? count : books.Count;
+            return;
+        }
+
+        books = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
+        totalCount = await BookService.SearchCountAsync(searchQuery);
     }
 
     private static bool IsBookOfTheMonth(Book book)

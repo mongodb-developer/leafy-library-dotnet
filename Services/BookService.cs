@@ -1,16 +1,19 @@
 using Leafy_Library.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Search;
 
 namespace Leafy_Library.Services;
 
 public class BookService
 {
     private readonly IMongoCollection<Book> _books;
+    private readonly ILogger<BookService> _logger;
 
-    public BookService(DatabaseService db)
+    public BookService(DatabaseService db, ILogger<BookService> logger)
     {
         _books = db.Books;
+        _logger = logger;
     }
 
     public async Task<List<Book>> GetAllAsync(int page = 1, int pageSize = 20)
@@ -34,44 +37,150 @@ public class BookService
             .FirstOrDefaultAsync();
     }
 
-    public async Task<List<Book>?> SearchAsync(string query, int page = 1, int pageSize = 20)
+    public async Task<List<Book>> SearchAsync(string query, int page = 1, int pageSize = 20)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
+        try
         {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
-        });
+            var searchDef = Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query);
 
-        return await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
-            .Skip((page - 1) * pageSize)
-            .Limit(pageSize)
-            .ToListAsync();
+            return await _books.Aggregate()
+                .Search(searchDef, indexName: "fulltextsearch")
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+        }
+        catch (MongoCommandException ex) when (ex.Message.Contains("index not found", StringComparison.OrdinalIgnoreCase))
+        {
+            _logger.LogWarning("Search index not found when running query: {Message}", ex.Message);
+            return [];
+        }
+        catch (MongoCommandException ex)
+        {
+            _logger.LogError(ex, "Search query failed unexpectedly");
+            return [];
+        }
     }
 
     public async Task<long> SearchCountAsync(string query)
     {
-        var pipeline = new BsonDocument("$search", new BsonDocument
+        try
         {
-            { "index", "fulltextsearch" },
-            { "text", new BsonDocument
-                {
-                    { "query", query },
-                    { "path", new BsonArray { "title", "authors.name", "genres" } }
-                }
-            }
-        });
+            var searchDef = Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query);
 
-        var results = await _books.Aggregate()
-            .AppendStage<Book>(pipeline)
+            var result = await _books.Aggregate()
+                .Search(searchDef, indexName: "fulltextsearch")
+                .Count()
+                .FirstOrDefaultAsync();
+
+            return result?.Count ?? 0;
+        }
+        catch (MongoCommandException ex) when (ex.Message.Contains("index not found", StringComparison.OrdinalIgnoreCase))
+        {
+            _logger.LogWarning("Search count index not found for query: {Message}", ex.Message);
+            return 0;
+        }
+        catch (MongoCommandException ex)
+        {
+            _logger.LogError(ex, "Search count query failed unexpectedly");
+            return 0;
+        }
+    }
+
+    public async Task<List<string>> GetAutocompleteSuggestionsAsync(string query)
+    {
+        var searchDef = Builders<Book>.Search.Autocomplete(
+            "title",
+            query,
+            SearchAutocompleteTokenOrder.Any);
+
+        return await _books.Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Limit(5)
+            .Project(Builders<Book>.Projection.Expression(b => b.Title))
             .ToListAsync();
+    }
 
-        return results.Count;
+    public async Task<Dictionary<string, int>> GetGenreFacetsAsync(string query)
+    {
+        var pipeline = new BsonDocument[]
+        {
+            new("$searchMeta", new BsonDocument
+            {
+                { "index", "fulltextsearch" },
+                {
+                    "facet", new BsonDocument
+                    {
+                        {
+                            "operator", new BsonDocument
+                            {
+                                {
+                                    "text", new BsonDocument
+                                    {
+                                        { "query", query },
+                                        { "path", new BsonArray { "title", "authors.name", "genres" } }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "facets", new BsonDocument
+                            {
+                                {
+                                    "genreFacet", new BsonDocument
+                                    {
+                                        { "type", "string" },
+                                        { "path", "genres" },
+                                        { "numBuckets", 10 }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        };
+
+        var result = await _books.Aggregate<BsonDocument>(pipeline).FirstOrDefaultAsync();
+        if (result is null)
+        {
+            return [];
+        }
+
+        if (!result.TryGetValue("facet", out var facetValue) || !facetValue.AsBsonDocument.TryGetValue("genreFacet", out var genreFacetValue))
+        {
+            return [];
+        }
+
+        var genreFacet = genreFacetValue.AsBsonDocument;
+        if (!genreFacet.TryGetValue("buckets", out var bucketsValue))
+        {
+            return [];
+        }
+
+        var buckets = bucketsValue.AsBsonArray;
+        return buckets.ToDictionary(
+            b => b["_id"].AsString,
+            b => b["count"].ToInt32());
+    }
+
+    public async Task<List<Book>> SearchInGenreAsync(string query, string genre, int page = 1, int pageSize = 20)
+    {
+        var searchDef = Builders<Book>.Search.Compound()
+            .Must(Builders<Book>.Search.Text(
+                Builders<Book>.SearchPath.Multi("title", "authors.name", "genres"),
+                query))
+            .Filter(Builders<Book>.Search.Text("genres", genre));
+
+        return await _books.Aggregate()
+            .Search(searchDef, indexName: "fulltextsearch")
+            .Match(b => b.Genres != null && b.Genres.Contains(genre))
+            .Skip((page - 1) * pageSize)
+            .Limit(pageSize)
+            .ToListAsync();
     }
 
     public async Task CreateAsync(Book book)
