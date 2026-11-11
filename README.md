@@ -17,6 +17,7 @@ A library management system built with ASP.NET Core Blazor Server and MongoDB. L
 - User dashboard with loan statistics and reading history
 - Admin panel for managing books, loans, and reservations
 - Semantic search via vector embeddings (OpenAI / Azure OpenAI / VoyageAI)
+- Hybrid search combining full-text and vector search with `$rankFusion`
 - JWT authentication with automatic admin promotion for the first user
 
 ---
@@ -143,6 +144,7 @@ Leafy Library/
 | Auth | JWT (stored in ProtectedBrowserStorage) |
 | Search | MongoDB Atlas Search ($search) |
 | Semantic Search | Vector embeddings via $vectorSearch |
+| Hybrid Search | Lexical + vector results fused with $rankFusion |
 
 ### Data Collections
 
@@ -173,7 +175,9 @@ Full-text search is powered by a MongoDB Search index named `fulltextsearch`. Th
 - Author names
 - Genres
 
-Vector search uses the `embedding` field on book documents. Embeddings are generated from the book synopsis and stored at indexing time.
+Vector search uses the `embeddings` field on book documents. Embeddings are generated from the title, synopsis and genres and stored at indexing time.
+
+Hybrid search runs both the `fulltextsearch` and `vectorsearch` indexes in a single `$rankFusion` stage (Reciprocal Rank Fusion, equal weights). It requires MongoDB 8.0+. Pick Lexical, Semantic or Hybrid from the dropdown next to the search bar.
 
 ### Authentication Flow
 
@@ -193,7 +197,7 @@ Vector search uses the `embedding` field on book documents. Embeddings are gener
 |---|---|---|---|
 | GET | `/api/books` | — | List books (paginated) |
 | GET | `/api/books/{id}` | — | Get book by ID |
-| GET | `/api/books/search?q=` | — | Full-text search |
+| GET | `/api/books/search?q=&mode=lexical\|semantic\|hybrid` | — | Search (default `lexical`) |
 | POST | `/api/books` | Required | Create book |
 | PUT | `/api/books/{id}` | Required | Update book |
 | DELETE | `/api/books/{id}` | Required | Delete book |

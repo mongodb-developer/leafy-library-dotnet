@@ -44,7 +44,11 @@ public class BooksController : ControllerBase
         List<Book>? books;
         long total;
 
-        if (mode == "semantic")
+        if (mode == "hybrid")
+        {
+            (books, total) = await _bookService.HybridSearchAsync(q, page, pageSize);
+        }
+        else if (mode == "semantic")
         {
             books = await _bookService.SemanticSearchAsync(q, page, pageSize);
             total = await _bookService.SemanticSearchCountAsync(q);

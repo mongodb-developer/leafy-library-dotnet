@@ -222,6 +222,80 @@ public class BookService
         return results.Count;
     }
 
+    // ── Hybrid search (Search + Vector Search fused with $rankFusion, requires MongoDB 8.0+) ──
+
+    private const int HybridPipelineLimit = 50;
+    private const double HybridLexicalWeight = 1;
+    private const double HybridSemanticWeight = 1;
+
+    /// <summary>
+    /// Runs lexical and vector search in a single $rankFusion stage. Each pipeline is capped at
+    /// <see cref="HybridPipelineLimit"/>, so the fused list is small enough to page in memory and
+    /// gives the total without a second query or embedding call.
+    /// </summary>
+    public async Task<(List<Book> Books, long Total)> HybridSearchAsync(string query, int page = 1, int pageSize = 20)
+    {
+        try
+        {
+            var queryEmbedding = await _embeddingService.GetEmbeddingAsync(query);
+
+            var rankFusionStage = new BsonDocument("$rankFusion", new BsonDocument
+            {
+                { "input", new BsonDocument("pipelines", new BsonDocument
+                    {
+                        { "lexical", new BsonArray
+                            {
+                                new BsonDocument("$search", new BsonDocument
+                                {
+                                    { "index", "fulltextsearch" },
+                                    { "text", new BsonDocument
+                                        {
+                                            { "query", query },
+                                            { "path", new BsonArray { "title", "authors.name", "genres" } }
+                                        }
+                                    }
+                                }),
+                                // $search doesn't limit by default, so cap it inside the sub-pipeline
+                                new BsonDocument("$limit", HybridPipelineLimit)
+                            }
+                        },
+                        { "semantic", new BsonArray
+                            {
+                                new BsonDocument("$vectorSearch", new BsonDocument
+                                {
+                                    { "index", "vectorsearch" },
+                                    { "path", "embeddings" },
+                                    { "queryVector", new BsonArray(queryEmbedding.Select(v => (double)v)) },
+                                    { "numCandidates", HybridPipelineLimit * 20 },
+                                    { "limit", HybridPipelineLimit }
+                                })
+                            }
+                        }
+                    })
+                },
+                { "combination", new BsonDocument("weights", new BsonDocument
+                    {
+                        { "lexical", HybridLexicalWeight },
+                        { "semantic", HybridSemanticWeight }
+                    })
+                }
+            });
+
+            // $project isn't allowed inside the input pipelines, so drop the vectors after fusion
+            var fused = await _books.Aggregate()
+                .AppendStage<Book>(rankFusionStage)
+                .Project<Book>(Builders<Book>.Projection.Exclude(b => b.Embedding))
+                .ToListAsync();
+
+            return (fused.Skip((page - 1) * pageSize).Take(pageSize).ToList(), fused.Count);
+        }
+        catch (MongoCommandException ex)
+        {
+            _logger.LogError(ex, "Hybrid search failed. $rankFusion requires MongoDB 8.0+ and both the fulltextsearch and vectorsearch indexes");
+            return ([], 0);
+        }
+    }
+
     public async Task CreateAsync(Book book)
     {
         ArgumentNullException.ThrowIfNull(book);

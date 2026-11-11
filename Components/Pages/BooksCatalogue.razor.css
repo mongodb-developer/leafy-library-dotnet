@@ -54,31 +54,15 @@
     background: #eefcf4;
 }
 
-/* Search mode toggle */
-.search-mode-toggle {
-    display: flex;
+/* Search mode dropdown */
+.search-mode-select {
+    padding: 0.5rem 0.75rem;
     border: 2px solid #023430;
     border-radius: 6px;
-    overflow: hidden;
-}
-
-.toggle-btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    background: transparent;
+    background: #fff;
     color: #023430;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.toggle-btn.active {
-    background-color: #023430;
-    color: #fff;
-}
-
-.toggle-btn:hover:not(.active) {
-    background-color: rgba(2, 52, 48, 0.1);
 }
 
 .search-layout {

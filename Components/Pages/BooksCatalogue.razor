@@ -13,10 +13,11 @@
            @bind="searchQuery"
            @bind:event="oninput"
            @bind:after="OnSearchAsync" />
-    <div class="search-mode-toggle">
-        <button class="toggle-btn @(useSemanticSearch ? "" : "active")" @onclick="() => SetSearchMode(false)">Lexical</button>
-        <button class="toggle-btn @(useSemanticSearch ? "active" : "")" @onclick="() => SetSearchMode(true)">Semantic</button>
-    </div>
+    <select class="search-mode-select" @bind="searchMode" @bind:after="RunSearchAsync">
+        <option value="@SearchMode.Lexical">Lexical</option>
+        <option value="@SearchMode.Semantic">Semantic</option>
+        <option value="@SearchMode.Hybrid">Hybrid</option>
+    </select>
 </div>
 
 @if (suggestions.Any())
@@ -32,7 +33,7 @@
 @if (searchResults is not null || hasSearched)
 {
     <div class="search-layout">
-        @if (!useSemanticSearch)
+        @if (searchMode == SearchMode.Lexical)
         {
             <aside class="facets">
                 <h3>Filter by genre</h3>
@@ -64,13 +65,13 @@
             {
                 <p class="search-results-count-display">
                     @totalResults result(s) found
-                    @if (!string.IsNullOrWhiteSpace(selectedGenre) && !useSemanticSearch)
+                    @if (!string.IsNullOrWhiteSpace(selectedGenre) && searchMode == SearchMode.Lexical)
                     {
                         <span> in <strong>@selectedGenre</strong></span>
                     }
-                    @if (useSemanticSearch)
+                    @if (searchMode != SearchMode.Lexical)
                     {
-                        <span> using <strong>Semantic</strong> search</span>
+                        <span> using <strong>@searchMode</strong> search</span>
                     }
                 </p>
                 <div class="search-results-grid">
@@ -169,7 +170,7 @@ else
     private int pageSize = 20;
     private long totalCount;
     private int totalPages => (int)Math.Ceiling((double)totalCount / pageSize);
-    private bool useSemanticSearch;
+    private SearchMode searchMode = SearchMode.Lexical;
     private CancellationTokenSource? _cts;
 
     private const string FallbackImage = "http://lgimages.s3.amazonaws.com/gc-md.gif";
@@ -207,22 +208,7 @@ else
             await Task.Delay(300, _cts.Token);
             currentPage = 1;
 
-            if (useSemanticSearch)
-            {
-                suggestions = [];
-                genreFacets = [];
-                selectedGenre = null;
-                searchResults = await BookService.SemanticSearchAsync(searchQuery, currentPage, pageSize);
-                totalResults = await BookService.SemanticSearchCountAsync(searchQuery);
-            }
-            else
-            {
-                suggestions = await BookService.GetAutocompleteSuggestionsAsync(searchQuery);
-                searchResults = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
-                totalResults = await BookService.SearchCountAsync(searchQuery);
-                genreFacets = await BookService.GetGenreFacetsAsync(searchQuery);
-                selectedGenre = null;
-            }
+            await ExecuteSearchAsync();
 
             hasSearched = true;
         }
@@ -232,37 +218,49 @@ else
         }
     }
 
-    private async Task SetSearchMode(bool semantic)
+    private async Task RunSearchAsync()
     {
-        useSemanticSearch = semantic;
         if (string.IsNullOrWhiteSpace(searchQuery))
             return;
 
         currentPage = 1;
-        if (useSemanticSearch)
-        {
-            suggestions = [];
-            genreFacets = [];
-            selectedGenre = null;
-            searchResults = await BookService.SemanticSearchAsync(searchQuery, currentPage, pageSize);
-            totalResults = await BookService.SemanticSearchCountAsync(searchQuery);
-        }
-        else
-        {
-            suggestions = await BookService.GetAutocompleteSuggestionsAsync(searchQuery);
-            searchResults = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
-            totalResults = await BookService.SearchCountAsync(searchQuery);
-            genreFacets = await BookService.GetGenreFacetsAsync(searchQuery);
-            selectedGenre = null;
-        }
-
+        await ExecuteSearchAsync();
         hasSearched = true;
+    }
+
+    private async Task ExecuteSearchAsync()
+    {
+        switch (searchMode)
+        {
+            case SearchMode.Semantic:
+                suggestions = [];
+                genreFacets = [];
+                selectedGenre = null;
+                searchResults = await BookService.SemanticSearchAsync(searchQuery, currentPage, pageSize);
+                totalResults = await BookService.SemanticSearchCountAsync(searchQuery);
+                break;
+
+            case SearchMode.Hybrid:
+                suggestions = [];
+                genreFacets = [];
+                selectedGenre = null;
+                (searchResults, totalResults) = await BookService.HybridSearchAsync(searchQuery, currentPage, pageSize);
+                break;
+
+            default:
+                suggestions = await BookService.GetAutocompleteSuggestionsAsync(searchQuery);
+                searchResults = await BookService.SearchAsync(searchQuery, currentPage, pageSize);
+                totalResults = await BookService.SearchCountAsync(searchQuery);
+                genreFacets = await BookService.GetGenreFacetsAsync(searchQuery);
+                selectedGenre = null;
+                break;
+        }
     }
 
     private async Task SelectSuggestionAsync(string title)
     {
         searchQuery = title;
-        useSemanticSearch = false;
+        searchMode = SearchMode.Lexical;
         currentPage = 1;
         suggestions = [];
         searchResults = await BookService.SearchAsync(title, 1, pageSize);
